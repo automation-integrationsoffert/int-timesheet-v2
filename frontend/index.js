@@ -1,11 +1,28 @@
-import {initializeBlock, useBase, useRecords, useCustomProperties} from '@airtable/blocks/interface/ui';
-import {useCallback, useState} from 'react';
+import {initializeBlock, useBase, useRecords, useCustomProperties, useSession} from '@airtable/blocks/interface/ui';
+import {FieldType} from '@airtable/blocks/interface/models';
+import {useCallback, useState, useEffect} from 'react';
 import './style.css';
 import {getCustomProperties} from './config/customProperties';
 import {EditableCell} from './components/EditableCell';
+import {CreateRecordModal} from './components/CreateRecordModal';
 
 function TimesheetApp() {
     const base = useBase();
+    const session = useSession();
+    
+    // Debug: Log session info
+    useEffect(() => {
+        if (session?.currentUser) {
+            console.log('Session info:', {
+                email: session.currentUser.email,
+                id: session.currentUser.id,
+                name: session.currentUser.name
+            });
+        } else {
+            console.warn('Session or currentUser not available');
+        }
+    }, [session]);
+    
     const getCustomPropertiesMemo = useCallback((base) => getCustomProperties(base), []);
     const {customPropertyValueByKey, errorState} = useCustomProperties(getCustomPropertiesMemo);
     
@@ -14,7 +31,10 @@ function TimesheetApp() {
     const monthTable = customPropertyValueByKey.monthTable;
     const records = useRecords(timesheetTable || null);
     const monthRecords = useRecords(monthTable || null);
+    const usersRecords = useRecords(usersTable || null);
     const [updateTrigger, setUpdateTrigger] = useState(0);
+    const [showCreateModal, setShowCreateModal] = useState(false);
+    const [taskRecords, setTaskRecords] = useState([]); // Cache Task records to avoid creating temporary records
 
     // Get all field references
     const projectImport = customPropertyValueByKey.projectImport;
@@ -31,6 +51,28 @@ function TimesheetApp() {
     const warning = customPropertyValueByKey.warning;
     const timesheetNotes = customPropertyValueByKey.timesheetNotes;
     const timeTaskType = customPropertyValueByKey.timeTaskType;
+    
+    // Fetch Task records using an existing record (if available) to avoid creating temporary records
+    useEffect(() => {
+        if (timesheetTable && task && records.length > 0) {
+            // Use the first existing record to fetch Task records
+            const firstRecord = records[0];
+            if (firstRecord) {
+                firstRecord.fetchForeignRecordsAsync(task, '').then(result => {
+                    setTaskRecords(result.records.map(r => ({
+                        id: r.id,
+                        displayName: r.displayName || r.name || r.id,
+                        ...r
+                    })));
+                }).catch(error => {
+                    console.error('Error fetching Task records:', error);
+                });
+            }
+        } else if (timesheetTable && task && records.length === 0) {
+            // If no records exist, clear task records
+            setTaskRecords([]);
+        }
+    }, [timesheetTable, task, records]);
     
     // Month table fields
     const monthStatusField = customPropertyValueByKey.monthStatus;
@@ -49,7 +91,30 @@ function TimesheetApp() {
         setUpdateTrigger(prev => prev + 1);
     };
 
-    const handleAddTimeline = async () => {
+    // Helper function to find user name from Users Table based on email
+    const findUserNameByEmail = (email) => {
+        if (!usersTable || !email || !usersRecords) return null;
+        
+        // Find Email and Name fields in Users Table
+        const emailField = usersTable.fields.find(f => f.name === 'Email');
+        const nameField = usersTable.fields.find(f => f.name === 'Name');
+        
+        if (!emailField || !nameField) return null;
+        
+        // Find the user record with matching email
+        const userRecord = usersRecords.find(record => {
+            const recordEmail = record.getCellValue(emailField);
+            return recordEmail && String(recordEmail).toLowerCase() === String(email).toLowerCase();
+        });
+        
+        if (userRecord) {
+            return userRecord.getCellValue(nameField);
+        }
+        
+        return null;
+    };
+
+    const handleAddTimeline = () => {
         if (!canCreateRecords) {
             alert('You do not have permission to create records. Please enable record creation permissions for this Interface Extension.');
             return;
@@ -60,22 +125,12 @@ function TimesheetApp() {
             return;
         }
 
-        try {
-            // Create a new empty record
-            await timesheetTable.createRecordAsync({});
-            
-            // Trigger update to refresh the records list
-            handleRecordUpdate();
-        } catch (error) {
-            console.error('Error creating record:', error);
-            let errorMessage = 'Failed to create record. ';
-            if (error.message && error.message.includes('allow record')) {
-                errorMessage += 'Please enable record creation permissions for this Interface Extension in the Airtable settings.';
-            } else {
-                errorMessage += error.message || 'Unknown error occurred.';
-            }
-            alert(errorMessage);
-        }
+        // Open the modal instead of creating record immediately
+        setShowCreateModal(true);
+    };
+
+    const handleRecordCreated = () => {
+        handleRecordUpdate();
     };
 
     // Show configuration message if table or fields are not set
@@ -121,6 +176,11 @@ function TimesheetApp() {
                     <p className="text-sm text-gray-gray600 dark:text-gray-gray400 mt-1">
                         {records.length} record{records.length !== 1 ? 's' : ''}
                     </p>
+                    {session?.currentUser?.email && (
+                        <p className="text-xs text-gray-gray500 dark:text-gray-gray500 mt-1">
+                            Logged in as: {session.currentUser.email}
+                        </p>
+                    )}
                 </div>
                 <button
                     onClick={handleAddTimeline}
@@ -186,6 +246,9 @@ function TimesheetApp() {
                                                     monthStatusField={monthStatusField}
                                                     monthStartDateField={monthStartDateField}
                                                     monthEndDateField={monthEndDateField}
+                                                    session={session}
+                                                    usersTable={usersTable}
+                                                    usersRecords={usersRecords}
                                                 />
                                             )
                                         ))}
@@ -196,6 +259,22 @@ function TimesheetApp() {
                     </table>
                 </div>
             </div>
+            
+            <CreateRecordModal
+                isOpen={showCreateModal}
+                onClose={() => setShowCreateModal(false)}
+                timesheetTable={timesheetTable}
+                fields={fields}
+                onRecordCreated={handleRecordCreated}
+                session={session}
+                usersTable={usersTable}
+                usersRecords={usersRecords}
+                monthRecords={monthRecords}
+                monthStatusField={monthStatusField}
+                monthStartDateField={monthStartDateField}
+                monthEndDateField={monthEndDateField}
+                taskRecords={taskRecords}
+            />
         </div>
     );
 }

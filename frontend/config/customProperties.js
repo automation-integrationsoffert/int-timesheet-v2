@@ -107,7 +107,7 @@ export function getCustomProperties(base) {
             type: 'field',
             table: timesheetTable,
             shouldFieldBeAllowed: (field) => 
-                field.config.type === FieldType.MULTIPLE_RECORD_LINKS,
+                field.config.type === FieldType.SINGLE_SELECT,
             defaultValue: findField(timesheetTable, 'Name'),
         },
         {
