@@ -41078,7 +41078,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
   var init_style = __esm({
     "frontend/style.css"() {
       style = document.createElement("style");
-      style.textContent = '*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }\n\n/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Courier,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.z-10{z-index:10}.z-50{z-index:50}.mx-4{margin-left:1rem;margin-right:1rem}.mb-2{margin-bottom:.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mt-1{margin-top:.25rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.inline{display:inline}.flex{display:flex}.\\!table{display:table!important}.table{display:table}.grid{display:grid}.aspect-square{aspect-ratio:1/1}.h-full{height:100%}.max-h-48{max-height:12rem}.max-h-\\[90vh\\]{max-height:90vh}.min-h-screen{min-height:100vh}.w-1\\/3{width:33.333333%}.w-12{width:3rem}.w-2\\/3{width:66.666667%}.w-full{width:100%}.min-w-\\[180px\\]{min-width:180px}.max-w-2xl{max-width:42rem}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.table-auto{table-layout:auto}.border-collapse{border-collapse:collapse}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.grid-cols-7{grid-template-columns:repeat(7,minmax(0,1fr))}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.space-x-2>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.5rem*var(--tw-space-x-reverse));margin-left:calc(.5rem*(1 - var(--tw-space-x-reverse)))}.space-x-3>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.75rem*var(--tw-space-x-reverse));margin-left:calc(.75rem*(1 - var(--tw-space-x-reverse)))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.divide-y>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px*(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px*var(--tw-divide-y-reverse))}.divide-gray-gray200>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(218 222 230/var(--tw-divide-opacity,1))}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-lg{border-radius:.875rem}.rounded-md{border-radius:.375rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-gray-gray100{--tw-border-opacity:1;border-color:rgb(229 233 240/var(--tw-border-opacity,1))}.border-gray-gray200{--tw-border-opacity:1;border-color:rgb(218 222 230/var(--tw-border-opacity,1))}.border-yellow-yellow{--tw-border-opacity:1;border-color:rgb(255 186 5/var(--tw-border-opacity,1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0/var(--tw-bg-opacity,1))}.bg-blue-blue{--tw-bg-opacity:1;background-color:rgb(22 110 225/var(--tw-bg-opacity,1))}.bg-gray-gray100{--tw-bg-opacity:1;background-color:rgb(229 233 240/var(--tw-bg-opacity,1))}.bg-gray-gray200{--tw-bg-opacity:1;background-color:rgb(218 222 230/var(--tw-bg-opacity,1))}.bg-gray-gray50{--tw-bg-opacity:1;background-color:rgb(246 248 252/var(--tw-bg-opacity,1))}.bg-red-red{--tw-bg-opacity:1;background-color:rgb(220 4 59/var(--tw-bg-opacity,1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-yellow-yellow{--tw-bg-opacity:1;background-color:rgb(255 186 5/var(--tw-bg-opacity,1))}.bg-opacity-20{--tw-bg-opacity:0.2}.bg-opacity-50{--tw-bg-opacity:0.5}.p-3{padding:.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pt-2{padding-top:.5rem}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.3125rem;line-height:1.625rem}.text-lg{font-size:.9375rem;line-height:1.375rem}.text-sm{font-size:.6875rem;line-height:1rem}.text-xl{font-size:1.0625rem;line-height:1.5rem}.text-xs{font-size:.5625rem;line-height:.875rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.tracking-wider{letter-spacing:.05em}.text-gray-gray400{--tw-text-opacity:1;color:rgb(151 154 160/var(--tw-text-opacity,1))}.text-gray-gray500{--tw-text-opacity:1;color:rgb(97 102 112/var(--tw-text-opacity,1))}.text-gray-gray600{--tw-text-opacity:1;color:rgb(65 69 77/var(--tw-text-opacity,1))}.text-gray-gray700{--tw-text-opacity:1;color:rgb(49 53 62/var(--tw-text-opacity,1))}.text-gray-gray900{--tw-text-opacity:1;color:rgb(17 18 21/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-50{opacity:.5}.shadow-lg{--tw-shadow:0px 0px 1px 0px rgba(0,0,0,.48),0px 0px 2px 0px rgba(0,0,0,.08),0px 2px 4px 0px rgba(0,0,0,.12),0px 2px 8px 0px rgba(0,0,0,.08);--tw-shadow-colored:0px 0px 1px 0px var(--tw-shadow-color),0px 0px 2px 0px var(--tw-shadow-color),0px 2px 4px 0px var(--tw-shadow-color),0px 2px 8px 0px var(--tw-shadow-color)}.shadow-lg,.shadow-sm{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-sm{--tw-shadow:0px 0px 1px rgba(0,0,0,.32),0px 0px 3px rgba(0,0,0,.11),0px 1px 4px rgba(0,0,0,.12);--tw-shadow-colored:0px 0px 1px var(--tw-shadow-color),0px 0px 3px var(--tw-shadow-color),0px 1px 4px var(--tw-shadow-color)}.shadow-xl{--tw-shadow:0px 0px 1px rgba(0,0,0,.24),0px 0px 2px rgba(0,0,0,.16),0px 3px 4px rgba(0,0,0,.06),0px 6px 8px rgba(0,0,0,.06),0px 12px 16px rgba(0,0,0,.08),0px 18px 32px rgba(0,0,0,.06);--tw-shadow-colored:0px 0px 1px var(--tw-shadow-color),0px 0px 2px var(--tw-shadow-color),0px 3px 4px var(--tw-shadow-color),0px 6px 8px var(--tw-shadow-color),0px 12px 16px var(--tw-shadow-color),0px 18px 32px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.hover\\:bg-blue-blue:hover{--tw-bg-opacity:1;background-color:rgb(22 110 225/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray100:hover{--tw-bg-opacity:1;background-color:rgb(229 233 240/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray300:hover{--tw-bg-opacity:1;background-color:rgb(196 199 205/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray50:hover{--tw-bg-opacity:1;background-color:rgb(246 248 252/var(--tw-bg-opacity,1))}.hover\\:text-gray-gray700:hover{--tw-text-opacity:1;color:rgb(49 53 62/var(--tw-text-opacity,1))}.hover\\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.focus\\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus\\:ring-blue-blue:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(22 110 225/var(--tw-ring-opacity,1))}.focus\\:ring-red-red:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(220 4 59/var(--tw-ring-opacity,1))}.focus\\:ring-offset-2:focus{--tw-ring-offset-width:2px}.disabled\\:cursor-not-allowed:disabled{cursor:not-allowed}.disabled\\:opacity-50:disabled{opacity:.5}@media (min-width:640px){.sm\\:p-6{padding:1.5rem}.sm\\:p-8{padding:2rem}}@media (prefers-color-scheme:dark){.dark\\:divide-gray-gray600>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(65 69 77/var(--tw-divide-opacity,1))}.dark\\:border-gray-gray500{--tw-border-opacity:1;border-color:rgb(97 102 112/var(--tw-border-opacity,1))}.dark\\:border-gray-gray600{--tw-border-opacity:1;border-color:rgb(65 69 77/var(--tw-border-opacity,1))}.dark\\:bg-gray-gray600{--tw-bg-opacity:1;background-color:rgb(65 69 77/var(--tw-bg-opacity,1))}.dark\\:bg-gray-gray700{--tw-bg-opacity:1;background-color:rgb(49 53 62/var(--tw-bg-opacity,1))}.dark\\:bg-gray-gray800{--tw-bg-opacity:1;background-color:rgb(29 31 37/var(--tw-bg-opacity,1))}.dark\\:text-gray-gray100{--tw-text-opacity:1;color:rgb(229 233 240/var(--tw-text-opacity,1))}.dark\\:text-gray-gray300{--tw-text-opacity:1;color:rgb(196 199 205/var(--tw-text-opacity,1))}.dark\\:text-gray-gray400{--tw-text-opacity:1;color:rgb(151 154 160/var(--tw-text-opacity,1))}.dark\\:text-gray-gray500{--tw-text-opacity:1;color:rgb(97 102 112/var(--tw-text-opacity,1))}.dark\\:hover\\:bg-gray-gray500:hover{--tw-bg-opacity:1;background-color:rgb(97 102 112/var(--tw-bg-opacity,1))}.dark\\:hover\\:bg-gray-gray600:hover{--tw-bg-opacity:1;background-color:rgb(65 69 77/var(--tw-bg-opacity,1))}.dark\\:hover\\:text-gray-gray200:hover{--tw-text-opacity:1;color:rgb(218 222 230/var(--tw-text-opacity,1))}}';
+      style.textContent = '*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }\n\n/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Courier,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.z-10{z-index:10}.z-50{z-index:50}.mx-4{margin-left:1rem;margin-right:1rem}.mb-2{margin-bottom:.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mt-1{margin-top:.25rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.inline{display:inline}.flex{display:flex}.\\!table{display:table!important}.table{display:table}.grid{display:grid}.aspect-square{aspect-ratio:1/1}.h-full{height:100%}.max-h-48{max-height:12rem}.max-h-\\[90vh\\]{max-height:90vh}.min-h-screen{min-height:100vh}.w-1\\/3{width:33.333333%}.w-2\\/3{width:66.666667%}.w-full{width:100%}.min-w-\\[180px\\]{min-width:180px}.max-w-2xl{max-width:42rem}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.table-auto{table-layout:auto}.border-collapse{border-collapse:collapse}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.grid-cols-7{grid-template-columns:repeat(7,minmax(0,1fr))}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.space-x-2>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.5rem*var(--tw-space-x-reverse));margin-left:calc(.5rem*(1 - var(--tw-space-x-reverse)))}.space-x-3>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.75rem*var(--tw-space-x-reverse));margin-left:calc(.75rem*(1 - var(--tw-space-x-reverse)))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.divide-y>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px*(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px*var(--tw-divide-y-reverse))}.divide-gray-gray200>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(218 222 230/var(--tw-divide-opacity,1))}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-lg{border-radius:.875rem}.rounded-md{border-radius:.375rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-gray-gray100{--tw-border-opacity:1;border-color:rgb(229 233 240/var(--tw-border-opacity,1))}.border-gray-gray200{--tw-border-opacity:1;border-color:rgb(218 222 230/var(--tw-border-opacity,1))}.border-yellow-yellow{--tw-border-opacity:1;border-color:rgb(255 186 5/var(--tw-border-opacity,1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0/var(--tw-bg-opacity,1))}.bg-blue-blue{--tw-bg-opacity:1;background-color:rgb(22 110 225/var(--tw-bg-opacity,1))}.bg-gray-gray100{--tw-bg-opacity:1;background-color:rgb(229 233 240/var(--tw-bg-opacity,1))}.bg-gray-gray200{--tw-bg-opacity:1;background-color:rgb(218 222 230/var(--tw-bg-opacity,1))}.bg-gray-gray50{--tw-bg-opacity:1;background-color:rgb(246 248 252/var(--tw-bg-opacity,1))}.bg-red-red{--tw-bg-opacity:1;background-color:rgb(220 4 59/var(--tw-bg-opacity,1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-yellow-yellow{--tw-bg-opacity:1;background-color:rgb(255 186 5/var(--tw-bg-opacity,1))}.bg-opacity-20{--tw-bg-opacity:0.2}.bg-opacity-50{--tw-bg-opacity:0.5}.p-3{padding:.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pt-2{padding-top:.5rem}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.3125rem;line-height:1.625rem}.text-lg{font-size:.9375rem;line-height:1.375rem}.text-sm{font-size:.6875rem;line-height:1rem}.text-xl{font-size:1.0625rem;line-height:1.5rem}.text-xs{font-size:.5625rem;line-height:.875rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.tracking-wider{letter-spacing:.05em}.text-gray-gray400{--tw-text-opacity:1;color:rgb(151 154 160/var(--tw-text-opacity,1))}.text-gray-gray500{--tw-text-opacity:1;color:rgb(97 102 112/var(--tw-text-opacity,1))}.text-gray-gray600{--tw-text-opacity:1;color:rgb(65 69 77/var(--tw-text-opacity,1))}.text-gray-gray700{--tw-text-opacity:1;color:rgb(49 53 62/var(--tw-text-opacity,1))}.text-gray-gray900{--tw-text-opacity:1;color:rgb(17 18 21/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-50{opacity:.5}.shadow-lg{--tw-shadow:0px 0px 1px 0px rgba(0,0,0,.48),0px 0px 2px 0px rgba(0,0,0,.08),0px 2px 4px 0px rgba(0,0,0,.12),0px 2px 8px 0px rgba(0,0,0,.08);--tw-shadow-colored:0px 0px 1px 0px var(--tw-shadow-color),0px 0px 2px 0px var(--tw-shadow-color),0px 2px 4px 0px var(--tw-shadow-color),0px 2px 8px 0px var(--tw-shadow-color)}.shadow-lg,.shadow-sm{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-sm{--tw-shadow:0px 0px 1px rgba(0,0,0,.32),0px 0px 3px rgba(0,0,0,.11),0px 1px 4px rgba(0,0,0,.12);--tw-shadow-colored:0px 0px 1px var(--tw-shadow-color),0px 0px 3px var(--tw-shadow-color),0px 1px 4px var(--tw-shadow-color)}.shadow-xl{--tw-shadow:0px 0px 1px rgba(0,0,0,.24),0px 0px 2px rgba(0,0,0,.16),0px 3px 4px rgba(0,0,0,.06),0px 6px 8px rgba(0,0,0,.06),0px 12px 16px rgba(0,0,0,.08),0px 18px 32px rgba(0,0,0,.06);--tw-shadow-colored:0px 0px 1px var(--tw-shadow-color),0px 0px 2px var(--tw-shadow-color),0px 3px 4px var(--tw-shadow-color),0px 6px 8px var(--tw-shadow-color),0px 12px 16px var(--tw-shadow-color),0px 18px 32px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.hover\\:bg-blue-blue:hover{--tw-bg-opacity:1;background-color:rgb(22 110 225/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray100:hover{--tw-bg-opacity:1;background-color:rgb(229 233 240/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray300:hover{--tw-bg-opacity:1;background-color:rgb(196 199 205/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray50:hover{--tw-bg-opacity:1;background-color:rgb(246 248 252/var(--tw-bg-opacity,1))}.hover\\:text-gray-gray700:hover{--tw-text-opacity:1;color:rgb(49 53 62/var(--tw-text-opacity,1))}.hover\\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.focus\\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus\\:ring-blue-blue:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(22 110 225/var(--tw-ring-opacity,1))}.focus\\:ring-red-red:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(220 4 59/var(--tw-ring-opacity,1))}.focus\\:ring-offset-2:focus{--tw-ring-offset-width:2px}.disabled\\:cursor-not-allowed:disabled{cursor:not-allowed}.disabled\\:opacity-50:disabled{opacity:.5}@media (min-width:640px){.sm\\:p-6{padding:1.5rem}.sm\\:p-8{padding:2rem}}@media (prefers-color-scheme:dark){.dark\\:divide-gray-gray600>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(65 69 77/var(--tw-divide-opacity,1))}.dark\\:border-gray-gray500{--tw-border-opacity:1;border-color:rgb(97 102 112/var(--tw-border-opacity,1))}.dark\\:border-gray-gray600{--tw-border-opacity:1;border-color:rgb(65 69 77/var(--tw-border-opacity,1))}.dark\\:bg-gray-gray600{--tw-bg-opacity:1;background-color:rgb(65 69 77/var(--tw-bg-opacity,1))}.dark\\:bg-gray-gray700{--tw-bg-opacity:1;background-color:rgb(49 53 62/var(--tw-bg-opacity,1))}.dark\\:bg-gray-gray800{--tw-bg-opacity:1;background-color:rgb(29 31 37/var(--tw-bg-opacity,1))}.dark\\:text-gray-gray100{--tw-text-opacity:1;color:rgb(229 233 240/var(--tw-text-opacity,1))}.dark\\:text-gray-gray300{--tw-text-opacity:1;color:rgb(196 199 205/var(--tw-text-opacity,1))}.dark\\:text-gray-gray400{--tw-text-opacity:1;color:rgb(151 154 160/var(--tw-text-opacity,1))}.dark\\:text-gray-gray500{--tw-text-opacity:1;color:rgb(97 102 112/var(--tw-text-opacity,1))}.dark\\:hover\\:bg-gray-gray500:hover{--tw-bg-opacity:1;background-color:rgb(97 102 112/var(--tw-bg-opacity,1))}.dark\\:hover\\:bg-gray-gray600:hover{--tw-bg-opacity:1;background-color:rgb(65 69 77/var(--tw-bg-opacity,1))}.dark\\:hover\\:text-gray-gray200:hover{--tw-text-opacity:1;color:rgb(218 222 230/var(--tw-text-opacity,1))}}';
       document.head.appendChild(style);
     }
   });
@@ -41906,7 +41906,9 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     const isProjectFromTaskEditable = fieldName === "Project from Task";
     const isWarningField = fieldName === "Warning";
     const isTimesheetNotesField = fieldName === "Timesheet Notes";
-    const shouldBeEditable = isProjectImportField || isNameField || isDateFieldEditable || isIndividualHoursField || isProjectFromTaskEditable || isWarningField || isTimesheetNotesField;
+    const isTimeTaskTypeField = fieldName === "Time Task Type";
+    const isDeleteField = fieldName === "Delete";
+    const shouldBeEditable = isProjectImportField || isNameField || isDateFieldEditable || isIndividualHoursField || isProjectFromTaskEditable || isWarningField || isTimesheetNotesField || isTimeTaskTypeField || isDeleteField;
     const canEdit = record?.parentTable?.hasPermissionToUpdateRecords?.([{ id: record.id, fields: { [field.id]: null } }]) ?? false;
     const isFormula = fieldType === FieldType.FORMULA;
     const isLookup = fieldType === FieldType.MULTIPLE_LOOKUP_VALUES || fieldType === FieldType.ROLLUP;
@@ -42214,14 +42216,14 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
               false,
               {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 434,
+                lineNumber: 436,
                 columnNumber: 29
               },
               this
             ),
             showLinkedRecordDropdown && /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "absolute z-10 w-full mt-1 bg-white dark:bg-gray-gray700 border rounded shadow-lg max-h-48 overflow-y-auto", children: linkedRecords.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "px-2 py-1 text-sm text-gray-gray500 dark:text-gray-gray400", children: "Loading..." }, void 0, false, {
               fileName: "frontend/components/EditableCell.js",
-              lineNumber: 476,
+              lineNumber: 478,
               columnNumber: 41
             }, this) : linkedRecords.map((linkedRecord) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
               "div",
@@ -42265,22 +42267,22 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
               false,
               {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 479,
+                lineNumber: 481,
                 columnNumber: 45
               },
               this
             )) }, void 0, false, {
               fileName: "frontend/components/EditableCell.js",
-              lineNumber: 474,
+              lineNumber: 476,
               columnNumber: 33
             }, this)
           ] }, void 0, true, {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 433,
+            lineNumber: 435,
             columnNumber: 25
           }, this) }, void 0, false, {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 432,
+            lineNumber: 434,
             columnNumber: 21
           }, this);
         }
@@ -42353,16 +42355,16 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: "", children: "-- Select --" }, void 0, false, {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 628,
+                lineNumber: 630,
                 columnNumber: 25
               }, this),
               linkedRecords.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: "", disabled: true, children: "Loading..." }, void 0, false, {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 630,
+                lineNumber: 632,
                 columnNumber: 29
               }, this) : linkedRecords.map((linkedRecord) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: linkedRecord.id, children: linkedRecord.displayName }, linkedRecord.id, false, {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 633,
+                lineNumber: 635,
                 columnNumber: 33
               }, this))
             ]
@@ -42371,13 +42373,13 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           true,
           {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 549,
+            lineNumber: 551,
             columnNumber: 21
           },
           this
         ) }, void 0, false, {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 548,
+          lineNumber: 550,
           columnNumber: 17
         }, this);
       }
@@ -42426,12 +42428,12 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: "", children: "-- Select --" }, void 0, false, {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 692,
+                lineNumber: 694,
                 columnNumber: 25
               }, this),
               options.map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: option.id, children: option.name }, option.id, false, {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 694,
+                lineNumber: 696,
                 columnNumber: 29
               }, this))
             ]
@@ -42440,13 +42442,13 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           true,
           {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 654,
+            lineNumber: 656,
             columnNumber: 21
           },
           this
         ) }, void 0, false, {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 653,
+          lineNumber: 655,
           columnNumber: 17
         }, this);
       }
@@ -42491,7 +42493,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
               size: Math.min(options.length + 1, 4),
               children: options.map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: option.id, children: option.name }, option.id, false, {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 757,
+                lineNumber: 759,
                 columnNumber: 29
               }, this))
             },
@@ -42499,7 +42501,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             false,
             {
               fileName: "frontend/components/EditableCell.js",
-              lineNumber: 716,
+              lineNumber: 718,
               columnNumber: 21
             },
             this
@@ -42512,12 +42514,12 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             }).filter(Boolean).join(", ")
           ] }, void 0, true, {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 763,
+            lineNumber: 765,
             columnNumber: 25
           }, this)
         ] }, void 0, true, {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 715,
+          lineNumber: 717,
           columnNumber: 17
         }, this);
       }
@@ -42537,7 +42539,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
               false,
               {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 780,
+                lineNumber: 782,
                 columnNumber: 25
               },
               this
@@ -42563,18 +42565,18 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             false,
             {
               fileName: "frontend/components/EditableCell.js",
-              lineNumber: 789,
+              lineNumber: 791,
               columnNumber: 25
             },
             this
           ) }, void 0, false, {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 788,
+            lineNumber: 790,
             columnNumber: 21
           }, this)
         ] }, void 0, true, {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 778,
+          lineNumber: 780,
           columnNumber: 17
         }, this);
       }
@@ -42606,7 +42608,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         false,
         {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 827,
+          lineNumber: 829,
           columnNumber: 25
         },
         this
@@ -42626,17 +42628,17 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         false,
         {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 836,
+          lineNumber: 838,
           columnNumber: 25
         },
         this
       ) }, void 0, false, {
         fileName: "frontend/components/EditableCell.js",
-        lineNumber: 825,
+        lineNumber: 827,
         columnNumber: 17
       }, this) }, void 0, false, {
         fileName: "frontend/components/EditableCell.js",
-        lineNumber: 824,
+        lineNumber: 826,
         columnNumber: 13
       }, this);
     }
@@ -42655,7 +42657,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           false,
           {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 857,
+            lineNumber: 859,
             columnNumber: 17
           },
           this
@@ -42680,14 +42682,14 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         false,
         {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 870,
+          lineNumber: 872,
           columnNumber: 17
         },
         this
       )
     ] }, void 0, true, {
       fileName: "frontend/components/EditableCell.js",
-      lineNumber: 855,
+      lineNumber: 857,
       columnNumber: 9
     }, this);
   }
@@ -42705,75 +42707,6 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     }
   });
 
-  // frontend/components/ConfirmationModal.js
-  function ConfirmationModal({ isOpen, title, message, onConfirm, onCancel }) {
-    if (!isOpen) return null;
-    return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50", onClick: onCancel, children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "bg-white dark:bg-gray-gray700 rounded-lg shadow-xl p-6 max-w-md w-full mx-4", onClick: (e) => e.stopPropagation(), children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("h3", { className: "text-lg font-semibold mb-4 text-gray-gray900 dark:text-gray-gray100", children: title }, void 0, false, {
-        fileName: "frontend/components/ConfirmationModal.js",
-        lineNumber: 16,
-        columnNumber: 17
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("p", { className: "text-sm text-gray-gray700 dark:text-gray-gray300 mb-6", children: message }, void 0, false, {
-        fileName: "frontend/components/ConfirmationModal.js",
-        lineNumber: 19,
-        columnNumber: 17
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "flex justify-end space-x-3", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
-          "button",
-          {
-            onClick: onCancel,
-            className: "px-4 py-2 text-sm font-medium rounded-md bg-gray-gray200 dark:bg-gray-gray600 text-gray-gray900 dark:text-gray-gray100 hover:bg-gray-gray300 dark:hover:bg-gray-gray500 transition-colors",
-            children: "No"
-          },
-          void 0,
-          false,
-          {
-            fileName: "frontend/components/ConfirmationModal.js",
-            lineNumber: 23,
-            columnNumber: 21
-          },
-          this
-        ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
-          "button",
-          {
-            onClick: onConfirm,
-            className: "px-4 py-2 text-sm font-medium rounded-md bg-red-red text-white hover:bg-red-red600 focus:outline-none focus:ring-2 focus:ring-red-red focus:ring-offset-2 transition-colors",
-            children: "Yes"
-          },
-          void 0,
-          false,
-          {
-            fileName: "frontend/components/ConfirmationModal.js",
-            lineNumber: 29,
-            columnNumber: 21
-          },
-          this
-        )
-      ] }, void 0, true, {
-        fileName: "frontend/components/ConfirmationModal.js",
-        lineNumber: 22,
-        columnNumber: 17
-      }, this)
-    ] }, void 0, true, {
-      fileName: "frontend/components/ConfirmationModal.js",
-      lineNumber: 15,
-      columnNumber: 13
-    }, this) }, void 0, false, {
-      fileName: "frontend/components/ConfirmationModal.js",
-      lineNumber: 14,
-      columnNumber: 9
-    }, this);
-  }
-  var import_jsx_dev_runtime3;
-  var init_ConfirmationModal = __esm({
-    "frontend/components/ConfirmationModal.js"() {
-      import_jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime());
-    }
-  });
-
   // frontend/index.js
   var frontend_exports = {};
   function TimesheetApp() {
@@ -42786,8 +42719,6 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     const records = useRecords(timesheetTable || null);
     const monthRecords = useRecords(monthTable || null);
     const [updateTrigger, setUpdateTrigger] = (0, import_react8.useState)(0);
-    const [selectedRecords, setSelectedRecords] = (0, import_react8.useState)(/* @__PURE__ */ new Set());
-    const [showDeleteModal, setShowDeleteModal] = (0, import_react8.useState)(false);
     const projectImport = customPropertyValueByKey.projectImport;
     const emailFromName = customPropertyValueByKey.emailFromName;
     const task = customPropertyValueByKey.task;
@@ -42835,93 +42766,25 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         alert(errorMessage);
       }
     };
-    const handleToggleRecordSelection = (recordId) => {
-      setSelectedRecords((prev) => {
-        const newSet = new Set(prev);
-        if (newSet.has(recordId)) {
-          newSet.delete(recordId);
-        } else {
-          newSet.add(recordId);
-        }
-        return newSet;
-      });
-    };
-    const handleSelectAll = () => {
-      if (selectedRecords.size === records.length) {
-        setSelectedRecords(/* @__PURE__ */ new Set());
-      } else {
-        setSelectedRecords(new Set(records.map((r) => r.id)));
-      }
-    };
-    const handleDeleteClick = () => {
-      setShowDeleteModal(true);
-    };
-    const handleDeleteConfirm = async () => {
-      if (selectedRecords.size === 0) {
-        setShowDeleteModal(false);
-        return;
-      }
-      if (!deleteField || !canUpdateRecords) {
-        alert("Delete field is not configured or you do not have permission to update records.");
-        setShowDeleteModal(false);
-        return;
-      }
-      const recordsToUpdate = records.filter((r) => selectedRecords.has(r.id));
-      if (recordsToUpdate.length === 0) {
-        setShowDeleteModal(false);
-        return;
-      }
-      try {
-        const deleteOptions = deleteField?.config?.options?.choices || [];
-        const yesDeleteOption = deleteOptions.find((opt) => opt.name === "Yes Delete");
-        if (!yesDeleteOption) {
-          alert('"Yes Delete" option not found in Delete field. Please configure the Delete field with this option.');
-          setShowDeleteModal(false);
-          return;
-        }
-        const batchSize = 50;
-        for (let i = 0; i < recordsToUpdate.length; i += batchSize) {
-          const batch = recordsToUpdate.slice(i, i + batchSize);
-          await timesheetTable.updateRecordsAsync(
-            batch.map((record) => ({
-              id: record.id,
-              fields: {
-                [deleteField.id]: { id: yesDeleteOption.id }
-              }
-            }))
-          );
-        }
-        setSelectedRecords(/* @__PURE__ */ new Set());
-        setShowDeleteModal(false);
-        handleRecordUpdate();
-      } catch (error) {
-        console.error("Error updating delete field:", error);
-        alert("Failed to update records: " + (error.message || "Unknown error occurred."));
-        setShowDeleteModal(false);
-      }
-    };
-    const handleDeleteCancel = () => {
-      setShowDeleteModal(false);
-    };
     if (errorState || !timesheetTable) {
-      return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "p-4 sm:p-8 min-h-screen bg-gray-gray50 dark:bg-gray-gray800", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "rounded-lg p-6 bg-white dark:bg-gray-gray700 shadow-sm", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h2", { className: "text-lg font-semibold mb-2 text-gray-gray900 dark:text-gray-gray100", children: "Configuration Required" }, void 0, false, {
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "p-4 sm:p-8 min-h-screen bg-gray-gray50 dark:bg-gray-gray800", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "rounded-lg p-6 bg-white dark:bg-gray-gray700 shadow-sm", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("h2", { className: "text-lg font-semibold mb-2 text-gray-gray900 dark:text-gray-gray100", children: "Configuration Required" }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 173,
+          lineNumber: 86,
           columnNumber: 21
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-gray-gray700 dark:text-gray-gray300", children: "Please configure the Timesheet table and fields in the properties panel." }, void 0, false, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("p", { className: "text-sm text-gray-gray700 dark:text-gray-gray300", children: "Please configure the Timesheet table and fields in the properties panel." }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 176,
+          lineNumber: 89,
           columnNumber: 21
         }, this)
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 172,
+        lineNumber: 85,
         columnNumber: 17
       }, this) }, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 171,
+        lineNumber: 84,
         columnNumber: 13
       }, this);
     }
@@ -42936,140 +42799,95 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
       { key: "weekday", label: "Weekday", field: weekday },
       { key: "projectFromTask", label: "Project from Task", field: projectFromTask },
       { key: "projectFromTaskExt", label: "Project from Task - Ext", field: projectFromTaskExt },
+      { key: "delete", label: "Delete", field: deleteField },
       { key: "warning", label: "Warning", field: warning },
       { key: "timesheetNotes", label: "Timesheet Notes", field: timesheetNotes },
       { key: "timeTaskType", label: "Time Task Type", field: timeTaskType }
     ];
-    return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "w-full h-full bg-gray-gray50 dark:bg-gray-gray800 p-4 sm:p-6 overflow-auto", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "mb-4 flex items-center justify-between", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h1", { className: "text-2xl font-bold text-gray-gray900 dark:text-gray-gray100", children: "Timesheet" }, void 0, false, {
+    return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "w-full h-full bg-gray-gray50 dark:bg-gray-gray800 p-4 sm:p-6 overflow-auto", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-4 flex items-center justify-between", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("h1", { className: "text-2xl font-bold text-gray-gray900 dark:text-gray-gray100", children: "Timesheet" }, void 0, false, {
             fileName: "frontend/index.js",
-            lineNumber: 204,
+            lineNumber: 118,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-gray-gray600 dark:text-gray-gray400 mt-1", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("p", { className: "text-sm text-gray-gray600 dark:text-gray-gray400 mt-1", children: [
             records.length,
             " record",
             records.length !== 1 ? "s" : ""
           ] }, void 0, true, {
             fileName: "frontend/index.js",
-            lineNumber: 207,
+            lineNumber: 121,
             columnNumber: 21
           }, this)
         ] }, void 0, true, {
           fileName: "frontend/index.js",
-          lineNumber: 203,
+          lineNumber: 117,
           columnNumber: 17
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "flex items-center space-x-3", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
-            "button",
-            {
-              onClick: handleDeleteClick,
-              disabled: !canUpdateRecords,
-              className: `px-4 py-2 text-sm font-medium rounded-md transition-colors ${canUpdateRecords ? "bg-red-red text-white hover:bg-red-red600 focus:outline-none focus:ring-2 focus:ring-red-red focus:ring-offset-2" : "bg-gray-gray200 dark:bg-gray-gray600 text-gray-gray500 dark:text-gray-gray400 cursor-not-allowed opacity-50"}`,
-              children: "Delete"
-            },
-            void 0,
-            false,
-            {
-              fileName: "frontend/index.js",
-              lineNumber: 212,
-              columnNumber: 21
-            },
-            this
-          ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
-            "button",
-            {
-              onClick: handleAddTimeline,
-              disabled: !canCreateRecords,
-              className: `px-4 py-2 text-sm font-medium rounded-md transition-colors ${canCreateRecords ? "bg-blue-blue text-white hover:bg-blue-blue600 focus:outline-none focus:ring-2 focus:ring-blue-blue focus:ring-offset-2" : "bg-gray-gray200 dark:bg-gray-gray600 text-gray-gray500 dark:text-gray-gray400 cursor-not-allowed opacity-50"}`,
-              children: "Add Timeline"
-            },
-            void 0,
-            false,
-            {
-              fileName: "frontend/index.js",
-              lineNumber: 223,
-              columnNumber: 21
-            },
-            this
-          )
-        ] }, void 0, true, {
-          fileName: "frontend/index.js",
-          lineNumber: 211,
-          columnNumber: 17
-        }, this)
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+          "button",
+          {
+            onClick: handleAddTimeline,
+            disabled: !canCreateRecords,
+            className: `px-4 py-2 text-sm font-medium rounded-md transition-colors ${canCreateRecords ? "bg-blue-blue text-white hover:bg-blue-blue600 focus:outline-none focus:ring-2 focus:ring-blue-blue focus:ring-offset-2" : "bg-gray-gray200 dark:bg-gray-gray600 text-gray-gray500 dark:text-gray-gray400 cursor-not-allowed opacity-50"}`,
+            children: "Add Timeline"
+          },
+          void 0,
+          false,
+          {
+            fileName: "frontend/index.js",
+            lineNumber: 125,
+            columnNumber: 17
+          },
+          this
+        )
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 202,
+        lineNumber: 116,
         columnNumber: 13
       }, this),
-      showEditWarning && /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "mb-4 p-3 bg-yellow-yellow bg-opacity-20 border border-yellow-yellow rounded text-sm text-gray-gray900 dark:text-gray-gray100", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("strong", { children: "Note:" }, void 0, false, {
+      showEditWarning && /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-4 p-3 bg-yellow-yellow bg-opacity-20 border border-yellow-yellow rounded text-sm text-gray-gray900 dark:text-gray-gray100", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("strong", { children: "Note:" }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 238,
+          lineNumber: 139,
           columnNumber: 21
         }, this),
         ' Record editing is not enabled for this Interface Extension. To enable editing, go to the Interface Extension settings and enable "Allow record editing" for the Timesheet table.'
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 237,
+        lineNumber: 138,
         columnNumber: 17
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "bg-white dark:bg-gray-gray700 rounded-lg shadow-sm overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("table", { className: "w-full border-collapse table-auto", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("thead", { className: "bg-gray-gray100 dark:bg-gray-gray600", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("tr", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("th", { className: "px-4 py-3 text-left text-xs font-semibold text-gray-gray700 dark:text-gray-gray300 uppercase tracking-wider border-b border-gray-gray200 dark:border-gray-gray500 w-12", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
-            "input",
-            {
-              type: "checkbox",
-              checked: records.length > 0 && selectedRecords.size === records.length,
-              onChange: handleSelectAll,
-              className: "rounded"
-            },
-            void 0,
-            false,
-            {
-              fileName: "frontend/index.js",
-              lineNumber: 250,
-              columnNumber: 37
-            },
-            this
-          ) }, void 0, false, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "bg-white dark:bg-gray-gray700 rounded-lg shadow-sm overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("table", { className: "w-full border-collapse table-auto", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("thead", { className: "bg-gray-gray100 dark:bg-gray-gray600", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("tr", { children: fields.map(({ key, label, field }) => field && /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+          "th",
+          {
+            className: "px-4 py-3 text-left text-xs font-semibold text-gray-gray700 dark:text-gray-gray300 uppercase tracking-wider border-b border-gray-gray200 dark:border-gray-gray500 min-w-[180px]",
+            children: label
+          },
+          key,
+          false,
+          {
             fileName: "frontend/index.js",
-            lineNumber: 249,
-            columnNumber: 33
-          }, this),
-          fields.map(({ key, label, field }) => field && /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
-            "th",
-            {
-              className: "px-4 py-3 text-left text-xs font-semibold text-gray-gray700 dark:text-gray-gray300 uppercase tracking-wider border-b border-gray-gray200 dark:border-gray-gray500 min-w-[180px]",
-              children: label
-            },
-            key,
-            false,
-            {
-              fileName: "frontend/index.js",
-              lineNumber: 259,
-              columnNumber: 41
-            },
-            this
-          ))
-        ] }, void 0, true, {
+            lineNumber: 152,
+            columnNumber: 41
+          },
+          this
+        )) }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 248,
+          lineNumber: 149,
           columnNumber: 29
         }, this) }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 247,
+          lineNumber: 148,
           columnNumber: 25
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("tbody", { className: "divide-y divide-gray-gray200 dark:divide-gray-gray600", children: records.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("tr", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("tbody", { className: "divide-y divide-gray-gray200 dark:divide-gray-gray600", children: records.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("tr", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
           "td",
           {
-            colSpan: fields.filter((f) => f.field).length + 1,
+            colSpan: fields.filter((f) => f.field).length,
             className: "px-4 py-8 text-center text-sm text-gray-gray500 dark:text-gray-gray400",
             children: "No records found"
           },
@@ -43077,113 +42895,72 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           false,
           {
             fileName: "frontend/index.js",
-            lineNumber: 272,
+            lineNumber: 165,
             columnNumber: 37
           },
           this
         ) }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 271,
+          lineNumber: 164,
           columnNumber: 33
-        }, this) : records.map((record) => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+        }, this) : records.map((record) => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
           "tr",
           {
             className: "hover:bg-gray-gray50 dark:hover:bg-gray-gray600 transition-colors",
-            children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
-                "input",
-                {
-                  type: "checkbox",
-                  checked: selectedRecords.has(record.id),
-                  onChange: () => handleToggleRecordSelection(record.id),
-                  className: "rounded"
-                },
-                void 0,
-                false,
-                {
-                  fileName: "frontend/index.js",
-                  lineNumber: 286,
-                  columnNumber: 45
-                },
-                this
-              ) }, void 0, false, {
+            children: fields.map(({ key, field }) => field && /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+              EditableCell,
+              {
+                record,
+                field,
+                onUpdate: handleRecordUpdate,
+                monthRecords,
+                monthStatusField,
+                monthStartDateField,
+                monthEndDateField
+              },
+              key,
+              false,
+              {
                 fileName: "frontend/index.js",
-                lineNumber: 285,
-                columnNumber: 41
-              }, this),
-              fields.map(({ key, field }) => field && /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
-                EditableCell,
-                {
-                  record,
-                  field,
-                  onUpdate: handleRecordUpdate,
-                  monthRecords,
-                  monthStatusField,
-                  monthStartDateField,
-                  monthEndDateField
-                },
-                key,
-                false,
-                {
-                  fileName: "frontend/index.js",
-                  lineNumber: 295,
-                  columnNumber: 49
-                },
-                this
-              ))
-            ]
+                lineNumber: 180,
+                columnNumber: 49
+              },
+              this
+            ))
           },
           record.id,
-          true,
+          false,
           {
             fileName: "frontend/index.js",
-            lineNumber: 281,
+            lineNumber: 174,
             columnNumber: 37
           },
           this
         )) }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 269,
+          lineNumber: 162,
           columnNumber: 25
         }, this)
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 246,
+        lineNumber: 147,
         columnNumber: 21
       }, this) }, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 245,
+        lineNumber: 146,
         columnNumber: 17
       }, this) }, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 244,
+        lineNumber: 145,
         columnNumber: 13
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
-        ConfirmationModal,
-        {
-          isOpen: showDeleteModal,
-          title: selectedRecords.size === 0 ? "No Records Selected" : "Confirm Delete",
-          message: selectedRecords.size === 0 ? "Please select at least one record" : "Could you delete these records?",
-          onConfirm: handleDeleteConfirm,
-          onCancel: handleDeleteCancel
-        },
-        void 0,
-        false,
-        {
-          fileName: "frontend/index.js",
-          lineNumber: 314,
-          columnNumber: 13
-        },
-        this
-      )
+      }, this)
     ] }, void 0, true, {
       fileName: "frontend/index.js",
-      lineNumber: 201,
+      lineNumber: 115,
       columnNumber: 9
     }, this);
   }
-  var import_react8, import_jsx_dev_runtime4;
+  var import_react8, import_jsx_dev_runtime3;
   var init_frontend = __esm({
     "frontend/index.js"() {
       init_ui();
@@ -43191,11 +42968,10 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
       init_style();
       init_customProperties();
       init_EditableCell();
-      init_ConfirmationModal();
-      import_jsx_dev_runtime4 = __toESM(require_jsx_dev_runtime());
-      initializeBlock({ interface: () => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(TimesheetApp, {}, void 0, false, {
+      import_jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime());
+      initializeBlock({ interface: () => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(TimesheetApp, {}, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 328,
+        lineNumber: 203,
         columnNumber: 35
       }) });
     }

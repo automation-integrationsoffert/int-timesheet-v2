@@ -1,9 +1,8 @@
 import {initializeBlock, useBase, useRecords, useCustomProperties} from '@airtable/blocks/interface/ui';
-import {useCallback, useState, useEffect, useRef} from 'react';
+import {useCallback, useState} from 'react';
 import './style.css';
 import {getCustomProperties} from './config/customProperties';
 import {EditableCell} from './components/EditableCell';
-import {ConfirmationModal} from './components/ConfirmationModal';
 
 function TimesheetApp() {
     const base = useBase();
@@ -16,8 +15,6 @@ function TimesheetApp() {
     const records = useRecords(timesheetTable || null);
     const monthRecords = useRecords(monthTable || null);
     const [updateTrigger, setUpdateTrigger] = useState(0);
-    const [selectedRecords, setSelectedRecords] = useState(new Set());
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
 
     // Get all field references
     const projectImport = customPropertyValueByKey.projectImport;
@@ -81,90 +78,6 @@ function TimesheetApp() {
         }
     };
 
-    const handleToggleRecordSelection = (recordId) => {
-        setSelectedRecords(prev => {
-            const newSet = new Set(prev);
-            if (newSet.has(recordId)) {
-                newSet.delete(recordId);
-            } else {
-                newSet.add(recordId);
-            }
-            return newSet;
-        });
-    };
-
-    const handleSelectAll = () => {
-        if (selectedRecords.size === records.length) {
-            setSelectedRecords(new Set());
-        } else {
-            setSelectedRecords(new Set(records.map(r => r.id)));
-        }
-    };
-
-    const handleDeleteClick = () => {
-        setShowDeleteModal(true);
-    };
-
-    const handleDeleteConfirm = async () => {
-        // If no records selected, just close the modal
-        if (selectedRecords.size === 0) {
-            setShowDeleteModal(false);
-            return;
-        }
-
-        if (!deleteField || !canUpdateRecords) {
-            alert('Delete field is not configured or you do not have permission to update records.');
-            setShowDeleteModal(false);
-            return;
-        }
-
-        const recordsToUpdate = records.filter(r => selectedRecords.has(r.id));
-        
-        if (recordsToUpdate.length === 0) {
-            setShowDeleteModal(false);
-            return;
-        }
-
-        try {
-            // Find the "Yes Delete" option in the Delete field
-            const deleteOptions = deleteField?.config?.options?.choices || [];
-            const yesDeleteOption = deleteOptions.find(opt => opt.name === 'Yes Delete');
-            
-            if (!yesDeleteOption) {
-                alert('"Yes Delete" option not found in Delete field. Please configure the Delete field with this option.');
-                setShowDeleteModal(false);
-                return;
-            }
-
-            // Update records in batches of 50 (Airtable limit)
-            const batchSize = 50;
-            for (let i = 0; i < recordsToUpdate.length; i += batchSize) {
-                const batch = recordsToUpdate.slice(i, i + batchSize);
-                await timesheetTable.updateRecordsAsync(
-                    batch.map(record => ({
-                        id: record.id,
-                        fields: {
-                            [deleteField.id]: {id: yesDeleteOption.id}
-                        }
-                    }))
-                );
-            }
-
-            // Clear selection and close modal
-            setSelectedRecords(new Set());
-            setShowDeleteModal(false);
-            handleRecordUpdate();
-        } catch (error) {
-            console.error('Error updating delete field:', error);
-            alert('Failed to update records: ' + (error.message || 'Unknown error occurred.'));
-            setShowDeleteModal(false);
-        }
-    };
-
-    const handleDeleteCancel = () => {
-        setShowDeleteModal(false);
-    };
-
     // Show configuration message if table or fields are not set
     if (errorState || !timesheetTable) {
         return (
@@ -192,6 +105,7 @@ function TimesheetApp() {
         {key: 'weekday', label: 'Weekday', field: weekday},
         {key: 'projectFromTask', label: 'Project from Task', field: projectFromTask},
         {key: 'projectFromTaskExt', label: 'Project from Task - Ext', field: projectFromTaskExt},
+        {key: 'delete', label: 'Delete', field: deleteField},
         {key: 'warning', label: 'Warning', field: warning},
         {key: 'timesheetNotes', label: 'Timesheet Notes', field: timesheetNotes},
         {key: 'timeTaskType', label: 'Time Task Type', field: timeTaskType},
@@ -208,30 +122,17 @@ function TimesheetApp() {
                         {records.length} record{records.length !== 1 ? 's' : ''}
                     </p>
                 </div>
-                <div className="flex items-center space-x-3">
-                    <button
-                        onClick={handleDeleteClick}
-                        disabled={!canUpdateRecords}
-                        className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                            canUpdateRecords
-                                ? 'bg-red-red text-white hover:bg-red-red600 focus:outline-none focus:ring-2 focus:ring-red-red focus:ring-offset-2'
-                                : 'bg-gray-gray200 dark:bg-gray-gray600 text-gray-gray500 dark:text-gray-gray400 cursor-not-allowed opacity-50'
-                        }`}
-                    >
-                        Delete
-                    </button>
-                    <button
-                        onClick={handleAddTimeline}
-                        disabled={!canCreateRecords}
-                        className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                            canCreateRecords
-                                ? 'bg-blue-blue text-white hover:bg-blue-blue600 focus:outline-none focus:ring-2 focus:ring-blue-blue focus:ring-offset-2'
-                                : 'bg-gray-gray200 dark:bg-gray-gray600 text-gray-gray500 dark:text-gray-gray400 cursor-not-allowed opacity-50'
-                        }`}
-                    >
-                        Add Timeline
-                    </button>
-                </div>
+                <button
+                    onClick={handleAddTimeline}
+                    disabled={!canCreateRecords}
+                    className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                        canCreateRecords
+                            ? 'bg-blue-blue text-white hover:bg-blue-blue600 focus:outline-none focus:ring-2 focus:ring-blue-blue focus:ring-offset-2'
+                            : 'bg-gray-gray200 dark:bg-gray-gray600 text-gray-gray500 dark:text-gray-gray400 cursor-not-allowed opacity-50'
+                    }`}
+                >
+                    Add Timeline
+                </button>
             </div>
             {showEditWarning && (
                 <div className="mb-4 p-3 bg-yellow-yellow bg-opacity-20 border border-yellow-yellow rounded text-sm text-gray-gray900 dark:text-gray-gray100">
@@ -246,14 +147,6 @@ function TimesheetApp() {
                     <table className="w-full border-collapse table-auto">
                         <thead className="bg-gray-gray100 dark:bg-gray-gray600">
                             <tr>
-                                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-gray700 dark:text-gray-gray300 uppercase tracking-wider border-b border-gray-gray200 dark:border-gray-gray500 w-12">
-                                    <input
-                                        type="checkbox"
-                                        checked={records.length > 0 && selectedRecords.size === records.length}
-                                        onChange={handleSelectAll}
-                                        className="rounded"
-                                    />
-                                </th>
                                 {fields.map(({key, label, field}) => (
                                     field && (
                                         <th
@@ -270,7 +163,7 @@ function TimesheetApp() {
                             {records.length === 0 ? (
                                 <tr>
                                     <td
-                                        colSpan={fields.filter(f => f.field).length + 1}
+                                        colSpan={fields.filter(f => f.field).length}
                                         className="px-4 py-8 text-center text-sm text-gray-gray500 dark:text-gray-gray400"
                                     >
                                         No records found
@@ -282,14 +175,6 @@ function TimesheetApp() {
                                         key={record.id}
                                         className="hover:bg-gray-gray50 dark:hover:bg-gray-gray600 transition-colors"
                                     >
-                                        <td className="px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600">
-                                            <input
-                                                type="checkbox"
-                                                checked={selectedRecords.has(record.id)}
-                                                onChange={() => handleToggleRecordSelection(record.id)}
-                                                className="rounded"
-                                            />
-                                        </td>
                                         {fields.map(({key, field}) => (
                                             field && (
                                                 <EditableCell
@@ -311,16 +196,6 @@ function TimesheetApp() {
                     </table>
                 </div>
             </div>
-            <ConfirmationModal
-                isOpen={showDeleteModal}
-                title={selectedRecords.size === 0 ? 'No Records Selected' : 'Confirm Delete'}
-                message={selectedRecords.size === 0 
-                    ? 'Please select at least one record'
-                    : 'Could you delete these records?'
-                }
-                onConfirm={handleDeleteConfirm}
-                onCancel={handleDeleteCancel}
-            />
         </div>
     );
 }

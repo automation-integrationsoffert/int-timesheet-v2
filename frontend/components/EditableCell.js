@@ -50,9 +50,11 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
     const isProjectFromTaskEditable = fieldName === 'Project from Task';
     const isWarningField = fieldName === 'Warning';
     const isTimesheetNotesField = fieldName === 'Timesheet Notes';
+    const isTimeTaskTypeField = fieldName === 'Time Task Type';
+    const isDeleteField = fieldName === 'Delete';
     
     // These fields should always be editable (unless read-only for other reasons)
-    const shouldBeEditable = isProjectImportField || isNameField || isDateFieldEditable || isIndividualHoursField || isProjectFromTaskEditable || isWarningField || isTimesheetNotesField;
+    const shouldBeEditable = isProjectImportField || isNameField || isDateFieldEditable || isIndividualHoursField || isProjectFromTaskEditable || isWarningField || isTimesheetNotesField || isTimeTaskTypeField || isDeleteField;
     
     const canEdit = record?.parentTable?.hasPermissionToUpdateRecords?.([{id: record.id, fields: {[field.id]: null}}]) ?? false;
     const isFormula = fieldType === FieldType.FORMULA;
