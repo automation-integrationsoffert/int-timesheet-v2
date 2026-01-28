@@ -4196,7 +4196,7 @@
           );
           return [workInProgressHook.memoizedState, reducer];
         }
-        function useMemo3(nextCreate, deps) {
+        function useMemo2(nextCreate, deps) {
           currentlyRenderingComponent = resolveCurrentlyRenderingComponent();
           workInProgressHook = createWorkInProgressHook();
           deps = void 0 === deps ? null : deps;
@@ -8264,7 +8264,7 @@
             resolveCurrentlyRenderingComponent();
             return context._currentValue2;
           },
-          useMemo: useMemo3,
+          useMemo: useMemo2,
           useReducer,
           useRef: function(initialValue) {
             currentlyRenderingComponent = resolveCurrentlyRenderingComponent();
@@ -8279,7 +8279,7 @@
           useInsertionEffect: noop,
           useLayoutEffect: noop,
           useCallback: function(callback, deps) {
-            return useMemo3(function() {
+            return useMemo2(function() {
               return callback;
             }, deps);
           },
@@ -11418,7 +11418,7 @@
           );
           return [workInProgressHook.memoizedState, reducer];
         }
-        function useMemo3(nextCreate, deps) {
+        function useMemo2(nextCreate, deps) {
           currentlyRenderingComponent = resolveCurrentlyRenderingComponent();
           workInProgressHook = createWorkInProgressHook();
           deps = void 0 === deps ? null : deps;
@@ -15719,7 +15719,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             resolveCurrentlyRenderingComponent();
             return context._currentValue;
           },
-          useMemo: useMemo3,
+          useMemo: useMemo2,
           useReducer,
           useRef: function(initialValue) {
             currentlyRenderingComponent = resolveCurrentlyRenderingComponent();
@@ -15734,7 +15734,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           useInsertionEffect: noop,
           useLayoutEffect: noop,
           useCallback: function(callback, deps) {
-            return useMemo3(function() {
+            return useMemo2(function() {
               return callback;
             }, deps);
           },
@@ -41073,6 +41073,16 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     }
   });
 
+  // frontend/style.css
+  var style;
+  var init_style = __esm({
+    "frontend/style.css"() {
+      style = document.createElement("style");
+      style.textContent = '*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }\n\n/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Courier,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.z-10{z-index:10}.z-50{z-index:50}.mx-4{margin-left:1rem;margin-right:1rem}.mb-2{margin-bottom:.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mt-1{margin-top:.25rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.inline{display:inline}.flex{display:flex}.\\!table{display:table!important}.table{display:table}.grid{display:grid}.aspect-square{aspect-ratio:1/1}.h-full{height:100%}.max-h-48{max-height:12rem}.max-h-\\[90vh\\]{max-height:90vh}.min-h-screen{min-height:100vh}.w-1\\/3{width:33.333333%}.w-12{width:3rem}.w-2\\/3{width:66.666667%}.w-full{width:100%}.min-w-\\[180px\\]{min-width:180px}.max-w-2xl{max-width:42rem}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.table-auto{table-layout:auto}.border-collapse{border-collapse:collapse}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.grid-cols-7{grid-template-columns:repeat(7,minmax(0,1fr))}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.space-x-2>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.5rem*var(--tw-space-x-reverse));margin-left:calc(.5rem*(1 - var(--tw-space-x-reverse)))}.space-x-3>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.75rem*var(--tw-space-x-reverse));margin-left:calc(.75rem*(1 - var(--tw-space-x-reverse)))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.divide-y>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px*(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px*var(--tw-divide-y-reverse))}.divide-gray-gray200>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(218 222 230/var(--tw-divide-opacity,1))}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-lg{border-radius:.875rem}.rounded-md{border-radius:.375rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-gray-gray100{--tw-border-opacity:1;border-color:rgb(229 233 240/var(--tw-border-opacity,1))}.border-gray-gray200{--tw-border-opacity:1;border-color:rgb(218 222 230/var(--tw-border-opacity,1))}.border-yellow-yellow{--tw-border-opacity:1;border-color:rgb(255 186 5/var(--tw-border-opacity,1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0/var(--tw-bg-opacity,1))}.bg-blue-blue{--tw-bg-opacity:1;background-color:rgb(22 110 225/var(--tw-bg-opacity,1))}.bg-gray-gray100{--tw-bg-opacity:1;background-color:rgb(229 233 240/var(--tw-bg-opacity,1))}.bg-gray-gray200{--tw-bg-opacity:1;background-color:rgb(218 222 230/var(--tw-bg-opacity,1))}.bg-gray-gray50{--tw-bg-opacity:1;background-color:rgb(246 248 252/var(--tw-bg-opacity,1))}.bg-red-red{--tw-bg-opacity:1;background-color:rgb(220 4 59/var(--tw-bg-opacity,1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-yellow-yellow{--tw-bg-opacity:1;background-color:rgb(255 186 5/var(--tw-bg-opacity,1))}.bg-opacity-20{--tw-bg-opacity:0.2}.bg-opacity-50{--tw-bg-opacity:0.5}.p-3{padding:.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pt-2{padding-top:.5rem}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.3125rem;line-height:1.625rem}.text-lg{font-size:.9375rem;line-height:1.375rem}.text-sm{font-size:.6875rem;line-height:1rem}.text-xl{font-size:1.0625rem;line-height:1.5rem}.text-xs{font-size:.5625rem;line-height:.875rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.tracking-wider{letter-spacing:.05em}.text-gray-gray400{--tw-text-opacity:1;color:rgb(151 154 160/var(--tw-text-opacity,1))}.text-gray-gray500{--tw-text-opacity:1;color:rgb(97 102 112/var(--tw-text-opacity,1))}.text-gray-gray600{--tw-text-opacity:1;color:rgb(65 69 77/var(--tw-text-opacity,1))}.text-gray-gray700{--tw-text-opacity:1;color:rgb(49 53 62/var(--tw-text-opacity,1))}.text-gray-gray900{--tw-text-opacity:1;color:rgb(17 18 21/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-50{opacity:.5}.shadow-lg{--tw-shadow:0px 0px 1px 0px rgba(0,0,0,.48),0px 0px 2px 0px rgba(0,0,0,.08),0px 2px 4px 0px rgba(0,0,0,.12),0px 2px 8px 0px rgba(0,0,0,.08);--tw-shadow-colored:0px 0px 1px 0px var(--tw-shadow-color),0px 0px 2px 0px var(--tw-shadow-color),0px 2px 4px 0px var(--tw-shadow-color),0px 2px 8px 0px var(--tw-shadow-color)}.shadow-lg,.shadow-sm{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-sm{--tw-shadow:0px 0px 1px rgba(0,0,0,.32),0px 0px 3px rgba(0,0,0,.11),0px 1px 4px rgba(0,0,0,.12);--tw-shadow-colored:0px 0px 1px var(--tw-shadow-color),0px 0px 3px var(--tw-shadow-color),0px 1px 4px var(--tw-shadow-color)}.shadow-xl{--tw-shadow:0px 0px 1px rgba(0,0,0,.24),0px 0px 2px rgba(0,0,0,.16),0px 3px 4px rgba(0,0,0,.06),0px 6px 8px rgba(0,0,0,.06),0px 12px 16px rgba(0,0,0,.08),0px 18px 32px rgba(0,0,0,.06);--tw-shadow-colored:0px 0px 1px var(--tw-shadow-color),0px 0px 2px var(--tw-shadow-color),0px 3px 4px var(--tw-shadow-color),0px 6px 8px var(--tw-shadow-color),0px 12px 16px var(--tw-shadow-color),0px 18px 32px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.hover\\:bg-blue-blue:hover{--tw-bg-opacity:1;background-color:rgb(22 110 225/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray100:hover{--tw-bg-opacity:1;background-color:rgb(229 233 240/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray300:hover{--tw-bg-opacity:1;background-color:rgb(196 199 205/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray50:hover{--tw-bg-opacity:1;background-color:rgb(246 248 252/var(--tw-bg-opacity,1))}.hover\\:text-gray-gray700:hover{--tw-text-opacity:1;color:rgb(49 53 62/var(--tw-text-opacity,1))}.hover\\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.focus\\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus\\:ring-blue-blue:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(22 110 225/var(--tw-ring-opacity,1))}.focus\\:ring-red-red:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(220 4 59/var(--tw-ring-opacity,1))}.focus\\:ring-offset-2:focus{--tw-ring-offset-width:2px}.disabled\\:cursor-not-allowed:disabled{cursor:not-allowed}.disabled\\:opacity-50:disabled{opacity:.5}@media (min-width:640px){.sm\\:p-6{padding:1.5rem}.sm\\:p-8{padding:2rem}}@media (prefers-color-scheme:dark){.dark\\:divide-gray-gray600>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(65 69 77/var(--tw-divide-opacity,1))}.dark\\:border-gray-gray500{--tw-border-opacity:1;border-color:rgb(97 102 112/var(--tw-border-opacity,1))}.dark\\:border-gray-gray600{--tw-border-opacity:1;border-color:rgb(65 69 77/var(--tw-border-opacity,1))}.dark\\:bg-gray-gray600{--tw-bg-opacity:1;background-color:rgb(65 69 77/var(--tw-bg-opacity,1))}.dark\\:bg-gray-gray700{--tw-bg-opacity:1;background-color:rgb(49 53 62/var(--tw-bg-opacity,1))}.dark\\:bg-gray-gray800{--tw-bg-opacity:1;background-color:rgb(29 31 37/var(--tw-bg-opacity,1))}.dark\\:text-gray-gray100{--tw-text-opacity:1;color:rgb(229 233 240/var(--tw-text-opacity,1))}.dark\\:text-gray-gray300{--tw-text-opacity:1;color:rgb(196 199 205/var(--tw-text-opacity,1))}.dark\\:text-gray-gray400{--tw-text-opacity:1;color:rgb(151 154 160/var(--tw-text-opacity,1))}.dark\\:text-gray-gray500{--tw-text-opacity:1;color:rgb(97 102 112/var(--tw-text-opacity,1))}.dark\\:hover\\:bg-gray-gray500:hover{--tw-bg-opacity:1;background-color:rgb(97 102 112/var(--tw-bg-opacity,1))}.dark\\:hover\\:bg-gray-gray600:hover{--tw-bg-opacity:1;background-color:rgb(65 69 77/var(--tw-bg-opacity,1))}.dark\\:hover\\:text-gray-gray200:hover{--tw-text-opacity:1;color:rgb(218 222 230/var(--tw-text-opacity,1))}}';
+      document.head.appendChild(style);
+    }
+  });
+
   // node_modules/@airtable/blocks/dist/esm/interface/models/models.js
   var init_models = __esm({
     "node_modules/@airtable/blocks/dist/esm/interface/models/models.js"() {
@@ -41086,13 +41096,220 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     }
   });
 
-  // frontend/style.css
-  var style;
-  var init_style = __esm({
-    "frontend/style.css"() {
-      style = document.createElement("style");
-      style.textContent = '*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }\n\n/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Courier,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.z-10{z-index:10}.z-50{z-index:50}.mx-4{margin-left:1rem;margin-right:1rem}.mb-2{margin-bottom:.5rem}.mb-4{margin-bottom:1rem}.ml-2{margin-left:.5rem}.mt-1{margin-top:.25rem}.mt-4{margin-top:1rem}.flex{display:flex}.\\!table{display:table!important}.table{display:table}.grid{display:grid}.aspect-square{aspect-ratio:1/1}.h-full{height:100%}.max-h-48{max-height:12rem}.min-h-screen{min-height:100vh}.w-full{width:100%}.min-w-\\[180px\\]{min-width:180px}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.table-auto{table-layout:auto}.border-collapse{border-collapse:collapse}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.grid-cols-7{grid-template-columns:repeat(7,minmax(0,1fr))}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.space-x-2>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.5rem*var(--tw-space-x-reverse));margin-left:calc(.5rem*(1 - var(--tw-space-x-reverse)))}.divide-y>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px*(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px*var(--tw-divide-y-reverse))}.divide-gray-gray200>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(218 222 230/var(--tw-divide-opacity,1))}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rounded{border-radius:.25rem}.rounded-lg{border-radius:.875rem}.rounded-md{border-radius:.375rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-gray-gray100{--tw-border-opacity:1;border-color:rgb(229 233 240/var(--tw-border-opacity,1))}.border-gray-gray200{--tw-border-opacity:1;border-color:rgb(218 222 230/var(--tw-border-opacity,1))}.border-yellow-yellow{--tw-border-opacity:1;border-color:rgb(255 186 5/var(--tw-border-opacity,1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0/var(--tw-bg-opacity,1))}.bg-blue-blue{--tw-bg-opacity:1;background-color:rgb(22 110 225/var(--tw-bg-opacity,1))}.bg-gray-gray100{--tw-bg-opacity:1;background-color:rgb(229 233 240/var(--tw-bg-opacity,1))}.bg-gray-gray200{--tw-bg-opacity:1;background-color:rgb(218 222 230/var(--tw-bg-opacity,1))}.bg-gray-gray50{--tw-bg-opacity:1;background-color:rgb(246 248 252/var(--tw-bg-opacity,1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-yellow-yellow{--tw-bg-opacity:1;background-color:rgb(255 186 5/var(--tw-bg-opacity,1))}.bg-opacity-20{--tw-bg-opacity:0.2}.bg-opacity-50{--tw-bg-opacity:0.5}.p-3{padding:.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-8{padding-top:2rem;padding-bottom:2rem}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.3125rem;line-height:1.625rem}.text-lg{font-size:.9375rem;line-height:1.375rem}.text-sm{font-size:.6875rem;line-height:1rem}.text-xs{font-size:.5625rem;line-height:.875rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.tracking-wider{letter-spacing:.05em}.text-gray-gray400{--tw-text-opacity:1;color:rgb(151 154 160/var(--tw-text-opacity,1))}.text-gray-gray500{--tw-text-opacity:1;color:rgb(97 102 112/var(--tw-text-opacity,1))}.text-gray-gray600{--tw-text-opacity:1;color:rgb(65 69 77/var(--tw-text-opacity,1))}.text-gray-gray700{--tw-text-opacity:1;color:rgb(49 53 62/var(--tw-text-opacity,1))}.text-gray-gray900{--tw-text-opacity:1;color:rgb(17 18 21/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-50{opacity:.5}.shadow-lg{--tw-shadow:0px 0px 1px 0px rgba(0,0,0,.48),0px 0px 2px 0px rgba(0,0,0,.08),0px 2px 4px 0px rgba(0,0,0,.12),0px 2px 8px 0px rgba(0,0,0,.08);--tw-shadow-colored:0px 0px 1px 0px var(--tw-shadow-color),0px 0px 2px 0px var(--tw-shadow-color),0px 2px 4px 0px var(--tw-shadow-color),0px 2px 8px 0px var(--tw-shadow-color)}.shadow-lg,.shadow-sm{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-sm{--tw-shadow:0px 0px 1px rgba(0,0,0,.32),0px 0px 3px rgba(0,0,0,.11),0px 1px 4px rgba(0,0,0,.12);--tw-shadow-colored:0px 0px 1px var(--tw-shadow-color),0px 0px 3px var(--tw-shadow-color),0px 1px 4px var(--tw-shadow-color)}.shadow-xl{--tw-shadow:0px 0px 1px rgba(0,0,0,.24),0px 0px 2px rgba(0,0,0,.16),0px 3px 4px rgba(0,0,0,.06),0px 6px 8px rgba(0,0,0,.06),0px 12px 16px rgba(0,0,0,.08),0px 18px 32px rgba(0,0,0,.06);--tw-shadow-colored:0px 0px 1px var(--tw-shadow-color),0px 0px 2px var(--tw-shadow-color),0px 3px 4px var(--tw-shadow-color),0px 6px 8px var(--tw-shadow-color),0px 12px 16px var(--tw-shadow-color),0px 18px 32px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.hover\\:bg-blue-blue:hover{--tw-bg-opacity:1;background-color:rgb(22 110 225/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray100:hover{--tw-bg-opacity:1;background-color:rgb(229 233 240/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray300:hover{--tw-bg-opacity:1;background-color:rgb(196 199 205/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray50:hover{--tw-bg-opacity:1;background-color:rgb(246 248 252/var(--tw-bg-opacity,1))}.hover\\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.focus\\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus\\:ring-blue-blue:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(22 110 225/var(--tw-ring-opacity,1))}.focus\\:ring-offset-2:focus{--tw-ring-offset-width:2px}@media (min-width:640px){.sm\\:p-6{padding:1.5rem}.sm\\:p-8{padding:2rem}}@media (prefers-color-scheme:dark){.dark\\:divide-gray-gray600>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(65 69 77/var(--tw-divide-opacity,1))}.dark\\:border-gray-gray500{--tw-border-opacity:1;border-color:rgb(97 102 112/var(--tw-border-opacity,1))}.dark\\:border-gray-gray600{--tw-border-opacity:1;border-color:rgb(65 69 77/var(--tw-border-opacity,1))}.dark\\:bg-gray-gray600{--tw-bg-opacity:1;background-color:rgb(65 69 77/var(--tw-bg-opacity,1))}.dark\\:bg-gray-gray700{--tw-bg-opacity:1;background-color:rgb(49 53 62/var(--tw-bg-opacity,1))}.dark\\:bg-gray-gray800{--tw-bg-opacity:1;background-color:rgb(29 31 37/var(--tw-bg-opacity,1))}.dark\\:text-gray-gray100{--tw-text-opacity:1;color:rgb(229 233 240/var(--tw-text-opacity,1))}.dark\\:text-gray-gray300{--tw-text-opacity:1;color:rgb(196 199 205/var(--tw-text-opacity,1))}.dark\\:text-gray-gray400{--tw-text-opacity:1;color:rgb(151 154 160/var(--tw-text-opacity,1))}.dark\\:text-gray-gray500{--tw-text-opacity:1;color:rgb(97 102 112/var(--tw-text-opacity,1))}.dark\\:hover\\:bg-gray-gray600:hover{--tw-bg-opacity:1;background-color:rgb(65 69 77/var(--tw-bg-opacity,1))}}';
-      document.head.appendChild(style);
+  // frontend/config/customProperties.js
+  function getCustomProperties(base) {
+    const timesheetTable = base.getTableByNameIfExists("Timesheet") || base.tables[0];
+    const usersTable = base.getTableByNameIfExists("Users Table") || base.getTableByNameIfExists("Users") || null;
+    const tasksTable = base.getTableByNameIfExists("Tasks for Timesheet") || base.getTableByNameIfExists("Tasks") || base.getTableByNameIfExists("Project from Task") || null;
+    const monthTable = base.getTableByNameIfExists("Month") || null;
+    const findField = (table, fieldName) => {
+      if (!table) return void 0;
+      return table.fields.find((field) => field.name === fieldName);
+    };
+    return [
+      {
+        key: "timesheetTable",
+        label: "Timesheet Table",
+        type: "table",
+        defaultValue: timesheetTable
+      },
+      {
+        key: "usersTable",
+        label: "Users Table",
+        type: "table",
+        defaultValue: usersTable
+      },
+      {
+        key: "tasksTable",
+        label: "Tasks for Timesheet Table",
+        type: "table",
+        defaultValue: tasksTable
+      },
+      {
+        key: "monthTable",
+        label: "Month Table",
+        type: "table",
+        defaultValue: monthTable
+      },
+      {
+        key: "monthStatus",
+        label: "Status (Month Table)",
+        type: "field",
+        table: monthTable,
+        shouldFieldBeAllowed: (field) => field.config.type === FieldType.SINGLE_SELECT,
+        defaultValue: findField(monthTable, "Status")
+      },
+      {
+        key: "monthStartDate",
+        label: "Start Date (Month Table)",
+        type: "field",
+        table: monthTable,
+        shouldFieldBeAllowed: (field) => field.config.type === FieldType.DATE || field.config.type === FieldType.DATE_TIME,
+        defaultValue: findField(monthTable, "Start Date")
+      },
+      {
+        key: "monthEndDate",
+        label: "End Date (Month Table)",
+        type: "field",
+        table: monthTable,
+        shouldFieldBeAllowed: (field) => field.config.type === FieldType.DATE || field.config.type === FieldType.DATE_TIME,
+        defaultValue: findField(monthTable, "End Date")
+      },
+      {
+        key: "projectImport",
+        label: "Project Import",
+        type: "field",
+        table: timesheetTable,
+        defaultValue: findField(timesheetTable, "Project Import")
+      },
+      {
+        key: "emailFromName",
+        label: "Email (from Name)",
+        type: "field",
+        table: timesheetTable,
+        defaultValue: findField(timesheetTable, "Email (from Name)")
+      },
+      {
+        key: "task",
+        label: "Task",
+        type: "field",
+        table: timesheetTable,
+        shouldFieldBeAllowed: (field) => field.config.type === FieldType.MULTIPLE_RECORD_LINKS,
+        defaultValue: findField(timesheetTable, "Task")
+      },
+      {
+        key: "createdBy2",
+        label: "Created By 2",
+        type: "field",
+        table: timesheetTable,
+        defaultValue: findField(timesheetTable, "Created By 2")
+      },
+      {
+        key: "name",
+        label: "Name",
+        type: "field",
+        table: timesheetTable,
+        shouldFieldBeAllowed: (field) => field.config.type === FieldType.MULTIPLE_RECORD_LINKS,
+        defaultValue: findField(timesheetTable, "Name")
+      },
+      {
+        key: "date",
+        label: "Date",
+        type: "field",
+        table: timesheetTable,
+        shouldFieldBeAllowed: (field) => field.config.type === FieldType.DATE || field.config.type === FieldType.DATE_TIME,
+        defaultValue: findField(timesheetTable, "Date")
+      },
+      {
+        key: "individualHours",
+        label: "Individual Hours",
+        type: "field",
+        table: timesheetTable,
+        shouldFieldBeAllowed: (field) => field.config.type === FieldType.NUMBER || field.config.type === FieldType.CURRENCY,
+        defaultValue: findField(timesheetTable, "Individual Hours")
+      },
+      {
+        key: "weekday",
+        label: "Weekday",
+        type: "field",
+        table: timesheetTable,
+        defaultValue: findField(timesheetTable, "Weekday")
+      },
+      {
+        key: "projectFromTask",
+        label: "Project from Task",
+        type: "field",
+        table: timesheetTable,
+        defaultValue: findField(timesheetTable, "Project from Task")
+      },
+      {
+        key: "projectFromTaskExt",
+        label: "Project from Task - Ext",
+        type: "field",
+        table: timesheetTable,
+        defaultValue: findField(timesheetTable, "Project from Task - Ext")
+      },
+      {
+        key: "delete",
+        label: "Delete",
+        type: "field",
+        table: timesheetTable,
+        shouldFieldBeAllowed: (field) => field.config.type === FieldType.SINGLE_SELECT,
+        defaultValue: findField(timesheetTable, "Delete")
+      }
+    ];
+  }
+  var init_customProperties = __esm({
+    "frontend/config/customProperties.js"() {
+      init_models();
+    }
+  });
+
+  // frontend/utils/dateUtils.js
+  function formatDateToString(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+  function getDaysInMonth(date) {
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    return new Date(year, month + 1, 0).getDate();
+  }
+  function getFirstDayOfMonth(date) {
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const dayOfWeek = new Date(year, month, 1).getDay();
+    return dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+  }
+  function isDateAvailable(date, availableDates) {
+    const dateStr = formatDateToString(date);
+    return availableDates.has(dateStr);
+  }
+  function isDateSelected(date, selectedDate) {
+    if (!selectedDate) return false;
+    const dateStr = formatDateToString(date);
+    let selectedDateObj;
+    if (selectedDate instanceof Date) {
+      selectedDateObj = selectedDate;
+    } else {
+      selectedDateObj = new Date(selectedDate);
+    }
+    const selectedStr = formatDateToString(selectedDateObj);
+    return dateStr === selectedStr;
+  }
+  function getAvailableDates(monthRecords, monthStatusField, monthStartDateField, monthEndDateField) {
+    const availableDates = /* @__PURE__ */ new Set();
+    if (!monthRecords || !monthStatusField || !monthStartDateField || !monthEndDateField) {
+      return availableDates;
+    }
+    monthRecords.forEach((monthRecord) => {
+      const status = monthRecord.getCellValue(monthStatusField);
+      if (status && (status.name === "Open" || status === "Open")) {
+        const startDate = monthRecord.getCellValue(monthStartDateField);
+        const endDate = monthRecord.getCellValue(monthEndDateField);
+        if (startDate && endDate) {
+          const start = new Date(startDate);
+          const end = new Date(endDate);
+          const startLocal = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+          const endLocal = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+          const currentDate = new Date(startLocal);
+          while (currentDate <= endLocal) {
+            const year = currentDate.getFullYear();
+            const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+            const day = String(currentDate.getDate()).padStart(2, "0");
+            const dateStr = `${year}-${month}-${day}`;
+            availableDates.add(dateStr);
+            currentDate.setDate(currentDate.getDate() + 1);
+          }
+        }
+      }
+    });
+    return availableDates;
+  }
+  var init_dateUtils = __esm({
+    "frontend/utils/dateUtils.js"() {
     }
   });
 
@@ -41354,179 +41571,29 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     }
   });
 
-  // frontend/index.js
-  var frontend_exports = {};
-  function getCustomProperties(base) {
-    const timesheetTable = base.getTableByNameIfExists("Timesheet") || base.tables[0];
-    const usersTable = base.getTableByNameIfExists("Users Table") || base.getTableByNameIfExists("Users") || null;
-    const tasksTable = base.getTableByNameIfExists("Tasks for Timesheet") || base.getTableByNameIfExists("Tasks") || base.getTableByNameIfExists("Project from Task") || null;
-    const monthTable = base.getTableByNameIfExists("Month") || null;
-    const findField = (table, fieldName) => {
-      if (!table) return void 0;
-      return table.fields.find((field) => field.name === fieldName);
-    };
-    return [
-      {
-        key: "timesheetTable",
-        label: "Timesheet Table",
-        type: "table",
-        defaultValue: timesheetTable
-      },
-      {
-        key: "usersTable",
-        label: "Users Table",
-        type: "table",
-        defaultValue: usersTable
-      },
-      {
-        key: "tasksTable",
-        label: "Tasks for Timesheet Table",
-        type: "table",
-        defaultValue: tasksTable
-      },
-      {
-        key: "monthTable",
-        label: "Month Table",
-        type: "table",
-        defaultValue: monthTable
-      },
-      {
-        key: "monthStatus",
-        label: "Status (Month Table)",
-        type: "field",
-        table: monthTable,
-        shouldFieldBeAllowed: (field) => field.config.type === FieldType.SINGLE_SELECT,
-        defaultValue: findField(monthTable, "Status")
-      },
-      {
-        key: "monthStartDate",
-        label: "Start Date (Month Table)",
-        type: "field",
-        table: monthTable,
-        shouldFieldBeAllowed: (field) => field.config.type === FieldType.DATE || field.config.type === FieldType.DATE_TIME,
-        defaultValue: findField(monthTable, "Start Date")
-      },
-      {
-        key: "monthEndDate",
-        label: "End Date (Month Table)",
-        type: "field",
-        table: monthTable,
-        shouldFieldBeAllowed: (field) => field.config.type === FieldType.DATE || field.config.type === FieldType.DATE_TIME,
-        defaultValue: findField(monthTable, "End Date")
-      },
-      {
-        key: "projectImport",
-        label: "Project Import",
-        type: "field",
-        table: timesheetTable,
-        defaultValue: findField(timesheetTable, "Project Import")
-      },
-      {
-        key: "emailFromName",
-        label: "Email (from Name)",
-        type: "field",
-        table: timesheetTable,
-        defaultValue: findField(timesheetTable, "Email (from Name)")
-      },
-      {
-        key: "task",
-        label: "Task",
-        type: "field",
-        table: timesheetTable,
-        shouldFieldBeAllowed: (field) => field.config.type === FieldType.MULTIPLE_RECORD_LINKS,
-        defaultValue: findField(timesheetTable, "Task")
-      },
-      {
-        key: "createdBy2",
-        label: "Created By 2",
-        type: "field",
-        table: timesheetTable,
-        defaultValue: findField(timesheetTable, "Created By 2")
-      },
-      {
-        key: "name",
-        label: "Name",
-        type: "field",
-        table: timesheetTable,
-        shouldFieldBeAllowed: (field) => field.config.type === FieldType.MULTIPLE_RECORD_LINKS,
-        defaultValue: findField(timesheetTable, "Name")
-      },
-      {
-        key: "date",
-        label: "Date",
-        type: "field",
-        table: timesheetTable,
-        shouldFieldBeAllowed: (field) => field.config.type === FieldType.DATE || field.config.type === FieldType.DATE_TIME,
-        defaultValue: findField(timesheetTable, "Date")
-      },
-      {
-        key: "individualHours",
-        label: "Individual Hours",
-        type: "field",
-        table: timesheetTable,
-        shouldFieldBeAllowed: (field) => field.config.type === FieldType.NUMBER || field.config.type === FieldType.CURRENCY,
-        defaultValue: findField(timesheetTable, "Individual Hours")
-      },
-      {
-        key: "weekday",
-        label: "Weekday",
-        type: "field",
-        table: timesheetTable,
-        defaultValue: findField(timesheetTable, "Weekday")
-      },
-      {
-        key: "projectFromTask",
-        label: "Project from Task",
-        type: "field",
-        table: timesheetTable,
-        defaultValue: findField(timesheetTable, "Project from Task")
-      },
-      {
-        key: "projectFromTaskExt",
-        label: "Project from Task - Ext",
-        type: "field",
-        table: timesheetTable,
-        defaultValue: findField(timesheetTable, "Project from Task - Ext")
-      }
-    ];
-  }
+  // frontend/components/CalendarPicker.js
   function CalendarPicker({ selectedDate, onDateSelect, availableDates, onClose }) {
-    const [currentMonth, setCurrentMonth] = (0, import_react6.useState)(/* @__PURE__ */ new Date());
-    const getDaysInMonth = (date) => {
-      const year = date.getFullYear();
-      const month = date.getMonth();
-      return new Date(year, month + 1, 0).getDate();
-    };
-    const getFirstDayOfMonth = (date) => {
-      const year = date.getFullYear();
-      const month = date.getMonth();
-      return new Date(year, month, 1).getDay();
-    };
-    const formatDateToString = (date) => {
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, "0");
-      const day = String(date.getDate()).padStart(2, "0");
-      return `${year}-${month}-${day}`;
-    };
-    const isDateAvailable = (date) => {
-      const dateStr = formatDateToString(date);
-      return availableDates.has(dateStr);
-    };
-    const isDateSelected = (date) => {
-      if (!selectedDate) return false;
-      const dateStr = formatDateToString(date);
-      let selectedDateObj;
-      if (selectedDate instanceof Date) {
-        selectedDateObj = selectedDate;
-      } else {
-        selectedDateObj = new Date(selectedDate);
+    const getInitialMonth = () => {
+      if (selectedDate) {
+        const date = selectedDate instanceof Date ? selectedDate : new Date(selectedDate);
+        if (!isNaN(date.getTime())) {
+          return new Date(date.getFullYear(), date.getMonth(), 1);
+        }
       }
-      const selectedStr = formatDateToString(selectedDateObj);
-      return dateStr === selectedStr;
+      return new Date((/* @__PURE__ */ new Date()).getFullYear(), (/* @__PURE__ */ new Date()).getMonth(), 1);
     };
+    const [currentMonth, setCurrentMonth] = (0, import_react6.useState)(getInitialMonth());
+    (0, import_react6.useEffect)(() => {
+      if (selectedDate) {
+        const date = selectedDate instanceof Date ? selectedDate : new Date(selectedDate);
+        if (!isNaN(date.getTime())) {
+          setCurrentMonth(new Date(date.getFullYear(), date.getMonth(), 1));
+        }
+      }
+    }, [selectedDate]);
     const handleDateClick = (day) => {
       const date = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day);
-      if (isDateAvailable(date)) {
+      if (isDateAvailable(date, availableDates)) {
         onDateSelect(date);
       }
     };
@@ -41539,7 +41606,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     const daysInMonth = getDaysInMonth(currentMonth);
     const firstDay = getFirstDayOfMonth(currentMonth);
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     const days = [];
     for (let i = 0; i < firstDay; i++) {
       days.push(null);
@@ -41559,8 +41626,8 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           void 0,
           false,
           {
-            fileName: "frontend/index.js",
-            lineNumber: 230,
+            fileName: "frontend/components/CalendarPicker.js",
+            lineNumber: 70,
             columnNumber: 21
           },
           this
@@ -41570,8 +41637,8 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           " ",
           currentMonth.getFullYear()
         ] }, void 0, true, {
-          fileName: "frontend/index.js",
-          lineNumber: 236,
+          fileName: "frontend/components/CalendarPicker.js",
+          lineNumber: 76,
           columnNumber: 21
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
@@ -41584,37 +41651,37 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           void 0,
           false,
           {
-            fileName: "frontend/index.js",
-            lineNumber: 239,
+            fileName: "frontend/components/CalendarPicker.js",
+            lineNumber: 79,
             columnNumber: 21
           },
           this
         )
       ] }, void 0, true, {
-        fileName: "frontend/index.js",
-        lineNumber: 229,
+        fileName: "frontend/components/CalendarPicker.js",
+        lineNumber: 69,
         columnNumber: 17
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "grid grid-cols-7 gap-1 mb-2", children: dayNames.map((day) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "text-center text-xs font-semibold text-gray-gray600 dark:text-gray-gray400 py-2", children: day }, day, false, {
-        fileName: "frontend/index.js",
-        lineNumber: 249,
+        fileName: "frontend/components/CalendarPicker.js",
+        lineNumber: 89,
         columnNumber: 25
       }, this)) }, void 0, false, {
-        fileName: "frontend/index.js",
-        lineNumber: 247,
+        fileName: "frontend/components/CalendarPicker.js",
+        lineNumber: 87,
         columnNumber: 17
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "grid grid-cols-7 gap-1", children: days.map((day, index) => {
         if (day === null) {
           return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "aspect-square" }, index, false, {
-            fileName: "frontend/index.js",
-            lineNumber: 258,
+            fileName: "frontend/components/CalendarPicker.js",
+            lineNumber: 98,
             columnNumber: 36
           }, this);
         }
         const date = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day);
-        const available = isDateAvailable(date);
-        const selected = isDateSelected(date);
+        const available = isDateAvailable(date, availableDates);
+        const selected = isDateSelected(date, selectedDate);
         return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
           "button",
           {
@@ -41626,15 +41693,15 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           day,
           false,
           {
-            fileName: "frontend/index.js",
-            lineNumber: 265,
+            fileName: "frontend/components/CalendarPicker.js",
+            lineNumber: 105,
             columnNumber: 29
           },
           this
         );
       }) }, void 0, false, {
-        fileName: "frontend/index.js",
-        lineNumber: 255,
+        fileName: "frontend/components/CalendarPicker.js",
+        lineNumber: 95,
         columnNumber: 17
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "mt-4 flex justify-end", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
@@ -41647,60 +41714,167 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         void 0,
         false,
         {
-          fileName: "frontend/index.js",
-          lineNumber: 284,
+          fileName: "frontend/components/CalendarPicker.js",
+          lineNumber: 124,
           columnNumber: 21
         },
         this
       ) }, void 0, false, {
-        fileName: "frontend/index.js",
-        lineNumber: 283,
+        fileName: "frontend/components/CalendarPicker.js",
+        lineNumber: 123,
         columnNumber: 17
       }, this)
     ] }, void 0, true, {
-      fileName: "frontend/index.js",
-      lineNumber: 228,
+      fileName: "frontend/components/CalendarPicker.js",
+      lineNumber: 68,
       columnNumber: 13
     }, this) }, void 0, false, {
-      fileName: "frontend/index.js",
-      lineNumber: 227,
+      fileName: "frontend/components/CalendarPicker.js",
+      lineNumber: 67,
       columnNumber: 9
     }, this);
   }
-  function EditableCell({ record, field, onUpdate, monthRecords, monthStatusField, monthStartDateField, monthEndDateField }) {
-    const fieldName = field?.name || "";
-    const fieldType = field?.config?.type;
-    const isRecordClosed = () => {
-      if (!monthRecords || !monthStatusField || !monthStartDateField || !monthEndDateField) {
-        return false;
+  var import_react6, import_jsx_dev_runtime;
+  var init_CalendarPicker = __esm({
+    "frontend/components/CalendarPicker.js"() {
+      import_react6 = __toESM(require_react());
+      init_dateUtils();
+      import_jsx_dev_runtime = __toESM(require_jsx_dev_runtime());
+    }
+  });
+
+  // frontend/utils/valueFormatter.js
+  function formatDisplayValue(value, fieldType, fieldName) {
+    if (value === null || value === void 0) return "";
+    const isEmailField = fieldName === "Email (from Name)";
+    const isProjectFromTaskField = fieldName === "Project from Task" || fieldName === "Project from Task - Ext";
+    if (isEmailField) {
+      if (typeof value === "string") return value;
+      if (Array.isArray(value)) {
+        return value.map((item) => {
+          if (typeof item === "string") return item;
+          if (item?.email) return item.email;
+          return String(item);
+        }).join(", ");
       }
-      const dateField = record.parentTable.fields.find(
-        (f) => f.name === "Date" && (f.config.type === FieldType.DATE || f.config.type === FieldType.DATE_TIME)
-      );
-      if (!dateField) return false;
-      const recordDate = record.getCellValue(dateField);
-      if (!recordDate) return false;
-      const recordDateObj = new Date(recordDate);
-      const recordDateLocal = new Date(recordDateObj.getFullYear(), recordDateObj.getMonth(), recordDateObj.getDate());
-      for (const monthRecord of monthRecords) {
-        const status = monthRecord.getCellValue(monthStatusField);
-        if (status && (status.name === "Closed" || status === "Closed")) {
-          const startDate = monthRecord.getCellValue(monthStartDateField);
-          const endDate = monthRecord.getCellValue(monthEndDateField);
-          if (startDate && endDate) {
-            const start = new Date(startDate);
-            const end = new Date(endDate);
-            const startLocal = new Date(start.getFullYear(), start.getMonth(), start.getDate());
-            const endLocal = new Date(end.getFullYear(), end.getMonth(), end.getDate());
-            if (recordDateLocal >= startLocal && recordDateLocal <= endLocal) {
-              return true;
-            }
+      if (value && typeof value === "object") {
+        if (value.email) return value.email;
+        return String(value);
+      }
+    }
+    if (isProjectFromTaskField) {
+      if (typeof value === "string") return value;
+      if (Array.isArray(value)) {
+        return value.map((item) => {
+          if (typeof item === "string") return item;
+          return item?.name || item?.displayName || String(item);
+        }).join(", ");
+      }
+      if (value && typeof value === "object") {
+        return value.name || value.displayName || String(value);
+      }
+    }
+    if (Array.isArray(value)) {
+      return value.map((item) => {
+        if (typeof item === "string") return item;
+        if (fieldType === FieldType.CREATED_BY || fieldType === FieldType.LAST_MODIFIED_BY || fieldType === FieldType.SINGLE_COLLABORATOR) {
+          return item?.name || item?.displayName || String(item);
+        }
+        return item?.name || item?.displayName || String(item);
+      }).join(", ");
+    }
+    if (value && typeof value === "object") {
+      if (fieldType === FieldType.CREATED_BY || fieldType === FieldType.LAST_MODIFIED_BY || fieldType === FieldType.SINGLE_COLLABORATOR) {
+        return value.name || value.displayName || String(value);
+      }
+      if ("name" in value) return value.name;
+      if ("displayName" in value) return value.displayName;
+      return String(value);
+    }
+    if (value instanceof Date) {
+      if (fieldType === FieldType.DATE_TIME) {
+        const year = value.getFullYear();
+        const month = String(value.getMonth() + 1).padStart(2, "0");
+        const day = String(value.getDate()).padStart(2, "0");
+        const hours = String(value.getHours()).padStart(2, "0");
+        const minutes = String(value.getMinutes()).padStart(2, "0");
+        return `${year}-${month}-${day}T${hours}:${minutes}`;
+      }
+      return value.toISOString().split("T")[0];
+    }
+    return String(value);
+  }
+  var init_valueFormatter = __esm({
+    "frontend/utils/valueFormatter.js"() {
+      init_models();
+    }
+  });
+
+  // frontend/utils/recordUtils.js
+  function isRecordClosed(record, monthRecords, monthStatusField, monthStartDateField, monthEndDateField) {
+    if (!monthRecords || !monthStatusField || !monthStartDateField || !monthEndDateField) {
+      return false;
+    }
+    const dateField = record.parentTable.fields.find(
+      (f) => f.name === "Date" && (f.config.type === FieldType.DATE || f.config.type === FieldType.DATE_TIME)
+    );
+    if (!dateField) return false;
+    const recordDate = record.getCellValue(dateField);
+    if (!recordDate) return false;
+    const recordDateObj = new Date(recordDate);
+    const recordDateLocal = new Date(recordDateObj.getFullYear(), recordDateObj.getMonth(), recordDateObj.getDate());
+    for (const monthRecord of monthRecords) {
+      const status = monthRecord.getCellValue(monthStatusField);
+      if (status && (status.name === "Closed" || status === "Closed")) {
+        const startDate = monthRecord.getCellValue(monthStartDateField);
+        const endDate = monthRecord.getCellValue(monthEndDateField);
+        if (startDate && endDate) {
+          const start = new Date(startDate);
+          const end = new Date(endDate);
+          const startLocal = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+          const endLocal = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+          if (recordDateLocal >= startLocal && recordDateLocal <= endLocal) {
+            return true;
           }
         }
       }
-      return false;
-    };
-    const isClosed = isRecordClosed();
+    }
+    return false;
+  }
+  var init_recordUtils = __esm({
+    "frontend/utils/recordUtils.js"() {
+      init_models();
+    }
+  });
+
+  // frontend/components/EditableCell.js
+  function EditableCell({ record, field, onUpdate, monthRecords, monthStatusField, monthStartDateField, monthEndDateField }) {
+    if (!field || !record) {
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("span", { className: "text-gray-gray400 dark:text-gray-gray500", children: "Field not found" }, void 0, false, {
+        fileName: "frontend/components/EditableCell.js",
+        lineNumber: 25,
+        columnNumber: 17
+      }, this) }, void 0, false, {
+        fileName: "frontend/components/EditableCell.js",
+        lineNumber: 24,
+        columnNumber: 13
+      }, this);
+    }
+    const fieldStillExists = record.parentTable?.getFieldIfExists(field.id);
+    if (!fieldStillExists) {
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("span", { className: "text-gray-gray400 dark:text-gray-gray500", children: "Field deleted" }, void 0, false, {
+        fileName: "frontend/components/EditableCell.js",
+        lineNumber: 35,
+        columnNumber: 17
+      }, this) }, void 0, false, {
+        fileName: "frontend/components/EditableCell.js",
+        lineNumber: 34,
+        columnNumber: 13
+      }, this);
+    }
+    const fieldName = field?.name || "";
+    const fieldType = field?.config?.type;
+    const isClosed = isRecordClosed(record, monthRecords, monthStatusField, monthStartDateField, monthEndDateField);
     const isProjectImportField = fieldName === "Project Import";
     const isNameField = fieldName === "Name";
     const isDateFieldEditable = fieldName === "Date";
@@ -41712,105 +41886,20 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     const isLookup = fieldType === FieldType.MULTIPLE_LOOKUP_VALUES || fieldType === FieldType.ROLLUP;
     const isReadOnly = isClosed || isFormula || isLookup || !canEdit;
     const isDateField = fieldType === FieldType.DATE || fieldType === FieldType.DATE_TIME;
-    const [isEditing, setIsEditing] = (0, import_react6.useState)(shouldBeEditable && !isFormula && !isLookup && !isClosed);
-    const [showCalendar, setShowCalendar] = (0, import_react6.useState)(false);
-    const [editValue, setEditValue] = (0, import_react6.useState)("");
-    const [isSaving, setIsSaving] = (0, import_react6.useState)(false);
-    const [linkedRecords, setLinkedRecords] = (0, import_react6.useState)([]);
-    const [searchTerm, setSearchTerm] = (0, import_react6.useState)("");
-    const [showLinkedRecordDropdown, setShowLinkedRecordDropdown] = (0, import_react6.useState)(false);
+    const [isEditing, setIsEditing] = (0, import_react7.useState)(shouldBeEditable && !isFormula && !isLookup && !isClosed);
+    const [showCalendar, setShowCalendar] = (0, import_react7.useState)(false);
+    const [editValue, setEditValue] = (0, import_react7.useState)("");
+    const [isSaving, setIsSaving] = (0, import_react7.useState)(false);
+    const [linkedRecords, setLinkedRecords] = (0, import_react7.useState)([]);
+    const [searchTerm, setSearchTerm] = (0, import_react7.useState)("");
+    const [showLinkedRecordDropdown, setShowLinkedRecordDropdown] = (0, import_react7.useState)(false);
+    const [savedSelectedIds, setSavedSelectedIds] = (0, import_react7.useState)([]);
+    const [selectedRecordDisplayName, setSelectedRecordDisplayName] = (0, import_react7.useState)("");
     const isEmailField = fieldName === "Email (from Name)";
     const isProjectFromTaskField = fieldName === "Project from Task" || fieldName === "Project from Task - Ext";
     const cellValue = field ? (isEmailField || isProjectFromTaskField) && isLookup ? record.getCellValueAsString(field) || "" : record.getCellValue(field) ?? "" : "";
-    const formatDisplayValue = (value) => {
-      if (value === null || value === void 0) return "";
-      if (isEmailField) {
-        if (typeof value === "string") return value;
-        if (Array.isArray(value)) {
-          return value.map((item) => {
-            if (typeof item === "string") return item;
-            if (item?.email) return item.email;
-            return String(item);
-          }).join(", ");
-        }
-        if (value && typeof value === "object") {
-          if (value.email) return value.email;
-          return String(value);
-        }
-      }
-      if (isProjectFromTaskField) {
-        if (typeof value === "string") return value;
-        if (Array.isArray(value)) {
-          return value.map((item) => {
-            if (typeof item === "string") return item;
-            return item?.name || item?.displayName || String(item);
-          }).join(", ");
-        }
-        if (value && typeof value === "object") {
-          return value.name || value.displayName || String(value);
-        }
-      }
-      if (Array.isArray(value)) {
-        return value.map((item) => {
-          if (typeof item === "string") return item;
-          if (fieldType === FieldType.CREATED_BY || fieldType === FieldType.LAST_MODIFIED_BY || fieldType === FieldType.SINGLE_COLLABORATOR) {
-            return item?.name || item?.displayName || String(item);
-          }
-          return item?.name || item?.displayName || String(item);
-        }).join(", ");
-      }
-      if (value && typeof value === "object") {
-        if (fieldType === FieldType.CREATED_BY || fieldType === FieldType.LAST_MODIFIED_BY || fieldType === FieldType.SINGLE_COLLABORATOR) {
-          return value.name || value.displayName || String(value);
-        }
-        if ("name" in value) return value.name;
-        if ("displayName" in value) return value.displayName;
-        return String(value);
-      }
-      if (value instanceof Date) {
-        if (fieldType === FieldType.DATE_TIME) {
-          const year = value.getFullYear();
-          const month = String(value.getMonth() + 1).padStart(2, "0");
-          const day = String(value.getDate()).padStart(2, "0");
-          const hours = String(value.getHours()).padStart(2, "0");
-          const minutes = String(value.getMinutes()).padStart(2, "0");
-          return `${year}-${month}-${day}T${hours}:${minutes}`;
-        }
-        return value.toISOString().split("T")[0];
-      }
-      return String(value);
-    };
-    const getAvailableDates = () => {
-      const availableDates2 = /* @__PURE__ */ new Set();
-      if (!monthRecords || !monthStatusField || !monthStartDateField || !monthEndDateField) {
-        return availableDates2;
-      }
-      monthRecords.forEach((monthRecord) => {
-        const status = monthRecord.getCellValue(monthStatusField);
-        if (status && (status.name === "Open" || status === "Open")) {
-          const startDate = monthRecord.getCellValue(monthStartDateField);
-          const endDate = monthRecord.getCellValue(monthEndDateField);
-          if (startDate && endDate) {
-            const start = new Date(startDate);
-            const end = new Date(endDate);
-            const startLocal = new Date(start.getFullYear(), start.getMonth(), start.getDate());
-            const endLocal = new Date(end.getFullYear(), end.getMonth(), end.getDate());
-            const currentDate2 = new Date(startLocal);
-            while (currentDate2 <= endLocal) {
-              const year = currentDate2.getFullYear();
-              const month = String(currentDate2.getMonth() + 1).padStart(2, "0");
-              const day = String(currentDate2.getDate()).padStart(2, "0");
-              const dateStr = `${year}-${month}-${day}`;
-              availableDates2.add(dateStr);
-              currentDate2.setDate(currentDate2.getDate() + 1);
-            }
-          }
-        }
-      });
-      return availableDates2;
-    };
-    const availableDates = getAvailableDates();
-    (0, import_react6.useEffect)(() => {
+    const availableDates = getAvailableDates(monthRecords, monthStatusField, monthStartDateField, monthEndDateField);
+    (0, import_react7.useEffect)(() => {
       if (shouldBeEditable && !isFormula && !isLookup && !isClosed) {
         if (fieldType === FieldType.SINGLE_SELECT) {
           const currentValue = cellValue;
@@ -41822,21 +41911,40 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           }
         } else {
           if (editValue === "") {
-            const formattedValue = formatDisplayValue(cellValue);
+            const formattedValue = formatDisplayValue(cellValue, fieldType, fieldName);
             setEditValue(formattedValue);
           }
         }
-        if (fieldType === FieldType.MULTIPLE_RECORD_LINKS && linkedRecords.length === 0 && isEditing) {
+        if (fieldType === FieldType.MULTIPLE_RECORD_LINKS && isEditing) {
           const currentValue = cellValue;
           const currentIds = Array.isArray(currentValue) ? currentValue.map((item) => item?.id || item) : [];
-          record.fetchForeignRecordsAsync(field, "").then((result) => {
+          const currentIdsStr = JSON.stringify(currentIds.sort());
+          const savedIdsStr = JSON.stringify(savedSelectedIds.sort());
+          if (currentIdsStr !== savedIdsStr) {
+            setSavedSelectedIds(currentIds);
+            if (currentIds.length > 0 && Array.isArray(currentValue) && currentValue.length > 0) {
+              const firstRecord = currentValue[0];
+              if (firstRecord?.displayName || firstRecord?.name) {
+                setSelectedRecordDisplayName(firstRecord.displayName || firstRecord.name);
+              }
+            } else if (currentIds.length === 0) {
+              setSelectedRecordDisplayName("");
+            }
+          }
+          record.fetchForeignRecordsAsync(field, searchTerm || "").then((result) => {
             setLinkedRecords(result.records.map((r) => __spreadProps(__spreadValues({}, r), {
               selected: currentIds.includes(r.id)
             })));
+            if (currentIds.length > 0 && !selectedRecordDisplayName) {
+              const foundRecord = result.records.find((r) => r.id === currentIds[0]);
+              if (foundRecord) {
+                setSelectedRecordDisplayName(foundRecord.displayName);
+              }
+            }
           });
         }
       }
-    }, [shouldBeEditable, isFormula, isLookup, cellValue, isEditing, fieldType]);
+    }, [shouldBeEditable, isFormula, isLookup, cellValue, isEditing, fieldType, fieldName, field, record, searchTerm]);
     const handleClick = () => {
       if (shouldBeEditable && !isFormula && !isLookup && !isClosed) {
         if (isDateFieldEditable && isDateField && monthRecords) {
@@ -41851,7 +41959,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         return;
       }
       setIsEditing(true);
-      setEditValue(formatDisplayValue(cellValue));
+      setEditValue(formatDisplayValue(cellValue, fieldType, fieldName));
       if (fieldType === FieldType.MULTIPLE_RECORD_LINKS) {
         const currentValue = cellValue;
         const currentIds = Array.isArray(currentValue) ? currentValue.map((item) => item?.id || item) : [];
@@ -41880,7 +41988,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           [field.id]: valueToSave
         });
         if (shouldBeEditable && !isFormula && !isLookup && !isClosed) {
-          const savedValue = formatDisplayValue(valueToSave);
+          const savedValue = formatDisplayValue(valueToSave, fieldType, fieldName);
           setEditValue(savedValue);
         }
         if (onUpdate) onUpdate();
@@ -41898,7 +42006,12 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
       }
     };
     const handleSave = async () => {
-      if (isSaving || isClosed) return;
+      if (isSaving || isClosed || !field) return;
+      const fieldStillExists2 = record.parentTable?.getFieldIfExists(field.id);
+      if (!fieldStillExists2) {
+        console.warn("Field no longer exists:", fieldName);
+        return;
+      }
       setIsSaving(true);
       try {
         let valueToSave = editValue;
@@ -41924,7 +42037,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         if (!shouldBeEditable || isFormula || isLookup) {
           setIsEditing(false);
         } else {
-          const savedValue = formatDisplayValue(valueToSave);
+          const savedValue = formatDisplayValue(valueToSave, fieldType, fieldName);
           setEditValue(savedValue);
         }
         if (onUpdate) onUpdate();
@@ -41969,95 +42082,125 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     if (isEditing) {
       if (fieldType === FieldType.MULTIPLE_RECORD_LINKS) {
         const currentValue = cellValue;
-        const selectedIds = Array.isArray(currentValue) ? currentValue.map((item) => item?.id || item) : [];
-        const selectedRecords = linkedRecords.filter((r) => selectedIds.includes(r.id));
-        return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 relative min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "relative linked-record-dropdown", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
-            "div",
-            {
-              onClick: (e) => {
-                e.stopPropagation();
-                if (isClosed) return;
-                const newShowState = !showLinkedRecordDropdown;
-                setShowLinkedRecordDropdown(newShowState);
-                if (newShowState && linkedRecords.length === 0) {
-                  record.fetchForeignRecordsAsync(field, "").then((result) => {
-                    setLinkedRecords(result.records.map((r) => __spreadProps(__spreadValues({}, r), {
-                      selected: selectedIds.includes(r.id)
-                    })));
-                  });
+        const selectedIds = savedSelectedIds.length > 0 ? savedSelectedIds : Array.isArray(currentValue) && currentValue.length > 0 ? [currentValue[0]?.id || currentValue[0]] : [];
+        const selectedId = selectedIds.length > 0 ? selectedIds[0] : "";
+        if (isNameField) {
+          if (linkedRecords.length === 0 || searchTerm !== "" && showLinkedRecordDropdown) {
+            record.fetchForeignRecordsAsync(field, searchTerm || "").then((result) => {
+              setLinkedRecords(result.records);
+              if (selectedId) {
+                const foundRecord = result.records.find((r) => r.id === selectedId);
+                if (foundRecord) {
+                  setSelectedRecordDisplayName(foundRecord.displayName);
                 }
-              },
-              className: `w-full px-2 py-1 border rounded text-gray-gray900 dark:text-gray-gray100 bg-white dark:bg-gray-gray800 flex items-center justify-between ${isClosed ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`,
-              children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", { className: "truncate", children: selectedRecords.length > 0 ? selectedRecords.map((r) => r.displayName).join(", ") : "Select..." }, void 0, false, {
-                  fileName: "frontend/index.js",
-                  lineNumber: 769,
-                  columnNumber: 29
-                }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", { className: "ml-2", children: "\u25BC" }, void 0, false, {
-                  fileName: "frontend/index.js",
-                  lineNumber: 775,
-                  columnNumber: 29
-                }, this)
-              ]
-            },
-            void 0,
-            true,
-            {
-              fileName: "frontend/index.js",
-              lineNumber: 752,
-              columnNumber: 25
-            },
-            this
-          ),
-          showLinkedRecordDropdown && /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "absolute z-10 w-full mt-1 bg-white dark:bg-gray-gray700 border rounded shadow-lg max-h-48 overflow-y-auto", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
+              }
+            });
+          }
+          let displayValue = "";
+          if (selectedRecordDisplayName) {
+            displayValue = selectedRecordDisplayName;
+          } else if (selectedId) {
+            const selectedRecord = linkedRecords.find((r) => r.id === selectedId);
+            if (selectedRecord) {
+              displayValue = selectedRecord.displayName;
+              setSelectedRecordDisplayName(selectedRecord.displayName);
+            } else if (Array.isArray(currentValue) && currentValue.length > 0) {
+              const currentRecord = currentValue.find((item) => (item?.id || item) === selectedId);
+              if (currentRecord) {
+                displayValue = currentRecord.displayName || currentRecord.name || String(currentRecord);
+                setSelectedRecordDisplayName(displayValue);
+              } else {
+                displayValue = "Loading...";
+                record.fetchForeignRecordsAsync(field, "").then((result) => {
+                  const foundRecord = result.records.find((r) => r.id === selectedId);
+                  if (foundRecord) {
+                    setSelectedRecordDisplayName(foundRecord.displayName);
+                  }
+                });
+              }
+            } else {
+              displayValue = "Loading...";
+            }
+          }
+          return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 relative min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "relative", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
               "input",
               {
                 type: "text",
-                value: searchTerm,
-                onChange: (e) => {
-                  setSearchTerm(e.target.value);
-                  handleLinkedRecordSearch(e.target.value);
+                value: showLinkedRecordDropdown ? searchTerm : displayValue,
+                disabled: isClosed,
+                readOnly: !showLinkedRecordDropdown,
+                onFocus: () => {
+                  if (!isClosed) {
+                    setShowLinkedRecordDropdown(true);
+                    setSearchTerm("");
+                    if (linkedRecords.length === 0) {
+                      record.fetchForeignRecordsAsync(field, "").then((result) => {
+                        setLinkedRecords(result.records);
+                      });
+                    }
+                  }
                 },
-                placeholder: "Search...",
-                className: "w-full px-2 py-1 border-b text-gray-gray900 dark:text-gray-gray100 bg-white dark:bg-gray-gray800",
-                onClick: (e) => e.stopPropagation(),
-                autoFocus: true
+                onBlur: (e) => {
+                  setTimeout(() => {
+                    setShowLinkedRecordDropdown(false);
+                  }, 200);
+                },
+                onChange: (e) => {
+                  if (showLinkedRecordDropdown) {
+                    const term = e.target.value;
+                    setSearchTerm(term);
+                    handleLinkedRecordSearch(term);
+                  }
+                },
+                placeholder: "Search or select...",
+                className: `w-full px-2 py-1 border rounded text-gray-gray900 dark:text-gray-gray100 bg-white dark:bg-gray-gray800 ${isClosed ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`,
+                onClick: (e) => {
+                  e.stopPropagation();
+                  if (!isClosed && !showLinkedRecordDropdown) {
+                    setShowLinkedRecordDropdown(true);
+                    setSearchTerm("");
+                  }
+                }
               },
               void 0,
               false,
               {
-                fileName: "frontend/index.js",
-                lineNumber: 779,
-                columnNumber: 33
+                fileName: "frontend/components/EditableCell.js",
+                lineNumber: 397,
+                columnNumber: 29
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "py-1", children: linkedRecords.map((linkedRecord) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
-              "label",
+            showLinkedRecordDropdown && /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "absolute z-10 w-full mt-1 bg-white dark:bg-gray-gray700 border rounded shadow-lg max-h-48 overflow-y-auto", children: linkedRecords.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "px-2 py-1 text-sm text-gray-gray500 dark:text-gray-gray400", children: "Loading..." }, void 0, false, {
+              fileName: "frontend/components/EditableCell.js",
+              lineNumber: 439,
+              columnNumber: 41
+            }, this) : linkedRecords.map((linkedRecord) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+              "div",
               {
-                className: "flex items-center space-x-2 px-2 py-1 hover:bg-gray-gray100 dark:hover:bg-gray-gray600 cursor-pointer",
-                onClick: async (e) => {
+                className: `px-2 py-1 text-sm cursor-pointer hover:bg-gray-gray100 dark:hover:bg-gray-gray600 ${linkedRecord.id === selectedId ? "bg-blue-blue bg-opacity-20" : ""}`,
+                onMouseDown: (e) => {
+                  e.preventDefault();
                   e.stopPropagation();
                   if (isClosed) return;
-                  const newSelected = !linkedRecord.selected;
-                  const updatedRecords = linkedRecords.map(
-                    (r) => r.id === linkedRecord.id ? __spreadProps(__spreadValues({}, r), { selected: newSelected }) : r
-                  );
-                  setLinkedRecords(updatedRecords);
-                  const selectedIds2 = updatedRecords.filter((r) => r.selected).map((r) => ({ id: r.id }));
-                  try {
-                    setIsSaving(true);
-                    await record.parentTable.updateRecordAsync(record, {
-                      [field.id]: selectedIds2
-                    });
+                  const newSelectedId = linkedRecord.id;
+                  const newDisplayName = linkedRecord.displayName;
+                  setSavedSelectedIds([newSelectedId]);
+                  setSelectedRecordDisplayName(newDisplayName);
+                  const valueToSave = [{ id: newSelectedId }];
+                  setIsSaving(true);
+                  record.parentTable.updateRecordAsync(record, {
+                    [field.id]: valueToSave
+                  }).then(() => {
                     setShowLinkedRecordDropdown(false);
+                    setSearchTerm("");
                     if (onUpdate) onUpdate();
-                  } catch (error) {
+                  }).catch((error) => {
                     console.error("Error updating record:", error);
-                    setLinkedRecords(linkedRecords);
+                    const currentIds = Array.isArray(currentValue) && currentValue.length > 0 ? [currentValue[0]?.id || currentValue[0]] : [];
+                    setSavedSelectedIds(currentIds);
+                    setSelectedRecordDisplayName("");
                     let errorMessage = "Failed to update record. ";
                     if (error.message && error.message.includes("allow record editing")) {
                       errorMessage += "Please enable record editing permissions for this Interface Extension in the Airtable settings.";
@@ -42065,60 +42208,129 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
                       errorMessage += error.message || "Unknown error occurred.";
                     }
                     alert(errorMessage);
-                  } finally {
+                  }).finally(() => {
                     setIsSaving(false);
-                  }
+                  });
                 },
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
-                    "input",
-                    {
-                      type: "checkbox",
-                      checked: linkedRecord.selected || false,
-                      readOnly: true,
-                      className: "rounded pointer-events-none"
-                    },
-                    void 0,
-                    false,
-                    {
-                      fileName: "frontend/index.js",
-                      lineNumber: 838,
-                      columnNumber: 45
-                    },
-                    this
-                  ),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", { className: "text-sm flex-1", children: linkedRecord.displayName }, void 0, false, {
-                    fileName: "frontend/index.js",
-                    lineNumber: 844,
-                    columnNumber: 45
-                  }, this)
-                ]
+                children: linkedRecord.displayName
               },
               linkedRecord.id,
-              true,
+              false,
               {
-                fileName: "frontend/index.js",
-                lineNumber: 793,
-                columnNumber: 41
+                fileName: "frontend/components/EditableCell.js",
+                lineNumber: 442,
+                columnNumber: 45
               },
               this
             )) }, void 0, false, {
-              fileName: "frontend/index.js",
-              lineNumber: 791,
+              fileName: "frontend/components/EditableCell.js",
+              lineNumber: 437,
               columnNumber: 33
             }, this)
           ] }, void 0, true, {
-            fileName: "frontend/index.js",
-            lineNumber: 778,
-            columnNumber: 29
-          }, this)
-        ] }, void 0, true, {
-          fileName: "frontend/index.js",
-          lineNumber: 751,
-          columnNumber: 21
-        }, this) }, void 0, false, {
-          fileName: "frontend/index.js",
-          lineNumber: 750,
+            fileName: "frontend/components/EditableCell.js",
+            lineNumber: 396,
+            columnNumber: 25
+          }, this) }, void 0, false, {
+            fileName: "frontend/components/EditableCell.js",
+            lineNumber: 395,
+            columnNumber: 21
+          }, this);
+        }
+        if (linkedRecords.length === 0) {
+          record.fetchForeignRecordsAsync(field, "").then((result) => {
+            setLinkedRecords(result.records);
+          });
+        }
+        return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+          "select",
+          {
+            value: selectedId,
+            disabled: isClosed,
+            onChange: async (e) => {
+              e.stopPropagation();
+              if (isClosed) return;
+              const newSelectedId = e.target.value;
+              if (!newSelectedId) {
+                setSavedSelectedIds([]);
+                try {
+                  setIsSaving(true);
+                  await record.parentTable.updateRecordAsync(record, {
+                    [field.id]: []
+                  });
+                  if (onUpdate) onUpdate();
+                } catch (error) {
+                  console.error("Error updating record:", error);
+                  const currentIds = Array.isArray(currentValue) && currentValue.length > 0 ? [currentValue[0]?.id || currentValue[0]] : [];
+                  setSavedSelectedIds(currentIds);
+                  let errorMessage = "Failed to update record. ";
+                  if (error.message && error.message.includes("allow record editing")) {
+                    errorMessage += "Please enable record editing permissions for this Interface Extension in the Airtable settings.";
+                  } else {
+                    errorMessage += error.message || "Unknown error occurred.";
+                  }
+                  alert(errorMessage);
+                } finally {
+                  setIsSaving(false);
+                }
+                return;
+              }
+              setSavedSelectedIds([newSelectedId]);
+              const valueToSave = [{ id: newSelectedId }];
+              try {
+                setIsSaving(true);
+                await record.parentTable.updateRecordAsync(record, {
+                  [field.id]: valueToSave
+                });
+                if (onUpdate) onUpdate();
+              } catch (error) {
+                console.error("Error updating record:", error);
+                const currentIds = Array.isArray(currentValue) && currentValue.length > 0 ? [currentValue[0]?.id || currentValue[0]] : [];
+                setSavedSelectedIds(currentIds);
+                let errorMessage = "Failed to update record. ";
+                if (error.message && error.message.includes("allow record editing")) {
+                  errorMessage += "Please enable record editing permissions for this Interface Extension in the Airtable settings.";
+                } else {
+                  errorMessage += error.message || "Unknown error occurred.";
+                }
+                alert(errorMessage);
+              } finally {
+                setIsSaving(false);
+              }
+            },
+            onBlur: (e) => {
+              e.stopPropagation();
+            },
+            className: `w-full px-2 py-1 border rounded text-gray-gray900 dark:text-gray-gray100 bg-white dark:bg-gray-gray800 ${isClosed ? "opacity-50 cursor-not-allowed" : ""}`,
+            onClick: (e) => e.stopPropagation(),
+            children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: "", children: "-- Select --" }, void 0, false, {
+                fileName: "frontend/components/EditableCell.js",
+                lineNumber: 591,
+                columnNumber: 25
+              }, this),
+              linkedRecords.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: "", disabled: true, children: "Loading..." }, void 0, false, {
+                fileName: "frontend/components/EditableCell.js",
+                lineNumber: 593,
+                columnNumber: 29
+              }, this) : linkedRecords.map((linkedRecord) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: linkedRecord.id, children: linkedRecord.displayName }, linkedRecord.id, false, {
+                fileName: "frontend/components/EditableCell.js",
+                lineNumber: 596,
+                columnNumber: 33
+              }, this))
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "frontend/components/EditableCell.js",
+            lineNumber: 512,
+            columnNumber: 21
+          },
+          this
+        ) }, void 0, false, {
+          fileName: "frontend/components/EditableCell.js",
+          lineNumber: 511,
           columnNumber: 17
         }, this);
       }
@@ -42127,7 +42339,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         const currentValue = cellValue;
         const currentOptionId = currentValue?.id || null;
         const displayValue = editValue || currentOptionId || "";
-        return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
+        return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
           "select",
           {
             value: displayValue,
@@ -42165,14 +42377,14 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             className: `w-full px-2 py-1 border rounded text-gray-gray900 dark:text-gray-gray100 bg-white dark:bg-gray-gray800 ${isClosed ? "opacity-50 cursor-not-allowed" : ""}`,
             onClick: (e) => e.stopPropagation(),
             children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { value: "", children: "-- Select --" }, void 0, false, {
-                fileName: "frontend/index.js",
-                lineNumber: 904,
+              /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: "", children: "-- Select --" }, void 0, false, {
+                fileName: "frontend/components/EditableCell.js",
+                lineNumber: 655,
                 columnNumber: 25
               }, this),
-              options.map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("option", { value: option.id, children: option.name }, option.id, false, {
-                fileName: "frontend/index.js",
-                lineNumber: 906,
+              options.map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: option.id, children: option.name }, option.id, false, {
+                fileName: "frontend/components/EditableCell.js",
+                lineNumber: 657,
                 columnNumber: 29
               }, this))
             ]
@@ -42180,42 +42392,45 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           void 0,
           true,
           {
-            fileName: "frontend/index.js",
-            lineNumber: 866,
+            fileName: "frontend/components/EditableCell.js",
+            lineNumber: 617,
             columnNumber: 21
           },
           this
         ) }, void 0, false, {
-          fileName: "frontend/index.js",
-          lineNumber: 865,
+          fileName: "frontend/components/EditableCell.js",
+          lineNumber: 616,
           columnNumber: 17
         }, this);
       }
       if (isDateFieldEditable && isDateField && monthRecords) {
         const currentDate2 = cellValue instanceof Date ? cellValue : cellValue ? new Date(cellValue) : null;
-        return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [
-          showCalendar && /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
-            CalendarPicker,
-            {
-              selectedDate: currentDate2,
-              onDateSelect: handleDateSelect,
-              availableDates,
-              onClose: () => setShowCalendar(false)
-            },
-            void 0,
-            false,
-            {
-              fileName: "frontend/index.js",
-              lineNumber: 921,
-              columnNumber: 25
-            },
-            this
+        return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_jsx_dev_runtime2.Fragment, { children: [
+          showCalendar && (0, import_react_dom.createPortal)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+              CalendarPicker,
+              {
+                selectedDate: currentDate2,
+                onDateSelect: handleDateSelect,
+                availableDates,
+                onClose: () => setShowCalendar(false)
+              },
+              void 0,
+              false,
+              {
+                fileName: "frontend/components/EditableCell.js",
+                lineNumber: 672,
+                columnNumber: 25
+              },
+              this
+            ),
+            document.body
           ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
             "input",
             {
               type: "text",
-              value: formatDisplayValue(cellValue),
+              value: formatDisplayValue(cellValue, fieldType, fieldName),
               readOnly: true,
               disabled: isClosed,
               onClick: (e) => {
@@ -42229,19 +42444,19 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             void 0,
             false,
             {
-              fileName: "frontend/index.js",
-              lineNumber: 929,
+              fileName: "frontend/components/EditableCell.js",
+              lineNumber: 681,
               columnNumber: 25
             },
             this
           ) }, void 0, false, {
-            fileName: "frontend/index.js",
-            lineNumber: 928,
+            fileName: "frontend/components/EditableCell.js",
+            lineNumber: 680,
             columnNumber: 21
           }, this)
         ] }, void 0, true, {
-          fileName: "frontend/index.js",
-          lineNumber: 919,
+          fileName: "frontend/components/EditableCell.js",
+          lineNumber: 670,
           columnNumber: 17
         }, this);
       }
@@ -42259,7 +42474,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
       } else if (fieldType === FieldType.EMAIL || fieldType === FieldType.URL || fieldType === FieldType.PHONE_NUMBER) {
         inputType = "text";
       }
-      return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "flex items-center space-x-2", children: fieldType === FieldType.CHECKBOX ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "flex items-center space-x-2", children: fieldType === FieldType.CHECKBOX ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
         "input",
         {
           type: "checkbox",
@@ -42272,12 +42487,12 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         void 0,
         false,
         {
-          fileName: "frontend/index.js",
-          lineNumber: 967,
+          fileName: "frontend/components/EditableCell.js",
+          lineNumber: 719,
           columnNumber: 25
         },
         this
-      ) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
+      ) : /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
         "input",
         {
           type: inputType,
@@ -42292,44 +42507,47 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         void 0,
         false,
         {
-          fileName: "frontend/index.js",
-          lineNumber: 976,
+          fileName: "frontend/components/EditableCell.js",
+          lineNumber: 728,
           columnNumber: 25
         },
         this
       ) }, void 0, false, {
-        fileName: "frontend/index.js",
-        lineNumber: 965,
+        fileName: "frontend/components/EditableCell.js",
+        lineNumber: 717,
         columnNumber: 17
       }, this) }, void 0, false, {
-        fileName: "frontend/index.js",
-        lineNumber: 964,
+        fileName: "frontend/components/EditableCell.js",
+        lineNumber: 716,
         columnNumber: 13
       }, this);
     }
     const currentDate = cellValue instanceof Date ? cellValue : cellValue ? new Date(cellValue) : null;
-    return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [
-      showCalendar && /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
-        CalendarPicker,
-        {
-          selectedDate: currentDate,
-          onDateSelect: handleDateSelect,
-          availableDates,
-          onClose: () => setShowCalendar(false)
-        },
-        void 0,
-        false,
-        {
-          fileName: "frontend/index.js",
-          lineNumber: 997,
-          columnNumber: 17
-        },
-        this
+    return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_jsx_dev_runtime2.Fragment, { children: [
+      showCalendar && (0, import_react_dom.createPortal)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+          CalendarPicker,
+          {
+            selectedDate: currentDate,
+            onDateSelect: handleDateSelect,
+            availableDates,
+            onClose: () => setShowCalendar(false)
+          },
+          void 0,
+          false,
+          {
+            fileName: "frontend/components/EditableCell.js",
+            lineNumber: 749,
+            columnNumber: 17
+          },
+          this
+        ),
+        document.body
       ),
       shouldBeEditable && !isFormula && !isLookup && !isClosed ? (
         // This will be handled by the editing section above (isEditing is always true for editable fields)
         null
-      ) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
+      ) : /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
         "td",
         {
           className: `px-4 py-3 text-sm text-gray-gray900 dark:text-gray-gray100 border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px] ${isDateField && !isReadOnly ? "cursor-pointer hover:bg-gray-gray50 dark:hover:bg-gray-gray600" : ""}`,
@@ -42338,33 +42556,120 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             handleClick();
           },
           title: isDateField && !isReadOnly ? "Click to select date" : "",
-          children: formatDisplayValue(cellValue)
+          children: formatDisplayValue(cellValue, fieldType, fieldName)
         },
         void 0,
         false,
         {
-          fileName: "frontend/index.js",
-          lineNumber: 1009,
+          fileName: "frontend/components/EditableCell.js",
+          lineNumber: 762,
           columnNumber: 17
         },
         this
       )
     ] }, void 0, true, {
-      fileName: "frontend/index.js",
-      lineNumber: 995,
+      fileName: "frontend/components/EditableCell.js",
+      lineNumber: 747,
       columnNumber: 9
     }, this);
   }
+  var import_react7, import_react_dom, import_jsx_dev_runtime2;
+  var init_EditableCell = __esm({
+    "frontend/components/EditableCell.js"() {
+      import_react7 = __toESM(require_react());
+      import_react_dom = __toESM(require_react_dom());
+      init_models();
+      init_CalendarPicker();
+      init_valueFormatter();
+      init_dateUtils();
+      init_recordUtils();
+      import_jsx_dev_runtime2 = __toESM(require_jsx_dev_runtime());
+    }
+  });
+
+  // frontend/components/ConfirmationModal.js
+  function ConfirmationModal({ isOpen, title, message, onConfirm, onCancel }) {
+    if (!isOpen) return null;
+    return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50", onClick: onCancel, children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "bg-white dark:bg-gray-gray700 rounded-lg shadow-xl p-6 max-w-md w-full mx-4", onClick: (e) => e.stopPropagation(), children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("h3", { className: "text-lg font-semibold mb-4 text-gray-gray900 dark:text-gray-gray100", children: title }, void 0, false, {
+        fileName: "frontend/components/ConfirmationModal.js",
+        lineNumber: 16,
+        columnNumber: 17
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("p", { className: "text-sm text-gray-gray700 dark:text-gray-gray300 mb-6", children: message }, void 0, false, {
+        fileName: "frontend/components/ConfirmationModal.js",
+        lineNumber: 19,
+        columnNumber: 17
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "flex justify-end space-x-3", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+          "button",
+          {
+            onClick: onCancel,
+            className: "px-4 py-2 text-sm font-medium rounded-md bg-gray-gray200 dark:bg-gray-gray600 text-gray-gray900 dark:text-gray-gray100 hover:bg-gray-gray300 dark:hover:bg-gray-gray500 transition-colors",
+            children: "No"
+          },
+          void 0,
+          false,
+          {
+            fileName: "frontend/components/ConfirmationModal.js",
+            lineNumber: 23,
+            columnNumber: 21
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+          "button",
+          {
+            onClick: onConfirm,
+            className: "px-4 py-2 text-sm font-medium rounded-md bg-red-red text-white hover:bg-red-red600 focus:outline-none focus:ring-2 focus:ring-red-red focus:ring-offset-2 transition-colors",
+            children: "Yes"
+          },
+          void 0,
+          false,
+          {
+            fileName: "frontend/components/ConfirmationModal.js",
+            lineNumber: 29,
+            columnNumber: 21
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "frontend/components/ConfirmationModal.js",
+        lineNumber: 22,
+        columnNumber: 17
+      }, this)
+    ] }, void 0, true, {
+      fileName: "frontend/components/ConfirmationModal.js",
+      lineNumber: 15,
+      columnNumber: 13
+    }, this) }, void 0, false, {
+      fileName: "frontend/components/ConfirmationModal.js",
+      lineNumber: 14,
+      columnNumber: 9
+    }, this);
+  }
+  var import_jsx_dev_runtime3;
+  var init_ConfirmationModal = __esm({
+    "frontend/components/ConfirmationModal.js"() {
+      import_jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime());
+    }
+  });
+
+  // frontend/index.js
+  var frontend_exports = {};
   function TimesheetApp() {
     const base = useBase2();
-    const getCustomPropertiesMemo = (0, import_react6.useCallback)((base2) => getCustomProperties(base2), []);
+    const getCustomPropertiesMemo = (0, import_react8.useCallback)((base2) => getCustomProperties(base2), []);
     const { customPropertyValueByKey, errorState } = useCustomProperties(getCustomPropertiesMemo);
     const timesheetTable = customPropertyValueByKey.timesheetTable;
     const usersTable = customPropertyValueByKey.usersTable;
     const monthTable = customPropertyValueByKey.monthTable;
     const records = useRecords(timesheetTable || null);
     const monthRecords = useRecords(monthTable || null);
-    const [updateTrigger, setUpdateTrigger] = (0, import_react6.useState)(0);
+    const [updateTrigger, setUpdateTrigger] = (0, import_react8.useState)(0);
+    const [selectedRecords, setSelectedRecords] = (0, import_react8.useState)(/* @__PURE__ */ new Set());
+    const [showDeleteModal, setShowDeleteModal] = (0, import_react8.useState)(false);
     const projectImport = customPropertyValueByKey.projectImport;
     const emailFromName = customPropertyValueByKey.emailFromName;
     const task = customPropertyValueByKey.task;
@@ -42375,6 +42680,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     const weekday = customPropertyValueByKey.weekday;
     const projectFromTask = customPropertyValueByKey.projectFromTask;
     const projectFromTaskExt = customPropertyValueByKey.projectFromTaskExt;
+    const deleteField = customPropertyValueByKey.delete;
     const monthStatusField = customPropertyValueByKey.monthStatus;
     const monthStartDateField = customPropertyValueByKey.monthStartDate;
     const monthEndDateField = customPropertyValueByKey.monthEndDate;
@@ -42408,25 +42714,93 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         alert(errorMessage);
       }
     };
+    const handleToggleRecordSelection = (recordId) => {
+      setSelectedRecords((prev) => {
+        const newSet = new Set(prev);
+        if (newSet.has(recordId)) {
+          newSet.delete(recordId);
+        } else {
+          newSet.add(recordId);
+        }
+        return newSet;
+      });
+    };
+    const handleSelectAll = () => {
+      if (selectedRecords.size === records.length) {
+        setSelectedRecords(/* @__PURE__ */ new Set());
+      } else {
+        setSelectedRecords(new Set(records.map((r) => r.id)));
+      }
+    };
+    const handleDeleteClick = () => {
+      setShowDeleteModal(true);
+    };
+    const handleDeleteConfirm = async () => {
+      if (selectedRecords.size === 0) {
+        setShowDeleteModal(false);
+        return;
+      }
+      if (!deleteField || !canUpdateRecords) {
+        alert("Delete field is not configured or you do not have permission to update records.");
+        setShowDeleteModal(false);
+        return;
+      }
+      const recordsToUpdate = records.filter((r) => selectedRecords.has(r.id));
+      if (recordsToUpdate.length === 0) {
+        setShowDeleteModal(false);
+        return;
+      }
+      try {
+        const deleteOptions = deleteField?.config?.options?.choices || [];
+        const yesDeleteOption = deleteOptions.find((opt) => opt.name === "Yes Delete");
+        if (!yesDeleteOption) {
+          alert('"Yes Delete" option not found in Delete field. Please configure the Delete field with this option.');
+          setShowDeleteModal(false);
+          return;
+        }
+        const batchSize = 50;
+        for (let i = 0; i < recordsToUpdate.length; i += batchSize) {
+          const batch = recordsToUpdate.slice(i, i + batchSize);
+          await timesheetTable.updateRecordsAsync(
+            batch.map((record) => ({
+              id: record.id,
+              fields: {
+                [deleteField.id]: { id: yesDeleteOption.id }
+              }
+            }))
+          );
+        }
+        setSelectedRecords(/* @__PURE__ */ new Set());
+        setShowDeleteModal(false);
+        handleRecordUpdate();
+      } catch (error) {
+        console.error("Error updating delete field:", error);
+        alert("Failed to update records: " + (error.message || "Unknown error occurred."));
+        setShowDeleteModal(false);
+      }
+    };
+    const handleDeleteCancel = () => {
+      setShowDeleteModal(false);
+    };
     if (errorState || !timesheetTable) {
-      return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "p-4 sm:p-8 min-h-screen bg-gray-gray50 dark:bg-gray-gray800", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "rounded-lg p-6 bg-white dark:bg-gray-gray700 shadow-sm", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", { className: "text-lg font-semibold mb-2 text-gray-gray900 dark:text-gray-gray100", children: "Configuration Required" }, void 0, false, {
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "p-4 sm:p-8 min-h-screen bg-gray-gray50 dark:bg-gray-gray800", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "rounded-lg p-6 bg-white dark:bg-gray-gray700 shadow-sm", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h2", { className: "text-lg font-semibold mb-2 text-gray-gray900 dark:text-gray-gray100", children: "Configuration Required" }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 1106,
+          lineNumber: 170,
           columnNumber: 21
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { className: "text-sm text-gray-gray700 dark:text-gray-gray300", children: "Please configure the Timesheet table and fields in the properties panel." }, void 0, false, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-gray-gray700 dark:text-gray-gray300", children: "Please configure the Timesheet table and fields in the properties panel." }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 1109,
+          lineNumber: 173,
           columnNumber: 21
         }, this)
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 1105,
+        lineNumber: 169,
         columnNumber: 17
       }, this) }, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 1104,
+        lineNumber: 168,
         columnNumber: 13
       }, this);
     }
@@ -42442,90 +42816,136 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
       { key: "projectFromTask", label: "Project from Task", field: projectFromTask },
       { key: "projectFromTaskExt", label: "Project from Task - Ext", field: projectFromTaskExt }
     ];
-    return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "w-full h-full bg-gray-gray50 dark:bg-gray-gray800 p-4 sm:p-6 overflow-auto", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "mb-4 flex items-center justify-between", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", { className: "text-2xl font-bold text-gray-gray900 dark:text-gray-gray100", children: "Timesheet" }, void 0, false, {
+    return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "w-full h-full bg-gray-gray50 dark:bg-gray-gray800 p-4 sm:p-6 overflow-auto", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "mb-4 flex items-center justify-between", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h1", { className: "text-2xl font-bold text-gray-gray900 dark:text-gray-gray100", children: "Timesheet" }, void 0, false, {
             fileName: "frontend/index.js",
-            lineNumber: 1134,
+            lineNumber: 198,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { className: "text-sm text-gray-gray600 dark:text-gray-gray400 mt-1", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-gray-gray600 dark:text-gray-gray400 mt-1", children: [
             records.length,
             " record",
             records.length !== 1 ? "s" : ""
           ] }, void 0, true, {
             fileName: "frontend/index.js",
-            lineNumber: 1137,
+            lineNumber: 201,
             columnNumber: 21
           }, this)
         ] }, void 0, true, {
           fileName: "frontend/index.js",
-          lineNumber: 1133,
+          lineNumber: 197,
           columnNumber: 17
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
-          "button",
-          {
-            onClick: handleAddTimeline,
-            disabled: !canCreateRecords,
-            className: `px-4 py-2 text-sm font-medium rounded-md transition-colors ${canCreateRecords ? "bg-blue-blue text-white hover:bg-blue-blue600 focus:outline-none focus:ring-2 focus:ring-blue-blue focus:ring-offset-2" : "bg-gray-gray200 dark:bg-gray-gray600 text-gray-gray500 dark:text-gray-gray400 cursor-not-allowed opacity-50"}`,
-            children: "Add Timeline"
-          },
-          void 0,
-          false,
-          {
-            fileName: "frontend/index.js",
-            lineNumber: 1141,
-            columnNumber: 17
-          },
-          this
-        )
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "flex items-center space-x-3", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+            "button",
+            {
+              onClick: handleDeleteClick,
+              disabled: !canUpdateRecords,
+              className: `px-4 py-2 text-sm font-medium rounded-md transition-colors ${canUpdateRecords ? "bg-red-red text-white hover:bg-red-red600 focus:outline-none focus:ring-2 focus:ring-red-red focus:ring-offset-2" : "bg-gray-gray200 dark:bg-gray-gray600 text-gray-gray500 dark:text-gray-gray400 cursor-not-allowed opacity-50"}`,
+              children: "Delete"
+            },
+            void 0,
+            false,
+            {
+              fileName: "frontend/index.js",
+              lineNumber: 206,
+              columnNumber: 21
+            },
+            this
+          ),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+            "button",
+            {
+              onClick: handleAddTimeline,
+              disabled: !canCreateRecords,
+              className: `px-4 py-2 text-sm font-medium rounded-md transition-colors ${canCreateRecords ? "bg-blue-blue text-white hover:bg-blue-blue600 focus:outline-none focus:ring-2 focus:ring-blue-blue focus:ring-offset-2" : "bg-gray-gray200 dark:bg-gray-gray600 text-gray-gray500 dark:text-gray-gray400 cursor-not-allowed opacity-50"}`,
+              children: "Add Timeline"
+            },
+            void 0,
+            false,
+            {
+              fileName: "frontend/index.js",
+              lineNumber: 217,
+              columnNumber: 21
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "frontend/index.js",
+          lineNumber: 205,
+          columnNumber: 17
+        }, this)
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 1132,
+        lineNumber: 196,
         columnNumber: 13
       }, this),
-      showEditWarning && /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "mb-4 p-3 bg-yellow-yellow bg-opacity-20 border border-yellow-yellow rounded text-sm text-gray-gray900 dark:text-gray-gray100", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("strong", { children: "Note:" }, void 0, false, {
+      showEditWarning && /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "mb-4 p-3 bg-yellow-yellow bg-opacity-20 border border-yellow-yellow rounded text-sm text-gray-gray900 dark:text-gray-gray100", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("strong", { children: "Note:" }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 1155,
+          lineNumber: 232,
           columnNumber: 21
         }, this),
         ' Record editing is not enabled for this Interface Extension. To enable editing, go to the Interface Extension settings and enable "Allow record editing" for the Timesheet table.'
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 1154,
+        lineNumber: 231,
         columnNumber: 17
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "bg-white dark:bg-gray-gray700 rounded-lg shadow-sm overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("table", { className: "w-full border-collapse table-auto", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("thead", { className: "bg-gray-gray100 dark:bg-gray-gray600", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("tr", { children: fields.map(({ key, label, field }) => field && /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
-          "th",
-          {
-            className: "px-4 py-3 text-left text-xs font-semibold text-gray-gray700 dark:text-gray-gray300 uppercase tracking-wider border-b border-gray-gray200 dark:border-gray-gray500 min-w-[180px]",
-            children: label
-          },
-          key,
-          false,
-          {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "bg-white dark:bg-gray-gray700 rounded-lg shadow-sm overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("table", { className: "w-full border-collapse table-auto", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("thead", { className: "bg-gray-gray100 dark:bg-gray-gray600", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("tr", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("th", { className: "px-4 py-3 text-left text-xs font-semibold text-gray-gray700 dark:text-gray-gray300 uppercase tracking-wider border-b border-gray-gray200 dark:border-gray-gray500 w-12", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+            "input",
+            {
+              type: "checkbox",
+              checked: records.length > 0 && selectedRecords.size === records.length,
+              onChange: handleSelectAll,
+              className: "rounded"
+            },
+            void 0,
+            false,
+            {
+              fileName: "frontend/index.js",
+              lineNumber: 244,
+              columnNumber: 37
+            },
+            this
+          ) }, void 0, false, {
             fileName: "frontend/index.js",
-            lineNumber: 1168,
-            columnNumber: 41
-          },
-          this
-        )) }, void 0, false, {
+            lineNumber: 243,
+            columnNumber: 33
+          }, this),
+          fields.map(({ key, label, field }) => field && /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+            "th",
+            {
+              className: "px-4 py-3 text-left text-xs font-semibold text-gray-gray700 dark:text-gray-gray300 uppercase tracking-wider border-b border-gray-gray200 dark:border-gray-gray500 min-w-[180px]",
+              children: label
+            },
+            key,
+            false,
+            {
+              fileName: "frontend/index.js",
+              lineNumber: 253,
+              columnNumber: 41
+            },
+            this
+          ))
+        ] }, void 0, true, {
           fileName: "frontend/index.js",
-          lineNumber: 1165,
+          lineNumber: 242,
           columnNumber: 29
         }, this) }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 1164,
+          lineNumber: 241,
           columnNumber: 25
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("tbody", { className: "divide-y divide-gray-gray200 dark:divide-gray-gray600", children: records.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("tr", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("tbody", { className: "divide-y divide-gray-gray200 dark:divide-gray-gray600", children: records.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("tr", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
           "td",
           {
-            colSpan: fields.filter((f) => f.field).length,
+            colSpan: fields.filter((f) => f.field).length + 1,
             className: "px-4 py-8 text-center text-sm text-gray-gray500 dark:text-gray-gray400",
             children: "No records found"
           },
@@ -42533,82 +42953,125 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           false,
           {
             fileName: "frontend/index.js",
-            lineNumber: 1181,
+            lineNumber: 266,
             columnNumber: 37
           },
           this
         ) }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 1180,
+          lineNumber: 265,
           columnNumber: 33
-        }, this) : records.map((record) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
+        }, this) : records.map((record) => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
           "tr",
           {
             className: "hover:bg-gray-gray50 dark:hover:bg-gray-gray600 transition-colors",
-            children: fields.map(({ key, field }) => field && /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
-              EditableCell,
-              {
-                record,
-                field,
-                onUpdate: handleRecordUpdate,
-                monthRecords,
-                monthStatusField,
-                monthStartDateField,
-                monthEndDateField
-              },
-              key,
-              false,
-              {
+            children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+                "input",
+                {
+                  type: "checkbox",
+                  checked: selectedRecords.has(record.id),
+                  onChange: () => handleToggleRecordSelection(record.id),
+                  className: "rounded"
+                },
+                void 0,
+                false,
+                {
+                  fileName: "frontend/index.js",
+                  lineNumber: 280,
+                  columnNumber: 45
+                },
+                this
+              ) }, void 0, false, {
                 fileName: "frontend/index.js",
-                lineNumber: 1196,
-                columnNumber: 49
-              },
-              this
-            ))
+                lineNumber: 279,
+                columnNumber: 41
+              }, this),
+              fields.map(({ key, field }) => field && /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+                EditableCell,
+                {
+                  record,
+                  field,
+                  onUpdate: handleRecordUpdate,
+                  monthRecords,
+                  monthStatusField,
+                  monthStartDateField,
+                  monthEndDateField
+                },
+                key,
+                false,
+                {
+                  fileName: "frontend/index.js",
+                  lineNumber: 289,
+                  columnNumber: 49
+                },
+                this
+              ))
+            ]
           },
           record.id,
-          false,
+          true,
           {
             fileName: "frontend/index.js",
-            lineNumber: 1190,
+            lineNumber: 275,
             columnNumber: 37
           },
           this
         )) }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 1178,
+          lineNumber: 263,
           columnNumber: 25
         }, this)
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 1163,
+        lineNumber: 240,
         columnNumber: 21
       }, this) }, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 1162,
+        lineNumber: 239,
         columnNumber: 17
       }, this) }, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 1161,
+        lineNumber: 238,
         columnNumber: 13
-      }, this)
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+        ConfirmationModal,
+        {
+          isOpen: showDeleteModal,
+          title: selectedRecords.size === 0 ? "No Records Selected" : "Confirm Delete",
+          message: selectedRecords.size === 0 ? "Please select at least one record" : "Could you delete these records?",
+          onConfirm: handleDeleteConfirm,
+          onCancel: handleDeleteCancel
+        },
+        void 0,
+        false,
+        {
+          fileName: "frontend/index.js",
+          lineNumber: 308,
+          columnNumber: 13
+        },
+        this
+      )
     ] }, void 0, true, {
       fileName: "frontend/index.js",
-      lineNumber: 1131,
+      lineNumber: 195,
       columnNumber: 9
     }, this);
   }
-  var import_react6, import_jsx_dev_runtime;
+  var import_react8, import_jsx_dev_runtime4;
   var init_frontend = __esm({
     "frontend/index.js"() {
       init_ui();
-      init_models();
-      import_react6 = __toESM(require_react());
+      import_react8 = __toESM(require_react());
       init_style();
-      import_jsx_dev_runtime = __toESM(require_jsx_dev_runtime());
-      initializeBlock({ interface: () => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(TimesheetApp, {}, void 0, false, {
+      init_customProperties();
+      init_EditableCell();
+      init_ConfirmationModal();
+      import_jsx_dev_runtime4 = __toESM(require_jsx_dev_runtime());
+      initializeBlock({ interface: () => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(TimesheetApp, {}, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 1219,
+        lineNumber: 322,
         columnNumber: 35
       }) });
     }
