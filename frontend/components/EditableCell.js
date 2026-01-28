@@ -71,6 +71,7 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
     const [showLinkedRecordDropdown, setShowLinkedRecordDropdown] = useState(false);
     const [savedSelectedIds, setSavedSelectedIds] = useState([]);
     const [selectedRecordDisplayName, setSelectedRecordDisplayName] = useState('');
+    const [selectedMultipleSelectIds, setSelectedMultipleSelectIds] = useState([]);
 
     const isEmailField = fieldName === 'Email (from Name)';
     const isProjectFromTaskField = fieldName === 'Project from Task' || fieldName === 'Project from Task - Ext';
@@ -101,6 +102,18 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
                 } else if (!currentOptionId && editValue !== '') {
                     // Clear if no value
                     setEditValue('');
+                }
+            } else if (fieldType === FieldType.MULTIPLE_SELECTS) {
+                // For multiple selects, track selected option IDs
+                const currentValue = cellValue;
+                const currentIds = Array.isArray(currentValue) 
+                    ? currentValue.map(item => item?.id || item)
+                    : [];
+                // Sync selected IDs when cellValue changes
+                const currentIdsStr = JSON.stringify(currentIds.sort());
+                const savedIdsStr = JSON.stringify(selectedMultipleSelectIds.sort());
+                if (currentIdsStr !== savedIdsStr) {
+                    setSelectedMultipleSelectIds(currentIds);
                 }
             } else {
                 // For text fields (SINGLE_LINE_TEXT, MULTILINE_TEXT), sync when cellValue changes
@@ -161,7 +174,7 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
                 });
             }
         }
-    }, [shouldBeEditable, isFormula, isLookup, cellValue, isEditing, fieldType, fieldName, field, record, searchTerm]);
+    }, [shouldBeEditable, isFormula, isLookup, cellValue, isEditing, fieldType, fieldName, field, record, searchTerm, selectedMultipleSelectIds]);
     
     const handleClick = () => {
         // For editable input fields, always allow editing (unless it's a lookup/formula or closed)
@@ -280,6 +293,13 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
                 const options = field?.config?.options?.choices || [];
                 const selectedOption = options.find(opt => opt.id === editValue);
                 valueToSave = selectedOption ? {id: selectedOption.id} : null;
+            } else if (fieldType === FieldType.MULTIPLE_SELECTS) {
+                // For multiple selects, value should be an array of option objects with id
+                const options = field?.config?.options?.choices || [];
+                valueToSave = selectedMultipleSelectIds
+                    .map(id => options.find(opt => opt.id === id))
+                    .filter(opt => opt !== undefined)
+                    .map(opt => ({id: opt.id}));
             } else if (fieldType === FieldType.CHECKBOX) {
                 valueToSave = editValue === 'true' || editValue === true;
             } else if (fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.MULTILINE_TEXT) {
@@ -676,6 +696,77 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
                             </option>
                         ))}
                     </select>
+                </td>
+            );
+        }
+        
+        // For multiple select fields, show multi-select dropdown
+        if (fieldType === FieldType.MULTIPLE_SELECTS) {
+            const options = field?.config?.options?.choices || [];
+            const currentValue = cellValue;
+            const currentIds = Array.isArray(currentValue) 
+                ? currentValue.map(item => item?.id || item)
+                : [];
+            
+            // Use selectedMultipleSelectIds if set, otherwise use currentIds
+            const displayIds = selectedMultipleSelectIds.length > 0 ? selectedMultipleSelectIds : currentIds;
+            
+            return (
+                <td className="px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px]">
+                    <select
+                        multiple
+                        value={displayIds}
+                        disabled={isClosed}
+                        onChange={(e) => {
+                            const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
+                            setSelectedMultipleSelectIds(selectedOptions);
+                            
+                            // Auto-save on change
+                            const options = field?.config?.options?.choices || [];
+                            const valueToSave = selectedOptions
+                                .map(id => options.find(opt => opt.id === id))
+                                .filter(opt => opt !== undefined)
+                                .map(opt => ({id: opt.id}));
+                            
+                            setIsSaving(true);
+                            record.parentTable.updateRecordAsync(record, {
+                                [field.id]: valueToSave
+                            }).then(() => {
+                                setIsSaving(false);
+                                if (onUpdate) onUpdate();
+                            }).catch(error => {
+                                setIsSaving(false);
+                                console.error('Error updating record:', error);
+                                // Revert on error
+                                setSelectedMultipleSelectIds(currentIds);
+                                
+                                let errorMessage = 'Failed to update record. ';
+                                if (error.message && error.message.includes('allow record editing')) {
+                                    errorMessage += 'Please enable record editing permissions for this Interface Extension in the Airtable settings.';
+                                } else {
+                                    errorMessage += error.message || 'Unknown error occurred.';
+                                }
+                                alert(errorMessage);
+                            });
+                        }}
+                        className={`w-full px-2 py-1 border rounded text-gray-gray900 dark:text-gray-gray100 bg-white dark:bg-gray-gray800 ${isClosed ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        onClick={(e) => e.stopPropagation()}
+                        size={Math.min(options.length + 1, 4)} // Show up to 4 options at once
+                    >
+                        {options.map((option) => (
+                            <option key={option.id} value={option.id}>
+                                {option.name}
+                            </option>
+                        ))}
+                    </select>
+                    {displayIds.length > 0 && (
+                        <div className="mt-1 text-xs text-gray-gray500 dark:text-gray-gray400">
+                            Selected: {displayIds.map(id => {
+                                const option = options.find(opt => opt.id === id);
+                                return option?.name;
+                            }).filter(Boolean).join(', ')}
+                        </div>
+                    )}
                 </td>
             );
         }

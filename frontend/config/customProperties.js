@@ -180,6 +180,15 @@ export function getCustomProperties(base) {
                 field.config.type === FieldType.MULTILINE_TEXT,
             defaultValue: findField(timesheetTable, 'Timesheet Notes'),
         },
+        {
+            key: 'timeTaskType',
+            label: 'Time Task Type',
+            type: 'field',
+            table: timesheetTable,
+            shouldFieldBeAllowed: (field) => 
+                field.config.type === FieldType.SINGLE_SELECT,
+            defaultValue: findField(timesheetTable, 'Time Task Type'),
+        },
     ];
 }
 

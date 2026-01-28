@@ -41252,6 +41252,14 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         table: timesheetTable,
         shouldFieldBeAllowed: (field) => field.config.type === FieldType.SINGLE_LINE_TEXT || field.config.type === FieldType.MULTILINE_TEXT,
         defaultValue: findField(timesheetTable, "Timesheet Notes")
+      },
+      {
+        key: "timeTaskType",
+        label: "Time Task Type",
+        type: "field",
+        table: timesheetTable,
+        shouldFieldBeAllowed: (field) => field.config.type === FieldType.SINGLE_SELECT,
+        defaultValue: findField(timesheetTable, "Time Task Type")
       }
     ];
   }
@@ -41913,6 +41921,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     const [showLinkedRecordDropdown, setShowLinkedRecordDropdown] = (0, import_react7.useState)(false);
     const [savedSelectedIds, setSavedSelectedIds] = (0, import_react7.useState)([]);
     const [selectedRecordDisplayName, setSelectedRecordDisplayName] = (0, import_react7.useState)("");
+    const [selectedMultipleSelectIds, setSelectedMultipleSelectIds] = (0, import_react7.useState)([]);
     const isEmailField = fieldName === "Email (from Name)";
     const isProjectFromTaskField = fieldName === "Project from Task" || fieldName === "Project from Task - Ext";
     const cellValue = field ? (isEmailField || isProjectFromTaskField) && isLookup ? record.getCellValueAsString(field) || "" : fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.MULTILINE_TEXT ? record.getCellValueAsString(field) || "" : record.getCellValue(field) ?? "" : "";
@@ -41926,6 +41935,14 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             setEditValue(currentOptionId);
           } else if (!currentOptionId && editValue !== "") {
             setEditValue("");
+          }
+        } else if (fieldType === FieldType.MULTIPLE_SELECTS) {
+          const currentValue = cellValue;
+          const currentIds = Array.isArray(currentValue) ? currentValue.map((item) => item?.id || item) : [];
+          const currentIdsStr = JSON.stringify(currentIds.sort());
+          const savedIdsStr = JSON.stringify(selectedMultipleSelectIds.sort());
+          if (currentIdsStr !== savedIdsStr) {
+            setSelectedMultipleSelectIds(currentIds);
           }
         } else {
           if (fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.MULTILINE_TEXT) {
@@ -41969,7 +41986,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           });
         }
       }
-    }, [shouldBeEditable, isFormula, isLookup, cellValue, isEditing, fieldType, fieldName, field, record, searchTerm]);
+    }, [shouldBeEditable, isFormula, isLookup, cellValue, isEditing, fieldType, fieldName, field, record, searchTerm, selectedMultipleSelectIds]);
     const handleClick = () => {
       if (shouldBeEditable && !isFormula && !isLookup && !isClosed) {
         if (isDateFieldEditable && isDateField && monthRecords) {
@@ -42053,6 +42070,9 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           const options = field?.config?.options?.choices || [];
           const selectedOption = options.find((opt) => opt.id === editValue);
           valueToSave = selectedOption ? { id: selectedOption.id } : null;
+        } else if (fieldType === FieldType.MULTIPLE_SELECTS) {
+          const options = field?.config?.options?.choices || [];
+          valueToSave = selectedMultipleSelectIds.map((id) => options.find((opt) => opt.id === id)).filter((opt) => opt !== void 0).map((opt) => ({ id: opt.id }));
         } else if (fieldType === FieldType.CHECKBOX) {
           valueToSave = editValue === "true" || editValue === true;
         } else if (fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.MULTILINE_TEXT) {
@@ -42194,14 +42214,14 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
               false,
               {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 414,
+                lineNumber: 434,
                 columnNumber: 29
               },
               this
             ),
             showLinkedRecordDropdown && /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "absolute z-10 w-full mt-1 bg-white dark:bg-gray-gray700 border rounded shadow-lg max-h-48 overflow-y-auto", children: linkedRecords.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "px-2 py-1 text-sm text-gray-gray500 dark:text-gray-gray400", children: "Loading..." }, void 0, false, {
               fileName: "frontend/components/EditableCell.js",
-              lineNumber: 456,
+              lineNumber: 476,
               columnNumber: 41
             }, this) : linkedRecords.map((linkedRecord) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
               "div",
@@ -42245,22 +42265,22 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
               false,
               {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 459,
+                lineNumber: 479,
                 columnNumber: 45
               },
               this
             )) }, void 0, false, {
               fileName: "frontend/components/EditableCell.js",
-              lineNumber: 454,
+              lineNumber: 474,
               columnNumber: 33
             }, this)
           ] }, void 0, true, {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 413,
+            lineNumber: 433,
             columnNumber: 25
           }, this) }, void 0, false, {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 412,
+            lineNumber: 432,
             columnNumber: 21
           }, this);
         }
@@ -42333,16 +42353,16 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: "", children: "-- Select --" }, void 0, false, {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 608,
+                lineNumber: 628,
                 columnNumber: 25
               }, this),
               linkedRecords.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: "", disabled: true, children: "Loading..." }, void 0, false, {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 610,
+                lineNumber: 630,
                 columnNumber: 29
               }, this) : linkedRecords.map((linkedRecord) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: linkedRecord.id, children: linkedRecord.displayName }, linkedRecord.id, false, {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 613,
+                lineNumber: 633,
                 columnNumber: 33
               }, this))
             ]
@@ -42351,13 +42371,13 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           true,
           {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 529,
+            lineNumber: 549,
             columnNumber: 21
           },
           this
         ) }, void 0, false, {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 528,
+          lineNumber: 548,
           columnNumber: 17
         }, this);
       }
@@ -42406,12 +42426,12 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: "", children: "-- Select --" }, void 0, false, {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 672,
+                lineNumber: 692,
                 columnNumber: 25
               }, this),
               options.map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: option.id, children: option.name }, option.id, false, {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 674,
+                lineNumber: 694,
                 columnNumber: 29
               }, this))
             ]
@@ -42420,13 +42440,84 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           true,
           {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 634,
+            lineNumber: 654,
             columnNumber: 21
           },
           this
         ) }, void 0, false, {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 633,
+          lineNumber: 653,
+          columnNumber: 17
+        }, this);
+      }
+      if (fieldType === FieldType.MULTIPLE_SELECTS) {
+        const options = field?.config?.options?.choices || [];
+        const currentValue = cellValue;
+        const currentIds = Array.isArray(currentValue) ? currentValue.map((item) => item?.id || item) : [];
+        const displayIds = selectedMultipleSelectIds.length > 0 ? selectedMultipleSelectIds : currentIds;
+        return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px]", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+            "select",
+            {
+              multiple: true,
+              value: displayIds,
+              disabled: isClosed,
+              onChange: (e) => {
+                const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
+                setSelectedMultipleSelectIds(selectedOptions);
+                const options2 = field?.config?.options?.choices || [];
+                const valueToSave = selectedOptions.map((id) => options2.find((opt) => opt.id === id)).filter((opt) => opt !== void 0).map((opt) => ({ id: opt.id }));
+                setIsSaving(true);
+                record.parentTable.updateRecordAsync(record, {
+                  [field.id]: valueToSave
+                }).then(() => {
+                  setIsSaving(false);
+                  if (onUpdate) onUpdate();
+                }).catch((error) => {
+                  setIsSaving(false);
+                  console.error("Error updating record:", error);
+                  setSelectedMultipleSelectIds(currentIds);
+                  let errorMessage = "Failed to update record. ";
+                  if (error.message && error.message.includes("allow record editing")) {
+                    errorMessage += "Please enable record editing permissions for this Interface Extension in the Airtable settings.";
+                  } else {
+                    errorMessage += error.message || "Unknown error occurred.";
+                  }
+                  alert(errorMessage);
+                });
+              },
+              className: `w-full px-2 py-1 border rounded text-gray-gray900 dark:text-gray-gray100 bg-white dark:bg-gray-gray800 ${isClosed ? "opacity-50 cursor-not-allowed" : ""}`,
+              onClick: (e) => e.stopPropagation(),
+              size: Math.min(options.length + 1, 4),
+              children: options.map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: option.id, children: option.name }, option.id, false, {
+                fileName: "frontend/components/EditableCell.js",
+                lineNumber: 757,
+                columnNumber: 29
+              }, this))
+            },
+            void 0,
+            false,
+            {
+              fileName: "frontend/components/EditableCell.js",
+              lineNumber: 716,
+              columnNumber: 21
+            },
+            this
+          ),
+          displayIds.length > 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "mt-1 text-xs text-gray-gray500 dark:text-gray-gray400", children: [
+            "Selected: ",
+            displayIds.map((id) => {
+              const option = options.find((opt) => opt.id === id);
+              return option?.name;
+            }).filter(Boolean).join(", ")
+          ] }, void 0, true, {
+            fileName: "frontend/components/EditableCell.js",
+            lineNumber: 763,
+            columnNumber: 25
+          }, this)
+        ] }, void 0, true, {
+          fileName: "frontend/components/EditableCell.js",
+          lineNumber: 715,
           columnNumber: 17
         }, this);
       }
@@ -42446,7 +42537,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
               false,
               {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 689,
+                lineNumber: 780,
                 columnNumber: 25
               },
               this
@@ -42472,18 +42563,18 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             false,
             {
               fileName: "frontend/components/EditableCell.js",
-              lineNumber: 698,
+              lineNumber: 789,
               columnNumber: 25
             },
             this
           ) }, void 0, false, {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 697,
+            lineNumber: 788,
             columnNumber: 21
           }, this)
         ] }, void 0, true, {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 687,
+          lineNumber: 778,
           columnNumber: 17
         }, this);
       }
@@ -42515,7 +42606,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         false,
         {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 736,
+          lineNumber: 827,
           columnNumber: 25
         },
         this
@@ -42535,17 +42626,17 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         false,
         {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 745,
+          lineNumber: 836,
           columnNumber: 25
         },
         this
       ) }, void 0, false, {
         fileName: "frontend/components/EditableCell.js",
-        lineNumber: 734,
+        lineNumber: 825,
         columnNumber: 17
       }, this) }, void 0, false, {
         fileName: "frontend/components/EditableCell.js",
-        lineNumber: 733,
+        lineNumber: 824,
         columnNumber: 13
       }, this);
     }
@@ -42564,7 +42655,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           false,
           {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 766,
+            lineNumber: 857,
             columnNumber: 17
           },
           this
@@ -42589,14 +42680,14 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         false,
         {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 779,
+          lineNumber: 870,
           columnNumber: 17
         },
         this
       )
     ] }, void 0, true, {
       fileName: "frontend/components/EditableCell.js",
-      lineNumber: 764,
+      lineNumber: 855,
       columnNumber: 9
     }, this);
   }
@@ -42710,6 +42801,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     const deleteField = customPropertyValueByKey.delete;
     const warning = customPropertyValueByKey.warning;
     const timesheetNotes = customPropertyValueByKey.timesheetNotes;
+    const timeTaskType = customPropertyValueByKey.timeTaskType;
     const monthStatusField = customPropertyValueByKey.monthStatus;
     const monthStartDateField = customPropertyValueByKey.monthStartDate;
     const monthEndDateField = customPropertyValueByKey.monthEndDate;
@@ -42815,21 +42907,21 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
       return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "p-4 sm:p-8 min-h-screen bg-gray-gray50 dark:bg-gray-gray800", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "rounded-lg p-6 bg-white dark:bg-gray-gray700 shadow-sm", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h2", { className: "text-lg font-semibold mb-2 text-gray-gray900 dark:text-gray-gray100", children: "Configuration Required" }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 172,
+          lineNumber: 173,
           columnNumber: 21
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-gray-gray700 dark:text-gray-gray300", children: "Please configure the Timesheet table and fields in the properties panel." }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 175,
+          lineNumber: 176,
           columnNumber: 21
         }, this)
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 171,
+        lineNumber: 172,
         columnNumber: 17
       }, this) }, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 170,
+        lineNumber: 171,
         columnNumber: 13
       }, this);
     }
@@ -42845,14 +42937,15 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
       { key: "projectFromTask", label: "Project from Task", field: projectFromTask },
       { key: "projectFromTaskExt", label: "Project from Task - Ext", field: projectFromTaskExt },
       { key: "warning", label: "Warning", field: warning },
-      { key: "timesheetNotes", label: "Timesheet Notes", field: timesheetNotes }
+      { key: "timesheetNotes", label: "Timesheet Notes", field: timesheetNotes },
+      { key: "timeTaskType", label: "Time Task Type", field: timeTaskType }
     ];
     return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "w-full h-full bg-gray-gray50 dark:bg-gray-gray800 p-4 sm:p-6 overflow-auto", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "mb-4 flex items-center justify-between", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h1", { className: "text-2xl font-bold text-gray-gray900 dark:text-gray-gray100", children: "Timesheet" }, void 0, false, {
             fileName: "frontend/index.js",
-            lineNumber: 202,
+            lineNumber: 204,
             columnNumber: 21
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-gray-gray600 dark:text-gray-gray400 mt-1", children: [
@@ -42861,12 +42954,12 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             records.length !== 1 ? "s" : ""
           ] }, void 0, true, {
             fileName: "frontend/index.js",
-            lineNumber: 205,
+            lineNumber: 207,
             columnNumber: 21
           }, this)
         ] }, void 0, true, {
           fileName: "frontend/index.js",
-          lineNumber: 201,
+          lineNumber: 203,
           columnNumber: 17
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "flex items-center space-x-3", children: [
@@ -42882,7 +42975,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             false,
             {
               fileName: "frontend/index.js",
-              lineNumber: 210,
+              lineNumber: 212,
               columnNumber: 21
             },
             this
@@ -42899,31 +42992,31 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             false,
             {
               fileName: "frontend/index.js",
-              lineNumber: 221,
+              lineNumber: 223,
               columnNumber: 21
             },
             this
           )
         ] }, void 0, true, {
           fileName: "frontend/index.js",
-          lineNumber: 209,
+          lineNumber: 211,
           columnNumber: 17
         }, this)
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 200,
+        lineNumber: 202,
         columnNumber: 13
       }, this),
       showEditWarning && /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "mb-4 p-3 bg-yellow-yellow bg-opacity-20 border border-yellow-yellow rounded text-sm text-gray-gray900 dark:text-gray-gray100", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("strong", { children: "Note:" }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 236,
+          lineNumber: 238,
           columnNumber: 21
         }, this),
         ' Record editing is not enabled for this Interface Extension. To enable editing, go to the Interface Extension settings and enable "Allow record editing" for the Timesheet table.'
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 235,
+        lineNumber: 237,
         columnNumber: 17
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "bg-white dark:bg-gray-gray700 rounded-lg shadow-sm overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("table", { className: "w-full border-collapse table-auto", children: [
@@ -42940,13 +43033,13 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             false,
             {
               fileName: "frontend/index.js",
-              lineNumber: 248,
+              lineNumber: 250,
               columnNumber: 37
             },
             this
           ) }, void 0, false, {
             fileName: "frontend/index.js",
-            lineNumber: 247,
+            lineNumber: 249,
             columnNumber: 33
           }, this),
           fields.map(({ key, label, field }) => field && /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
@@ -42959,18 +43052,18 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             false,
             {
               fileName: "frontend/index.js",
-              lineNumber: 257,
+              lineNumber: 259,
               columnNumber: 41
             },
             this
           ))
         ] }, void 0, true, {
           fileName: "frontend/index.js",
-          lineNumber: 246,
+          lineNumber: 248,
           columnNumber: 29
         }, this) }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 245,
+          lineNumber: 247,
           columnNumber: 25
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("tbody", { className: "divide-y divide-gray-gray200 dark:divide-gray-gray600", children: records.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("tr", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
@@ -42984,13 +43077,13 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           false,
           {
             fileName: "frontend/index.js",
-            lineNumber: 270,
+            lineNumber: 272,
             columnNumber: 37
           },
           this
         ) }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 269,
+          lineNumber: 271,
           columnNumber: 33
         }, this) : records.map((record) => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
           "tr",
@@ -43009,13 +43102,13 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
                 false,
                 {
                   fileName: "frontend/index.js",
-                  lineNumber: 284,
+                  lineNumber: 286,
                   columnNumber: 45
                 },
                 this
               ) }, void 0, false, {
                 fileName: "frontend/index.js",
-                lineNumber: 283,
+                lineNumber: 285,
                 columnNumber: 41
               }, this),
               fields.map(({ key, field }) => field && /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
@@ -43033,7 +43126,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
                 false,
                 {
                   fileName: "frontend/index.js",
-                  lineNumber: 293,
+                  lineNumber: 295,
                   columnNumber: 49
                 },
                 this
@@ -43044,26 +43137,26 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           true,
           {
             fileName: "frontend/index.js",
-            lineNumber: 279,
+            lineNumber: 281,
             columnNumber: 37
           },
           this
         )) }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 267,
+          lineNumber: 269,
           columnNumber: 25
         }, this)
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 244,
+        lineNumber: 246,
         columnNumber: 21
       }, this) }, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 243,
+        lineNumber: 245,
         columnNumber: 17
       }, this) }, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 242,
+        lineNumber: 244,
         columnNumber: 13
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
@@ -43079,14 +43172,14 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         false,
         {
           fileName: "frontend/index.js",
-          lineNumber: 312,
+          lineNumber: 314,
           columnNumber: 13
         },
         this
       )
     ] }, void 0, true, {
       fileName: "frontend/index.js",
-      lineNumber: 199,
+      lineNumber: 201,
       columnNumber: 9
     }, this);
   }
@@ -43102,7 +43195,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
       import_jsx_dev_runtime4 = __toESM(require_jsx_dev_runtime());
       initializeBlock({ interface: () => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(TimesheetApp, {}, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 326,
+        lineNumber: 328,
         columnNumber: 35
       }) });
     }

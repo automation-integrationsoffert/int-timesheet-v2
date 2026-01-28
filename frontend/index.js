@@ -33,6 +33,7 @@ function TimesheetApp() {
     const deleteField = customPropertyValueByKey.delete;
     const warning = customPropertyValueByKey.warning;
     const timesheetNotes = customPropertyValueByKey.timesheetNotes;
+    const timeTaskType = customPropertyValueByKey.timeTaskType;
     
     // Month table fields
     const monthStatusField = customPropertyValueByKey.monthStatus;
@@ -193,6 +194,7 @@ function TimesheetApp() {
         {key: 'projectFromTaskExt', label: 'Project from Task - Ext', field: projectFromTaskExt},
         {key: 'warning', label: 'Warning', field: warning},
         {key: 'timesheetNotes', label: 'Timesheet Notes', field: timesheetNotes},
+        {key: 'timeTaskType', label: 'Time Task Type', field: timeTaskType},
     ];
 
     return (
