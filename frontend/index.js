@@ -31,6 +31,8 @@ function TimesheetApp() {
     const projectFromTask = customPropertyValueByKey.projectFromTask;
     const projectFromTaskExt = customPropertyValueByKey.projectFromTaskExt;
     const deleteField = customPropertyValueByKey.delete;
+    const warning = customPropertyValueByKey.warning;
+    const timesheetNotes = customPropertyValueByKey.timesheetNotes;
     
     // Month table fields
     const monthStatusField = customPropertyValueByKey.monthStatus;
@@ -189,6 +191,8 @@ function TimesheetApp() {
         {key: 'weekday', label: 'Weekday', field: weekday},
         {key: 'projectFromTask', label: 'Project from Task', field: projectFromTask},
         {key: 'projectFromTaskExt', label: 'Project from Task - Ext', field: projectFromTaskExt},
+        {key: 'warning', label: 'Warning', field: warning},
+        {key: 'timesheetNotes', label: 'Timesheet Notes', field: timesheetNotes},
     ];
 
     return (

@@ -160,6 +160,26 @@ export function getCustomProperties(base) {
                 field.config.type === FieldType.SINGLE_SELECT,
             defaultValue: findField(timesheetTable, 'Delete'),
         },
+        {
+            key: 'warning',
+            label: 'Warning',
+            type: 'field',
+            table: timesheetTable,
+            shouldFieldBeAllowed: (field) => 
+                field.config.type === FieldType.SINGLE_LINE_TEXT ||
+                field.config.type === FieldType.MULTILINE_TEXT,
+            defaultValue: findField(timesheetTable, 'Warning'),
+        },
+        {
+            key: 'timesheetNotes',
+            label: 'Timesheet Notes',
+            type: 'field',
+            table: timesheetTable,
+            shouldFieldBeAllowed: (field) => 
+                field.config.type === FieldType.SINGLE_LINE_TEXT ||
+                field.config.type === FieldType.MULTILINE_TEXT,
+            defaultValue: findField(timesheetTable, 'Timesheet Notes'),
+        },
     ];
 }
 

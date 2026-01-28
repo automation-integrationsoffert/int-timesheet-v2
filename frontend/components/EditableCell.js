@@ -48,9 +48,11 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
     const isDateFieldEditable = fieldName === 'Date';
     const isIndividualHoursField = fieldName === 'Individual Hours';
     const isProjectFromTaskEditable = fieldName === 'Project from Task';
+    const isWarningField = fieldName === 'Warning';
+    const isTimesheetNotesField = fieldName === 'Timesheet Notes';
     
     // These fields should always be editable (unless read-only for other reasons)
-    const shouldBeEditable = isProjectImportField || isNameField || isDateFieldEditable || isIndividualHoursField || isProjectFromTaskEditable;
+    const shouldBeEditable = isProjectImportField || isNameField || isDateFieldEditable || isIndividualHoursField || isProjectFromTaskEditable || isWarningField || isTimesheetNotesField;
     
     const canEdit = record?.parentTable?.hasPermissionToUpdateRecords?.([{id: record.id, fields: {[field.id]: null}}]) ?? false;
     const isFormula = fieldType === FieldType.FORMULA;
@@ -74,8 +76,11 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
     const isProjectFromTaskField = fieldName === 'Project from Task' || fieldName === 'Project from Task - Ext';
     
     // For lookup fields (Email from Name, Project from Task), use getCellValueAsString to get value directly
+    // For text fields (SINGLE_LINE_TEXT, MULTILINE_TEXT), also use getCellValueAsString for better compatibility
     const cellValue = field ? (
         (isEmailField || isProjectFromTaskField) && isLookup 
+            ? (record.getCellValueAsString(field) || '')
+            : (fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.MULTILINE_TEXT)
             ? (record.getCellValueAsString(field) || '')
             : (record.getCellValue(field) ?? '')
     ) : '';
@@ -98,11 +103,20 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
                     setEditValue('');
                 }
             } else {
-                // For other fields, use formatted display value
-                // Only update if editValue is empty (initial load) to avoid overwriting user input
-                if (editValue === '') {
+                // For text fields (SINGLE_LINE_TEXT, MULTILINE_TEXT), sync when cellValue changes
+                // This ensures the input reflects the current value from Airtable
+                if (fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.MULTILINE_TEXT) {
                     const formattedValue = formatDisplayValue(cellValue, fieldType, fieldName);
-                    setEditValue(formattedValue);
+                    // Always sync for text fields to keep them in sync with Airtable
+                    if (editValue !== formattedValue) {
+                        setEditValue(formattedValue);
+                    }
+                } else {
+                    // For other fields, only update if editValue is empty (initial load) to avoid overwriting user input
+                    if (editValue === '') {
+                        const formattedValue = formatDisplayValue(cellValue, fieldType, fieldName);
+                        setEditValue(formattedValue);
+                    }
                 }
             }
             
@@ -268,6 +282,9 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
                 valueToSave = selectedOption ? {id: selectedOption.id} : null;
             } else if (fieldType === FieldType.CHECKBOX) {
                 valueToSave = editValue === 'true' || editValue === true;
+            } else if (fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.MULTILINE_TEXT) {
+                // For text fields (including Warning), convert empty strings to null
+                valueToSave = editValue === '' ? null : editValue;
             }
             
             await record.parentTable.updateRecordAsync(record, {
@@ -706,7 +723,7 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
             inputType = 'datetime-local';
         } else if (fieldType === FieldType.CHECKBOX) {
             inputType = 'checkbox';
-        } else if (fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.MULTILINE_TEXT || isProjectImportField) {
+        } else if (fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.MULTILINE_TEXT || isProjectImportField || isWarningField || isTimesheetNotesField) {
             inputType = 'text';
         } else if (fieldType === FieldType.EMAIL || fieldType === FieldType.URL || fieldType === FieldType.PHONE_NUMBER) {
             inputType = 'text';
