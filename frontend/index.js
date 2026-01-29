@@ -43,6 +43,7 @@ function TimesheetApp() {
     const createdBy2 = customPropertyValueByKey.createdBy2;
     const name = customPropertyValueByKey.name;
     const date = customPropertyValueByKey.date;
+    const yearWeek = customPropertyValueByKey.yearWeek;
     const individualHours = customPropertyValueByKey.individualHours;
     const weekday = customPropertyValueByKey.weekday;
     const projectFromTask = customPropertyValueByKey.projectFromTask;
@@ -51,6 +52,7 @@ function TimesheetApp() {
     const warning = customPropertyValueByKey.warning;
     const timesheetNotes = customPropertyValueByKey.timesheetNotes;
     const timeTaskType = customPropertyValueByKey.timeTaskType;
+    const userEmail = customPropertyValueByKey.userEmail;
     
     // Fetch Task records using an existing record (if available) to avoid creating temporary records
     useEffect(() => {
@@ -164,6 +166,7 @@ function TimesheetApp() {
         {key: 'createdBy2', label: 'Created By 2', field: createdBy2},
         {key: 'name', label: 'Name', field: nameField}, // Always include Name field
         {key: 'date', label: 'Date', field: date},
+        {key: 'yearWeek', label: 'Year-Week', field: yearWeek},
         {key: 'individualHours', label: 'Individual Hours', field: individualHours},
         {key: 'weekday', label: 'Weekday', field: weekday},
         {key: 'projectFromTask', label: 'Project from Task', field: projectFromTask},
@@ -175,9 +178,10 @@ function TimesheetApp() {
     ];
     
     // Fields to display in table in the specified order
-    // Order: Date, Warning, Weekday, Individual hours, Task, Project from Task, Timesheet Notes, Time Task Type, Delete
+    // Order: Date, Year-Week, Warning, Weekday, Individual hours, Task, Project from Task, Timesheet Notes, Time Task Type, Delete, Name, Created By 2, Email of the logged in user
     const fields = [
         {key: 'date', label: 'Date', field: date},
+        {key: 'yearWeek', label: 'Year-Week', field: yearWeek},
         {key: 'warning', label: 'Warning', field: warning},
         {key: 'weekday', label: 'Weekday', field: weekday},
         {key: 'individualHours', label: 'Individual Hours', field: individualHours},
@@ -186,6 +190,9 @@ function TimesheetApp() {
         {key: 'timesheetNotes', label: 'Timesheet Notes', field: timesheetNotes},
         {key: 'timeTaskType', label: 'Time Task Type', field: timeTaskType},
         {key: 'delete', label: 'Delete', field: deleteField},
+        {key: 'name', label: 'Name', field: nameField},
+        {key: 'createdBy2', label: 'Created By 2', field: createdBy2},
+        {key: 'userEmail', label: 'Email of the logged in user', field: userEmail},
     ];
 
     return (

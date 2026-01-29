@@ -121,6 +121,15 @@ export function getCustomProperties(base) {
             defaultValue: findField(timesheetTable, 'Date'),
         },
         {
+            key: 'yearWeek',
+            label: 'Year-Week',
+            type: 'field',
+            table: timesheetTable,
+            shouldFieldBeAllowed: (field) => 
+                field.config.type === FieldType.FORMULA,
+            defaultValue: findField(timesheetTable, 'Year-Week'),
+        },
+        {
             key: 'individualHours',
             label: 'Individual Hours',
             type: 'field',
@@ -188,6 +197,16 @@ export function getCustomProperties(base) {
             shouldFieldBeAllowed: (field) => 
                 field.config.type === FieldType.SINGLE_SELECT,
             defaultValue: findField(timesheetTable, 'Time Task Type'),
+        },
+        {
+            key: 'userEmail',
+            label: 'Email of the logged in user',
+            type: 'field',
+            table: timesheetTable,
+            shouldFieldBeAllowed: (field) => 
+                field.config.type === FieldType.SINGLE_LINE_TEXT || 
+                field.config.type === FieldType.EMAIL,
+            defaultValue: findField(timesheetTable, 'Email of the logged in user'),
         },
     ];
 }

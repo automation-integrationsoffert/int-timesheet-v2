@@ -347,12 +347,13 @@ export function CreateRecordModal({
             // Always set Name field programmatically from logged-in user's email
             // This ensures the Name field is always set, even if not in form values
             const nameField = fields.find(f => f.key === 'name' || f.field?.name === 'Name')?.field;
+            let userName = null;
             if (nameField && nameField.config.type === FieldType.SINGLE_SELECT) {
                 // Get logged-in user's email
                 const userEmail = session?.currentUser?.email;
                 if (userEmail) {
                     // Get Name from Users Table based on email
-                    const userName = findUserNameByEmail(userEmail);
+                    userName = findUserNameByEmail(userEmail);
                     if (userName) {
                         // Find matching option in Name field
                         const nameOptions = nameField.config?.options?.choices || [];
@@ -368,10 +369,60 @@ export function CreateRecordModal({
                         }
                     } else {
                         console.warn('[Modal] User name not found in Users Table for email:', userEmail);
+                        // Fallback to session name
+                        if (session?.currentUser?.name) {
+                            userName = session.currentUser.name;
+                        }
                     }
-                } else {
-                    console.warn('[Modal] No logged-in user email available');
+                } else if (session?.currentUser?.name) {
+                    // Fallback to session name if no email
+                    userName = session.currentUser.name;
                 }
+            }
+            
+            // Always set Created By 2 field programmatically with logged-in user's name
+            const createdBy2Field = fields.find(f => f.key === 'createdBy2' || f.field?.name === 'Created By 2')?.field;
+            if (createdBy2Field && userName) {
+                const createdBy2FieldType = createdBy2Field.config.type;
+                if (createdBy2FieldType === FieldType.SINGLE_SELECT) {
+                    const createdBy2Options = createdBy2Field.config?.options?.choices || [];
+                    const matchingCreatedBy2Option = createdBy2Options.find(opt => 
+                        opt.name && opt.name.toLowerCase() === userName.toLowerCase()
+                    );
+                    if (matchingCreatedBy2Option) {
+                        // Set Created By 2 field programmatically
+                        fieldsToSet[createdBy2Field.id] = {id: matchingCreatedBy2Option.id};
+                        console.log('[Modal] Created By 2 field set programmatically:', matchingCreatedBy2Option.name);
+                    } else {
+                        console.warn('[Modal] Created By 2 field option not found for:', userName);
+                    }
+                } else if (createdBy2FieldType === FieldType.SINGLE_LINE_TEXT || createdBy2FieldType === FieldType.MULTILINE_TEXT) {
+                    // For text fields, set directly
+                    fieldsToSet[createdBy2Field.id] = userName;
+                    console.log('[Modal] Created By 2 field (text) set programmatically:', userName);
+                }
+            }
+            
+            // Always set User Email field programmatically with logged-in user's email
+            const userEmailField = fields.find(f => f.key === 'userEmail' || f.field?.name === 'Email of the logged in user')?.field;
+            console.log('[Modal] Setting User Email field:', {
+                userEmailField: userEmailField ? {id: userEmailField.id, name: userEmailField.name, type: userEmailField.config?.type} : null,
+                hasSession: !!session,
+                hasCurrentUser: !!session?.currentUser,
+                userEmail: session?.currentUser?.email,
+                allFieldKeys: fields.map(f => ({key: f.key, fieldName: f.field?.name}))
+            });
+            if (userEmailField && session?.currentUser?.email) {
+                const loggedInUserEmail = session.currentUser.email;
+                // Set User Email field with logged-in user's email
+                fieldsToSet[userEmailField.id] = loggedInUserEmail;
+                console.log('[Modal] User Email field set programmatically:', loggedInUserEmail);
+            } else {
+                console.warn('[Modal] Cannot set User Email field:', {
+                    hasUserEmailField: !!userEmailField,
+                    hasEmail: !!session?.currentUser?.email,
+                    sessionInfo: session ? {hasCurrentUser: !!session.currentUser, email: session.currentUser?.email} : 'no session'
+                });
             }
             
             await timesheetTable.createRecordAsync(fieldsToSet);
@@ -384,7 +435,13 @@ export function CreateRecordModal({
     };
 
     const renderFieldInput = ({key, label, field}) => {
-        if (!field) return null;
+        if (!field) {
+            // For User Email field, still render even if field is not configured (for debugging)
+            if (key === 'userEmail') {
+                console.warn('[Modal] User Email field not configured in custom properties');
+            }
+            return null;
+        }
         
         const fieldName = field.name || '';
         const fieldType = field.config.type;
@@ -392,6 +449,21 @@ export function CreateRecordModal({
         const isNameField = fieldName === 'Name';
         const isCreatedBy2Field = fieldName === 'Created By 2';
         const isEmailFromNameField = fieldName === 'Email (from Name)';
+        const isUserEmailField = fieldName === 'Email of the logged in user' || key === 'userEmail';
+        
+        // Debug log for User Email field
+        if (key === 'userEmail' || isUserEmailField) {
+            console.log('[Modal] User Email field detected:', {
+                key,
+                fieldName,
+                fieldType,
+                isUserEmailField,
+                hasSession: !!session,
+                hasCurrentUser: !!session?.currentUser,
+                userEmail: session?.currentUser?.email,
+                sessionCurrentUser: session?.currentUser
+            });
+        }
         const isProjectImportField = fieldName === 'Project Import';
         const isDateFieldEditable = fieldName === 'Date';
         const isIndividualHoursField = fieldName === 'Individual Hours';
@@ -408,7 +480,7 @@ export function CreateRecordModal({
         // Only show editable fields
         const isEditable = isDateFieldEditable || isIndividualHoursField || 
                           isProjectFromTaskEditable || isWarningField || isTimesheetNotesField || 
-                          isTimeTaskTypeField || isTaskField || isNameField || isCreatedBy2Field || isEmailFromNameField;
+                          isTimeTaskTypeField || isTaskField || isNameField || isCreatedBy2Field || isEmailFromNameField || isUserEmailField;
         
         if (!isEditable) return null;
         
@@ -519,6 +591,35 @@ export function CreateRecordModal({
                             </option>
                         ))}
                     </select>
+                </div>
+            );
+        }
+        
+        // User Email field - read-only (auto-populated with logged-in user's email)
+        if (isUserEmailField && (fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.EMAIL)) {
+            const loggedInEmail = session?.currentUser?.email || '';
+            console.log('[Modal] Rendering User Email field:', {
+                fieldName,
+                fieldType,
+                loggedInEmail,
+                hasSession: !!session,
+                hasCurrentUser: !!session?.currentUser
+            });
+            return (
+                <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-gray900 dark:text-gray-gray100 mb-1">
+                        {label}
+                    </label>
+                    <input
+                        type="email"
+                        value={loggedInEmail}
+                        disabled
+                        className="w-full px-3 py-2 border border-gray-gray300 dark:border-gray-gray600 rounded-md bg-gray-gray100 dark:bg-gray-gray700 text-gray-gray500 dark:text-gray-gray400 cursor-not-allowed"
+                        readOnly
+                    />
+                    <p className="mt-1 text-xs text-gray-gray500 dark:text-gray-gray400">
+                        This field is automatically populated with the logged-in user's email
+                    </p>
                 </div>
             );
         }
