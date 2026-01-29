@@ -175,7 +175,7 @@ function TimesheetApp() {
     ];
     
     // Fields to display in table in the specified order
-    // Order: Date, Warning, Weekday, Individual hours, Task, Project from Task, Timesheet Notes, Time Task Type
+    // Order: Date, Warning, Weekday, Individual hours, Task, Project from Task, Timesheet Notes, Time Task Type, Delete
     const fields = [
         {key: 'date', label: 'Date', field: date},
         {key: 'warning', label: 'Warning', field: warning},
@@ -185,6 +185,7 @@ function TimesheetApp() {
         {key: 'projectFromTask', label: 'Project from Task', field: projectFromTask},
         {key: 'timesheetNotes', label: 'Timesheet Notes', field: timesheetNotes},
         {key: 'timeTaskType', label: 'Time Task Type', field: timeTaskType},
+        {key: 'delete', label: 'Delete', field: deleteField},
     ];
 
     return (
