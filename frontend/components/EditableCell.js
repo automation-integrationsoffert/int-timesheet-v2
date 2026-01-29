@@ -1053,6 +1053,7 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
                 <>
                     {showCalendar && createPortal(
                         <CalendarPicker
+                            key={`calendar-${record.id}-${field.id}`}
                             selectedDate={currentDate}
                             onDateSelect={handleDateSelect}
                             availableDates={availableDates}
@@ -1130,6 +1131,7 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
         <>
             {showCalendar && createPortal(
                 <CalendarPicker
+                    key={`calendar-${record.id}-${field.id}`}
                     selectedDate={currentDate}
                     onDateSelect={handleDateSelect}
                     availableDates={availableDates}

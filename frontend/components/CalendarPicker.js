@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import {formatDateToString, getDaysInMonth, getFirstDayOfMonth, isDateAvailable, isDateSelected} from '../utils/dateUtils';
 
 /**
@@ -22,13 +22,44 @@ export function CalendarPicker({selectedDate, onDateSelect, availableDates, onCl
     };
     
     const [currentMonth, setCurrentMonth] = useState(getInitialMonth());
+    const hasUserNavigatedRef = useRef(false);
+    const selectedDateRef = useRef(selectedDate);
     
-    // Update currentMonth when selectedDate changes
+    // Update currentMonth when selectedDate changes (but only if user hasn't manually navigated)
     useEffect(() => {
-        if (selectedDate) {
+        // Reset navigation flag if selectedDate changed significantly (different month/year)
+        if (selectedDateRef.current !== selectedDate) {
+            const prevDate = selectedDateRef.current;
+            const newDate = selectedDate;
+            
+            if (prevDate && newDate) {
+                const prevDateObj = prevDate instanceof Date ? prevDate : new Date(prevDate);
+                const newDateObj = newDate instanceof Date ? newDate : new Date(newDate);
+                if (!isNaN(prevDateObj.getTime()) && !isNaN(newDateObj.getTime())) {
+                    const prevKey = `${prevDateObj.getFullYear()}-${prevDateObj.getMonth()}`;
+                    const newKey = `${newDateObj.getFullYear()}-${newDateObj.getMonth()}`;
+                    if (prevKey !== newKey) {
+                        // Selected date changed to a different month, reset navigation flag
+                        hasUserNavigatedRef.current = false;
+                    }
+                }
+            }
+            selectedDateRef.current = selectedDate;
+        }
+        
+        if (!hasUserNavigatedRef.current && selectedDate) {
             const date = selectedDate instanceof Date ? selectedDate : new Date(selectedDate);
             if (!isNaN(date.getTime())) {
-                setCurrentMonth(new Date(date.getFullYear(), date.getMonth(), 1));
+                const newMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+                setCurrentMonth(prev => {
+                    // Only update if the month/year is actually different
+                    const prevKey = `${prev.getFullYear()}-${prev.getMonth()}`;
+                    const newKey = `${newMonth.getFullYear()}-${newMonth.getMonth()}`;
+                    if (prevKey !== newKey) {
+                        return newMonth;
+                    }
+                    return prev;
+                });
             }
         }
     }, [selectedDate]);
@@ -41,11 +72,29 @@ export function CalendarPicker({selectedDate, onDateSelect, availableDates, onCl
     };
     
     const prevMonth = () => {
-        setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
+        // Set navigation flag synchronously using ref to prevent useEffect from interfering
+        hasUserNavigatedRef.current = true;
+        setCurrentMonth(prev => {
+            const newMonth = new Date(prev.getFullYear(), prev.getMonth() - 1, 1);
+            console.log('[Calendar] Previous month:', {
+                from: `${prev.getFullYear()}-${prev.getMonth() + 1}`,
+                to: `${newMonth.getFullYear()}-${newMonth.getMonth() + 1}`
+            });
+            return newMonth;
+        });
     };
     
     const nextMonth = () => {
-        setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
+        // Set navigation flag synchronously using ref to prevent useEffect from interfering
+        hasUserNavigatedRef.current = true;
+        setCurrentMonth(prev => {
+            const newMonth = new Date(prev.getFullYear(), prev.getMonth() + 1, 1);
+            console.log('[Calendar] Next month:', {
+                from: `${prev.getFullYear()}-${prev.getMonth() + 1}`,
+                to: `${newMonth.getFullYear()}-${newMonth.getMonth() + 1}`
+            });
+            return newMonth;
+        });
     };
     
     const daysInMonth = getDaysInMonth(currentMonth);
@@ -68,7 +117,12 @@ export function CalendarPicker({selectedDate, onDateSelect, availableDates, onCl
             <div className="bg-white dark:bg-gray-gray700 rounded-lg shadow-xl p-6 max-w-md w-full mx-4" onClick={(e) => e.stopPropagation()}>
                 <div className="flex items-center justify-between mb-4">
                     <button
-                        onClick={prevMonth}
+                        type="button"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            prevMonth();
+                        }}
                         className="px-3 py-1 text-sm text-gray-gray700 dark:text-gray-gray300 hover:bg-gray-gray100 dark:hover:bg-gray-gray600 rounded"
                     >
                         ←
@@ -77,7 +131,12 @@ export function CalendarPicker({selectedDate, onDateSelect, availableDates, onCl
                         {monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}
                     </h3>
                     <button
-                        onClick={nextMonth}
+                        type="button"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            nextMonth();
+                        }}
                         className="px-3 py-1 text-sm text-gray-gray700 dark:text-gray-gray300 hover:bg-gray-gray100 dark:hover:bg-gray-gray600 rounded"
                     >
                         →
