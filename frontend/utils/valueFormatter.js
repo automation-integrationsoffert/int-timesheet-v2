@@ -76,6 +76,10 @@ export function formatDisplayValue(value, fieldType, fieldName) {
     
     // Handle objects (single select, single linked record, etc.)
     if (value && typeof value === 'object') {
+        // For SINGLE_SELECT fields, the value is {id: string, name: string, color: string}
+        if (fieldType === FieldType.SINGLE_SELECT) {
+            return value.name || value.displayName || String(value);
+        }
         // For CREATED_BY and LAST_MODIFIED_BY fields, show name, NEVER email
         if (fieldType === FieldType.CREATED_BY || fieldType === FieldType.LAST_MODIFIED_BY || 
             fieldType === FieldType.SINGLE_COLLABORATOR) {

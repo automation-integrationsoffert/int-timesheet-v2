@@ -149,12 +149,20 @@ function TimesheetApp() {
         );
     }
 
-    const fields = [
+    // Ensure Name field is always available - get it from custom properties or find it in the table
+    let nameField = name;
+    if (!nameField && timesheetTable) {
+        // If Name field is not configured in custom properties, try to find it in the table
+        nameField = timesheetTable.fields.find(f => f.name === 'Name' && f.config.type === FieldType.SINGLE_SELECT);
+    }
+    
+    // All fields (including those hidden from table but shown in modal)
+    const allFields = [
         {key: 'projectImport', label: 'Project Import', field: projectImport},
         {key: 'emailFromName', label: 'Email (from Name)', field: emailFromName},
         {key: 'task', label: 'Task', field: task},
         {key: 'createdBy2', label: 'Created By 2', field: createdBy2},
-        {key: 'name', label: 'Name', field: name},
+        {key: 'name', label: 'Name', field: nameField}, // Always include Name field
         {key: 'date', label: 'Date', field: date},
         {key: 'individualHours', label: 'Individual Hours', field: individualHours},
         {key: 'weekday', label: 'Weekday', field: weekday},
@@ -165,6 +173,11 @@ function TimesheetApp() {
         {key: 'timesheetNotes', label: 'Timesheet Notes', field: timesheetNotes},
         {key: 'timeTaskType', label: 'Time Task Type', field: timeTaskType},
     ];
+    
+    // Fields to display in table (hide Project Import and Email from Name)
+    const fields = allFields.filter(f => 
+        f.key !== 'projectImport' && f.key !== 'emailFromName'
+    );
 
     return (
         <div className="w-full h-full bg-gray-gray50 dark:bg-gray-gray800 p-4 sm:p-6 overflow-auto">
@@ -236,7 +249,8 @@ function TimesheetApp() {
                                         className="hover:bg-gray-gray50 dark:hover:bg-gray-gray600 transition-colors"
                                     >
                                         {fields.map(({key, field}) => (
-                                            field && (
+                                            // Always render Name field, even if not configured (EditableCell will handle null field)
+                                            (field || key === 'name') && (
                                                 <EditableCell
                                                     key={key}
                                                     record={record}
@@ -264,7 +278,7 @@ function TimesheetApp() {
                 isOpen={showCreateModal}
                 onClose={() => setShowCreateModal(false)}
                 timesheetTable={timesheetTable}
-                fields={fields}
+                fields={allFields}
                 onRecordCreated={handleRecordCreated}
                 session={session}
                 usersTable={usersTable}

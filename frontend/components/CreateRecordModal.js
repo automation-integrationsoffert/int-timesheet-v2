@@ -294,6 +294,11 @@ export function CreateRecordModal({
                 if (value === undefined || value === null || value === '') return;
                 
                 const fieldType = field.config.type;
+                const fieldName = field.name || '';
+                const isEmailFromNameField = fieldName === 'Email (from Name)';
+                
+                // Skip Email (from Name) field - it's a computed/lookup field and cannot be set directly
+                if (isEmailFromNameField) return;
                 
                 if (fieldType === FieldType.SINGLE_SELECT || fieldType === FieldType.MULTIPLE_SELECTS) {
                     // For select fields, value should be {id: optionId} or array of {id: optionId}
@@ -339,6 +344,36 @@ export function CreateRecordModal({
                 }
             });
             
+            // Always set Name field programmatically from logged-in user's email
+            // This ensures the Name field is always set, even if not in form values
+            const nameField = fields.find(f => f.key === 'name' || f.field?.name === 'Name')?.field;
+            if (nameField && nameField.config.type === FieldType.SINGLE_SELECT) {
+                // Get logged-in user's email
+                const userEmail = session?.currentUser?.email;
+                if (userEmail) {
+                    // Get Name from Users Table based on email
+                    const userName = findUserNameByEmail(userEmail);
+                    if (userName) {
+                        // Find matching option in Name field
+                        const nameOptions = nameField.config?.options?.choices || [];
+                        const matchingNameOption = nameOptions.find(opt => 
+                            opt.name && opt.name.toLowerCase() === userName.toLowerCase()
+                        );
+                        if (matchingNameOption) {
+                            // Set Name field programmatically
+                            fieldsToSet[nameField.id] = {id: matchingNameOption.id};
+                            console.log('[Modal] Name field set programmatically:', matchingNameOption.name);
+                        } else {
+                            console.warn('[Modal] Name field option not found for:', userName);
+                        }
+                    } else {
+                        console.warn('[Modal] User name not found in Users Table for email:', userEmail);
+                    }
+                } else {
+                    console.warn('[Modal] No logged-in user email available');
+                }
+            }
+            
             await timesheetTable.createRecordAsync(fieldsToSet);
             onRecordCreated();
             onClose();
@@ -356,6 +391,7 @@ export function CreateRecordModal({
         const value = formValues[key];
         const isNameField = fieldName === 'Name';
         const isCreatedBy2Field = fieldName === 'Created By 2';
+        const isEmailFromNameField = fieldName === 'Email (from Name)';
         const isProjectImportField = fieldName === 'Project Import';
         const isDateFieldEditable = fieldName === 'Date';
         const isIndividualHoursField = fieldName === 'Individual Hours';
@@ -366,10 +402,13 @@ export function CreateRecordModal({
         const isDeleteField = fieldName === 'Delete';
         const isTaskField = fieldName === 'Task';
         
+        // Don't show Delete and Project Import fields in modal
+        if (isDeleteField || isProjectImportField) return null;
+        
         // Only show editable fields
-        const isEditable = isProjectImportField || isDateFieldEditable || isIndividualHoursField || 
+        const isEditable = isDateFieldEditable || isIndividualHoursField || 
                           isProjectFromTaskEditable || isWarningField || isTimesheetNotesField || 
-                          isTimeTaskTypeField || isDeleteField || isTaskField || isNameField || isCreatedBy2Field;
+                          isTimeTaskTypeField || isTaskField || isNameField || isCreatedBy2Field || isEmailFromNameField;
         
         if (!isEditable) return null;
         
@@ -402,6 +441,81 @@ export function CreateRecordModal({
                         {options.map(option => (
                             <option key={option.id} value={option.id}>
                                 {option.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            );
+        }
+        
+        // Email (from Name) field - select dropdown with emails from Users Table
+        if (isEmailFromNameField) {
+            // Get all emails from Users Table
+            const emailOptions = [];
+            if (usersTable && usersRecords) {
+                const emailField = usersTable.fields.find(f => f.name === 'Email');
+                const nameField = usersTable.fields.find(f => f.name === 'Name');
+                if (emailField && nameField) {
+                    usersRecords.forEach(record => {
+                        const email = record.getCellValue(emailField);
+                        const name = record.getCellValue(nameField);
+                        if (email) {
+                            emailOptions.push({
+                                email: String(email),
+                                name: name ? String(name) : String(email),
+                                id: record.id
+                            });
+                        }
+                    });
+                }
+            }
+            
+            return (
+                <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-gray900 dark:text-gray-gray100 mb-1">
+                        {label}
+                    </label>
+                    <select
+                        value={value || ''}
+                        onChange={(e) => {
+                            const selectedEmail = e.target.value;
+                            handleFieldChange(key, selectedEmail);
+                            
+                            // Optionally update Name field when email is selected
+                            if (selectedEmail && usersTable && usersRecords) {
+                                const emailField = usersTable.fields.find(f => f.name === 'Email');
+                                const nameField = usersTable.fields.find(f => f.name === 'Name');
+                                if (emailField && nameField) {
+                                    const userRecord = usersRecords.find(record => {
+                                        const recordEmail = record.getCellValue(emailField);
+                                        return recordEmail && String(recordEmail).toLowerCase() === selectedEmail.toLowerCase();
+                                    });
+                                    if (userRecord) {
+                                        const userName = userRecord.getCellValue(nameField);
+                                        // Update Name field if it matches
+                                        const nameFieldConfig = fields.find(f => f.key === 'name')?.field;
+                                        if (nameFieldConfig && nameFieldConfig.config.type === FieldType.SINGLE_SELECT) {
+                                            const nameOptions = nameFieldConfig.config?.options?.choices || [];
+                                            const matchingNameOption = nameOptions.find(opt => 
+                                                opt.name && opt.name.toLowerCase() === String(userName).toLowerCase()
+                                            );
+                                            if (matchingNameOption) {
+                                                setFormValues(prev => ({
+                                                    ...prev,
+                                                    name: {id: matchingNameOption.id}
+                                                }));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }}
+                        className="w-full px-3 py-2 border border-gray-gray300 dark:border-gray-gray600 rounded-md bg-white dark:bg-gray-gray800 text-gray-gray900 dark:text-gray-gray100"
+                    >
+                        <option value="">Select Email</option>
+                        {emailOptions.map((option, index) => (
+                            <option key={option.id || index} value={option.email}>
+                                {option.email} {option.name !== option.email ? `(${option.name})` : ''}
                             </option>
                         ))}
                     </select>

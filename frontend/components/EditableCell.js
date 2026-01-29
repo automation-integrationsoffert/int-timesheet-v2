@@ -96,10 +96,13 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
     
     // For lookup fields (Email from Name, Project from Task), use getCellValueAsString to get value directly
     // For text fields (SINGLE_LINE_TEXT, MULTILINE_TEXT), also use getCellValueAsString for better compatibility
+    // For SINGLE_SELECT fields (like Name), use getCellValueAsString to get the option name directly
     const cellValue = field ? (
         (isEmailField || isProjectFromTaskField) && isLookup 
             ? (record.getCellValueAsString(field) || '')
             : (fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.MULTILINE_TEXT)
+            ? (record.getCellValueAsString(field) || '')
+            : (fieldType === FieldType.SINGLE_SELECT && isNameField)
             ? (record.getCellValueAsString(field) || '')
             : (record.getCellValue(field) ?? '')
     ) : '';
@@ -130,53 +133,54 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
         return null;
     };
 
-    // Auto-populate Name field if empty (even though it's not editable)
+    // Auto-populate Name field if empty using logged-in user's email
     useEffect(() => {
         // Special handling for Name field: auto-populate if empty (even if not editable)
         if (isNameField && fieldType === FieldType.SINGLE_SELECT && !isFormula && !isLookup && !isClosed) {
+            // For Name field, cellValue is a string (from getCellValueAsString), so check if it's empty
             const currentValue = cellValue;
-            const currentOptionId = currentValue?.id || null;
+            const isEmpty = !currentValue || currentValue === '';
             
-            if (!currentOptionId && session?.currentUser?.email && usersTable && usersRecords) {
-                console.log('Auto-populating Name field for record:', record.id);
-                const userName = findUserNameByEmail(session.currentUser.email);
-                console.log('Found user name:', userName);
+            // Also check the actual cell value object to get the option ID if needed
+            const actualCellValue = record.getCellValue(field);
+            const currentOptionId = actualCellValue?.id || null;
+            
+            // Only auto-populate if field is empty and we have the necessary data
+            if ((isEmpty || !currentOptionId) && session?.currentUser?.email && usersTable && usersRecords) {
+                // Get logged-in user's email
+                const userEmail = session.currentUser.email;
+                
+                // Get Name from Users Table based on email
+                const userName = findUserNameByEmail(userEmail);
                 
                 if (userName) {
                     // Find the option that matches the user name
-                    const options = field?.config?.options?.choices || [];
-                    console.log('Name field options:', options.map(opt => opt.name));
+                    const currentField = getCurrentField();
+                    if (!currentField) return;
+                    
+                    const options = currentField?.config?.options?.choices || [];
                     const matchingOption = options.find(opt => opt.name === userName);
-                    console.log('Matching option:', matchingOption);
                     
                     if (matchingOption) {
                         // Auto-save the Name field
-                        const currentField = getCurrentField();
-                        if (currentField && canEdit) {
-                            console.log('Setting Name field to:', matchingOption.name);
+                        if (canEdit) {
                             record.parentTable.updateRecordAsync(record, {
                                 [currentField.id]: {id: matchingOption.id}
                             }).then(() => {
-                                console.log('Name field set successfully');
                                 if (onUpdate) onUpdate();
                             }).catch(error => {
                                 console.error('Error auto-setting Name field:', error);
                             });
-                        } else {
-                            console.warn('Cannot set Name field:', {
-                                hasCurrentField: !!currentField,
-                                canEdit: canEdit
-                            });
                         }
                     } else {
-                        console.warn('No matching option found for user name:', userName);
+                        console.warn('No matching option found for user name:', userName, 'Available options:', options.map(opt => opt.name));
                     }
                 } else {
-                    console.warn('User name not found for email:', session.currentUser.email);
+                    console.warn('User name not found in Users Table for email:', userEmail);
                 }
             }
         }
-    }, [isNameField, fieldType, cellValue, session, usersTable, usersRecords, field, record, isFormula, isLookup, isClosed, canEdit, onUpdate, fieldName, getCurrentField, findUserNameByEmail]);
+    }, [isNameField, fieldType, cellValue, session, usersTable, usersRecords, field, record, isFormula, isLookup, isClosed, canEdit, onUpdate, getCurrentField, findUserNameByEmail]);
     
     // Initialize editing state and value for editable fields - show as input from start
     useEffect(() => {
