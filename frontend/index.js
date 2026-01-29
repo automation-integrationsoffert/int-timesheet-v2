@@ -174,10 +174,18 @@ function TimesheetApp() {
         {key: 'timeTaskType', label: 'Time Task Type', field: timeTaskType},
     ];
     
-    // Fields to display in table (hide Project Import and Email from Name)
-    const fields = allFields.filter(f => 
-        f.key !== 'projectImport' && f.key !== 'emailFromName'
-    );
+    // Fields to display in table in the specified order
+    // Order: Date, Warning, Weekday, Individual hours, Task, Project from Task, Timesheet Notes, Time Task Type
+    const fields = [
+        {key: 'date', label: 'Date', field: date},
+        {key: 'warning', label: 'Warning', field: warning},
+        {key: 'weekday', label: 'Weekday', field: weekday},
+        {key: 'individualHours', label: 'Individual Hours', field: individualHours},
+        {key: 'task', label: 'Task', field: task},
+        {key: 'projectFromTask', label: 'Project from Task', field: projectFromTask},
+        {key: 'timesheetNotes', label: 'Timesheet Notes', field: timesheetNotes},
+        {key: 'timeTaskType', label: 'Time Task Type', field: timeTaskType},
+    ];
 
     return (
         <div className="w-full h-full bg-gray-gray50 dark:bg-gray-gray800 p-4 sm:p-6 overflow-auto">
