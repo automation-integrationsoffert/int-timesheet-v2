@@ -40837,14 +40837,28 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
   });
 
   // node_modules/@airtable/blocks/dist/esm/shared/ui/use_session.js
+  var useSession, use_session_default;
   var init_use_session = __esm({
     "node_modules/@airtable/blocks/dist/esm/shared/ui/use_session.js"() {
       init_use_watchable();
       init_sdk_context();
+      useSession = () => {
+        const {
+          session,
+          base
+        } = useSdk();
+        useWatchable(session, ["permissionLevel", "currentUser"]);
+        useWatchable(base, ["schema"]);
+        return session;
+      };
+      use_session_default = useSession;
     }
   });
 
   // node_modules/@airtable/blocks/dist/esm/interface/ui/use_session.js
+  function useSession2() {
+    return use_session_default();
+  }
   var init_use_session2 = __esm({
     "node_modules/@airtable/blocks/dist/esm/interface/ui/use_session.js"() {
       init_use_session();
@@ -41073,16 +41087,6 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     }
   });
 
-  // frontend/style.css
-  var style;
-  var init_style = __esm({
-    "frontend/style.css"() {
-      style = document.createElement("style");
-      style.textContent = '*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }\n\n/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Courier,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.z-10{z-index:10}.z-50{z-index:50}.mx-4{margin-left:1rem;margin-right:1rem}.mb-2{margin-bottom:.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mt-1{margin-top:.25rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.inline{display:inline}.flex{display:flex}.\\!table{display:table!important}.table{display:table}.grid{display:grid}.aspect-square{aspect-ratio:1/1}.h-full{height:100%}.max-h-48{max-height:12rem}.max-h-\\[90vh\\]{max-height:90vh}.min-h-screen{min-height:100vh}.w-1\\/3{width:33.333333%}.w-2\\/3{width:66.666667%}.w-full{width:100%}.min-w-\\[180px\\]{min-width:180px}.max-w-2xl{max-width:42rem}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.table-auto{table-layout:auto}.border-collapse{border-collapse:collapse}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.grid-cols-7{grid-template-columns:repeat(7,minmax(0,1fr))}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.space-x-2>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.5rem*var(--tw-space-x-reverse));margin-left:calc(.5rem*(1 - var(--tw-space-x-reverse)))}.space-x-3>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.75rem*var(--tw-space-x-reverse));margin-left:calc(.75rem*(1 - var(--tw-space-x-reverse)))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.divide-y>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px*(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px*var(--tw-divide-y-reverse))}.divide-gray-gray200>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(218 222 230/var(--tw-divide-opacity,1))}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-lg{border-radius:.875rem}.rounded-md{border-radius:.375rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-gray-gray100{--tw-border-opacity:1;border-color:rgb(229 233 240/var(--tw-border-opacity,1))}.border-gray-gray200{--tw-border-opacity:1;border-color:rgb(218 222 230/var(--tw-border-opacity,1))}.border-yellow-yellow{--tw-border-opacity:1;border-color:rgb(255 186 5/var(--tw-border-opacity,1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0/var(--tw-bg-opacity,1))}.bg-blue-blue{--tw-bg-opacity:1;background-color:rgb(22 110 225/var(--tw-bg-opacity,1))}.bg-gray-gray100{--tw-bg-opacity:1;background-color:rgb(229 233 240/var(--tw-bg-opacity,1))}.bg-gray-gray200{--tw-bg-opacity:1;background-color:rgb(218 222 230/var(--tw-bg-opacity,1))}.bg-gray-gray50{--tw-bg-opacity:1;background-color:rgb(246 248 252/var(--tw-bg-opacity,1))}.bg-red-red{--tw-bg-opacity:1;background-color:rgb(220 4 59/var(--tw-bg-opacity,1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-yellow-yellow{--tw-bg-opacity:1;background-color:rgb(255 186 5/var(--tw-bg-opacity,1))}.bg-opacity-20{--tw-bg-opacity:0.2}.bg-opacity-50{--tw-bg-opacity:0.5}.p-3{padding:.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pt-2{padding-top:.5rem}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.3125rem;line-height:1.625rem}.text-lg{font-size:.9375rem;line-height:1.375rem}.text-sm{font-size:.6875rem;line-height:1rem}.text-xl{font-size:1.0625rem;line-height:1.5rem}.text-xs{font-size:.5625rem;line-height:.875rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.tracking-wider{letter-spacing:.05em}.text-gray-gray400{--tw-text-opacity:1;color:rgb(151 154 160/var(--tw-text-opacity,1))}.text-gray-gray500{--tw-text-opacity:1;color:rgb(97 102 112/var(--tw-text-opacity,1))}.text-gray-gray600{--tw-text-opacity:1;color:rgb(65 69 77/var(--tw-text-opacity,1))}.text-gray-gray700{--tw-text-opacity:1;color:rgb(49 53 62/var(--tw-text-opacity,1))}.text-gray-gray900{--tw-text-opacity:1;color:rgb(17 18 21/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-50{opacity:.5}.shadow-lg{--tw-shadow:0px 0px 1px 0px rgba(0,0,0,.48),0px 0px 2px 0px rgba(0,0,0,.08),0px 2px 4px 0px rgba(0,0,0,.12),0px 2px 8px 0px rgba(0,0,0,.08);--tw-shadow-colored:0px 0px 1px 0px var(--tw-shadow-color),0px 0px 2px 0px var(--tw-shadow-color),0px 2px 4px 0px var(--tw-shadow-color),0px 2px 8px 0px var(--tw-shadow-color)}.shadow-lg,.shadow-sm{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-sm{--tw-shadow:0px 0px 1px rgba(0,0,0,.32),0px 0px 3px rgba(0,0,0,.11),0px 1px 4px rgba(0,0,0,.12);--tw-shadow-colored:0px 0px 1px var(--tw-shadow-color),0px 0px 3px var(--tw-shadow-color),0px 1px 4px var(--tw-shadow-color)}.shadow-xl{--tw-shadow:0px 0px 1px rgba(0,0,0,.24),0px 0px 2px rgba(0,0,0,.16),0px 3px 4px rgba(0,0,0,.06),0px 6px 8px rgba(0,0,0,.06),0px 12px 16px rgba(0,0,0,.08),0px 18px 32px rgba(0,0,0,.06);--tw-shadow-colored:0px 0px 1px var(--tw-shadow-color),0px 0px 2px var(--tw-shadow-color),0px 3px 4px var(--tw-shadow-color),0px 6px 8px var(--tw-shadow-color),0px 12px 16px var(--tw-shadow-color),0px 18px 32px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.hover\\:bg-blue-blue:hover{--tw-bg-opacity:1;background-color:rgb(22 110 225/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray100:hover{--tw-bg-opacity:1;background-color:rgb(229 233 240/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray300:hover{--tw-bg-opacity:1;background-color:rgb(196 199 205/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray50:hover{--tw-bg-opacity:1;background-color:rgb(246 248 252/var(--tw-bg-opacity,1))}.hover\\:text-gray-gray700:hover{--tw-text-opacity:1;color:rgb(49 53 62/var(--tw-text-opacity,1))}.hover\\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.focus\\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus\\:ring-blue-blue:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(22 110 225/var(--tw-ring-opacity,1))}.focus\\:ring-red-red:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(220 4 59/var(--tw-ring-opacity,1))}.focus\\:ring-offset-2:focus{--tw-ring-offset-width:2px}.disabled\\:cursor-not-allowed:disabled{cursor:not-allowed}.disabled\\:opacity-50:disabled{opacity:.5}@media (min-width:640px){.sm\\:p-6{padding:1.5rem}.sm\\:p-8{padding:2rem}}@media (prefers-color-scheme:dark){.dark\\:divide-gray-gray600>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(65 69 77/var(--tw-divide-opacity,1))}.dark\\:border-gray-gray500{--tw-border-opacity:1;border-color:rgb(97 102 112/var(--tw-border-opacity,1))}.dark\\:border-gray-gray600{--tw-border-opacity:1;border-color:rgb(65 69 77/var(--tw-border-opacity,1))}.dark\\:bg-gray-gray600{--tw-bg-opacity:1;background-color:rgb(65 69 77/var(--tw-bg-opacity,1))}.dark\\:bg-gray-gray700{--tw-bg-opacity:1;background-color:rgb(49 53 62/var(--tw-bg-opacity,1))}.dark\\:bg-gray-gray800{--tw-bg-opacity:1;background-color:rgb(29 31 37/var(--tw-bg-opacity,1))}.dark\\:text-gray-gray100{--tw-text-opacity:1;color:rgb(229 233 240/var(--tw-text-opacity,1))}.dark\\:text-gray-gray300{--tw-text-opacity:1;color:rgb(196 199 205/var(--tw-text-opacity,1))}.dark\\:text-gray-gray400{--tw-text-opacity:1;color:rgb(151 154 160/var(--tw-text-opacity,1))}.dark\\:text-gray-gray500{--tw-text-opacity:1;color:rgb(97 102 112/var(--tw-text-opacity,1))}.dark\\:hover\\:bg-gray-gray500:hover{--tw-bg-opacity:1;background-color:rgb(97 102 112/var(--tw-bg-opacity,1))}.dark\\:hover\\:bg-gray-gray600:hover{--tw-bg-opacity:1;background-color:rgb(65 69 77/var(--tw-bg-opacity,1))}.dark\\:hover\\:text-gray-gray200:hover{--tw-text-opacity:1;color:rgb(218 222 230/var(--tw-text-opacity,1))}}';
-      document.head.appendChild(style);
-    }
-  });
-
   // node_modules/@airtable/blocks/dist/esm/interface/models/models.js
   var init_models = __esm({
     "node_modules/@airtable/blocks/dist/esm/interface/models/models.js"() {
@@ -41093,6 +41097,16 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
       init_field();
       init_record();
       init_session();
+    }
+  });
+
+  // frontend/style.css
+  var style;
+  var init_style = __esm({
+    "frontend/style.css"() {
+      style = document.createElement("style");
+      style.textContent = '*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }\n\n/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Courier,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.z-10{z-index:10}.z-50{z-index:50}.mx-4{margin-left:1rem;margin-right:1rem}.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mt-1{margin-top:.25rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.block{display:block}.inline{display:inline}.flex{display:flex}.\\!table{display:table!important}.table{display:table}.grid{display:grid}.hidden{display:none}.aspect-square{aspect-ratio:1/1}.h-6{height:1.5rem}.h-full{height:100%}.max-h-48{max-height:12rem}.max-h-60{max-height:15rem}.max-h-\\[90vh\\]{max-height:90vh}.min-h-screen{min-height:100vh}.w-1\\/3{width:33.333333%}.w-2\\/3{width:66.666667%}.w-6{width:1.5rem}.w-full{width:100%}.min-w-\\[180px\\]{min-width:180px}.max-w-2xl{max-width:42rem}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.table-auto{table-layout:auto}.border-collapse{border-collapse:collapse}.cursor-default{cursor:default}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.grid-cols-7{grid-template-columns:repeat(7,minmax(0,1fr))}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-3{gap:.75rem}.space-x-2>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.5rem*var(--tw-space-x-reverse));margin-left:calc(.5rem*(1 - var(--tw-space-x-reverse)))}.space-x-3>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(.75rem*var(--tw-space-x-reverse));margin-left:calc(.75rem*(1 - var(--tw-space-x-reverse)))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.divide-y>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px*(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px*var(--tw-divide-y-reverse))}.divide-gray-gray200>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(218 222 230/var(--tw-divide-opacity,1))}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-lg{border-radius:.875rem}.rounded-md{border-radius:.375rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-gray-gray100{--tw-border-opacity:1;border-color:rgb(229 233 240/var(--tw-border-opacity,1))}.border-gray-gray200{--tw-border-opacity:1;border-color:rgb(218 222 230/var(--tw-border-opacity,1))}.border-gray-gray300{--tw-border-opacity:1;border-color:rgb(196 199 205/var(--tw-border-opacity,1))}.border-yellow-yellow{--tw-border-opacity:1;border-color:rgb(255 186 5/var(--tw-border-opacity,1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0/var(--tw-bg-opacity,1))}.bg-blue-blue{--tw-bg-opacity:1;background-color:rgb(22 110 225/var(--tw-bg-opacity,1))}.bg-gray-gray100{--tw-bg-opacity:1;background-color:rgb(229 233 240/var(--tw-bg-opacity,1))}.bg-gray-gray200{--tw-bg-opacity:1;background-color:rgb(218 222 230/var(--tw-bg-opacity,1))}.bg-gray-gray50{--tw-bg-opacity:1;background-color:rgb(246 248 252/var(--tw-bg-opacity,1))}.bg-red-red{--tw-bg-opacity:1;background-color:rgb(220 4 59/var(--tw-bg-opacity,1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-yellow-yellow{--tw-bg-opacity:1;background-color:rgb(255 186 5/var(--tw-bg-opacity,1))}.bg-opacity-20{--tw-bg-opacity:0.2}.bg-opacity-50{--tw-bg-opacity:0.5}.p-3{padding:.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pt-2{padding-top:.5rem}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.3125rem;line-height:1.625rem}.text-lg{font-size:.9375rem;line-height:1.375rem}.text-sm{font-size:.6875rem;line-height:1rem}.text-xl{font-size:1.0625rem;line-height:1.5rem}.text-xs{font-size:.5625rem;line-height:.875rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.tracking-wider{letter-spacing:.05em}.text-gray-gray400{--tw-text-opacity:1;color:rgb(151 154 160/var(--tw-text-opacity,1))}.text-gray-gray500{--tw-text-opacity:1;color:rgb(97 102 112/var(--tw-text-opacity,1))}.text-gray-gray600{--tw-text-opacity:1;color:rgb(65 69 77/var(--tw-text-opacity,1))}.text-gray-gray700{--tw-text-opacity:1;color:rgb(49 53 62/var(--tw-text-opacity,1))}.text-gray-gray900{--tw-text-opacity:1;color:rgb(17 18 21/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.opacity-50{opacity:.5}.shadow-lg{--tw-shadow:0px 0px 1px 0px rgba(0,0,0,.48),0px 0px 2px 0px rgba(0,0,0,.08),0px 2px 4px 0px rgba(0,0,0,.12),0px 2px 8px 0px rgba(0,0,0,.08);--tw-shadow-colored:0px 0px 1px 0px var(--tw-shadow-color),0px 0px 2px 0px var(--tw-shadow-color),0px 2px 4px 0px var(--tw-shadow-color),0px 2px 8px 0px var(--tw-shadow-color)}.shadow-lg,.shadow-sm{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-sm{--tw-shadow:0px 0px 1px rgba(0,0,0,.32),0px 0px 3px rgba(0,0,0,.11),0px 1px 4px rgba(0,0,0,.12);--tw-shadow-colored:0px 0px 1px var(--tw-shadow-color),0px 0px 3px var(--tw-shadow-color),0px 1px 4px var(--tw-shadow-color)}.shadow-xl{--tw-shadow:0px 0px 1px rgba(0,0,0,.24),0px 0px 2px rgba(0,0,0,.16),0px 3px 4px rgba(0,0,0,.06),0px 6px 8px rgba(0,0,0,.06),0px 12px 16px rgba(0,0,0,.08),0px 18px 32px rgba(0,0,0,.06);--tw-shadow-colored:0px 0px 1px var(--tw-shadow-color),0px 0px 2px var(--tw-shadow-color),0px 3px 4px var(--tw-shadow-color),0px 6px 8px var(--tw-shadow-color),0px 12px 16px var(--tw-shadow-color),0px 18px 32px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.hover\\:bg-blue-blue:hover{--tw-bg-opacity:1;background-color:rgb(22 110 225/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray100:hover{--tw-bg-opacity:1;background-color:rgb(229 233 240/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray300:hover{--tw-bg-opacity:1;background-color:rgb(196 199 205/var(--tw-bg-opacity,1))}.hover\\:bg-gray-gray50:hover{--tw-bg-opacity:1;background-color:rgb(246 248 252/var(--tw-bg-opacity,1))}.hover\\:text-gray-gray700:hover{--tw-text-opacity:1;color:rgb(49 53 62/var(--tw-text-opacity,1))}.hover\\:text-gray-gray900:hover{--tw-text-opacity:1;color:rgb(17 18 21/var(--tw-text-opacity,1))}.hover\\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.focus\\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus\\:ring-blue-blue:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(22 110 225/var(--tw-ring-opacity,1))}.focus\\:ring-red-red:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(220 4 59/var(--tw-ring-opacity,1))}.focus\\:ring-offset-2:focus{--tw-ring-offset-width:2px}.disabled\\:cursor-not-allowed:disabled{cursor:not-allowed}.disabled\\:opacity-50:disabled{opacity:.5}@media (min-width:640px){.sm\\:p-6{padding:1.5rem}.sm\\:p-8{padding:2rem}}@media (prefers-color-scheme:dark){.dark\\:divide-gray-gray600>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(65 69 77/var(--tw-divide-opacity,1))}.dark\\:border-gray-gray500{--tw-border-opacity:1;border-color:rgb(97 102 112/var(--tw-border-opacity,1))}.dark\\:border-gray-gray600{--tw-border-opacity:1;border-color:rgb(65 69 77/var(--tw-border-opacity,1))}.dark\\:bg-gray-gray600{--tw-bg-opacity:1;background-color:rgb(65 69 77/var(--tw-bg-opacity,1))}.dark\\:bg-gray-gray700{--tw-bg-opacity:1;background-color:rgb(49 53 62/var(--tw-bg-opacity,1))}.dark\\:bg-gray-gray800{--tw-bg-opacity:1;background-color:rgb(29 31 37/var(--tw-bg-opacity,1))}.dark\\:text-gray-gray100{--tw-text-opacity:1;color:rgb(229 233 240/var(--tw-text-opacity,1))}.dark\\:text-gray-gray300{--tw-text-opacity:1;color:rgb(196 199 205/var(--tw-text-opacity,1))}.dark\\:text-gray-gray400{--tw-text-opacity:1;color:rgb(151 154 160/var(--tw-text-opacity,1))}.dark\\:text-gray-gray500{--tw-text-opacity:1;color:rgb(97 102 112/var(--tw-text-opacity,1))}.dark\\:hover\\:bg-gray-gray500:hover{--tw-bg-opacity:1;background-color:rgb(97 102 112/var(--tw-bg-opacity,1))}.dark\\:hover\\:bg-gray-gray600:hover{--tw-bg-opacity:1;background-color:rgb(65 69 77/var(--tw-bg-opacity,1))}.dark\\:hover\\:bg-gray-gray700:hover{--tw-bg-opacity:1;background-color:rgb(49 53 62/var(--tw-bg-opacity,1))}.dark\\:hover\\:text-gray-gray100:hover{--tw-text-opacity:1;color:rgb(229 233 240/var(--tw-text-opacity,1))}.dark\\:hover\\:text-gray-gray200:hover{--tw-text-opacity:1;color:rgb(218 222 230/var(--tw-text-opacity,1))}}';
+      document.head.appendChild(style);
     }
   });
 
@@ -41189,7 +41203,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         label: "Name",
         type: "field",
         table: timesheetTable,
-        shouldFieldBeAllowed: (field) => field.config.type === FieldType.MULTIPLE_RECORD_LINKS,
+        shouldFieldBeAllowed: (field) => field.config.type === FieldType.SINGLE_SELECT,
         defaultValue: findField(timesheetTable, "Name")
       },
       {
@@ -41199,6 +41213,14 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         table: timesheetTable,
         shouldFieldBeAllowed: (field) => field.config.type === FieldType.DATE || field.config.type === FieldType.DATE_TIME,
         defaultValue: findField(timesheetTable, "Date")
+      },
+      {
+        key: "yearWeek",
+        label: "Year-Week",
+        type: "field",
+        table: timesheetTable,
+        shouldFieldBeAllowed: (field) => field.config.type === FieldType.FORMULA,
+        defaultValue: findField(timesheetTable, "Year-Week")
       },
       {
         key: "individualHours",
@@ -41260,6 +41282,14 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         table: timesheetTable,
         shouldFieldBeAllowed: (field) => field.config.type === FieldType.SINGLE_SELECT,
         defaultValue: findField(timesheetTable, "Time Task Type")
+      },
+      {
+        key: "userEmail",
+        label: "Email of the logged in user",
+        type: "field",
+        table: timesheetTable,
+        shouldFieldBeAllowed: (field) => field.config.type === FieldType.SINGLE_LINE_TEXT || field.config.type === FieldType.EMAIL,
+        defaultValue: findField(timesheetTable, "Email of the logged in user")
       }
     ];
   }
@@ -41607,11 +41637,37 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
       return new Date((/* @__PURE__ */ new Date()).getFullYear(), (/* @__PURE__ */ new Date()).getMonth(), 1);
     };
     const [currentMonth, setCurrentMonth] = (0, import_react6.useState)(getInitialMonth());
+    const hasUserNavigatedRef = (0, import_react6.useRef)(false);
+    const selectedDateRef = (0, import_react6.useRef)(selectedDate);
     (0, import_react6.useEffect)(() => {
-      if (selectedDate) {
+      if (selectedDateRef.current !== selectedDate) {
+        const prevDate = selectedDateRef.current;
+        const newDate = selectedDate;
+        if (prevDate && newDate) {
+          const prevDateObj = prevDate instanceof Date ? prevDate : new Date(prevDate);
+          const newDateObj = newDate instanceof Date ? newDate : new Date(newDate);
+          if (!isNaN(prevDateObj.getTime()) && !isNaN(newDateObj.getTime())) {
+            const prevKey = `${prevDateObj.getFullYear()}-${prevDateObj.getMonth()}`;
+            const newKey = `${newDateObj.getFullYear()}-${newDateObj.getMonth()}`;
+            if (prevKey !== newKey) {
+              hasUserNavigatedRef.current = false;
+            }
+          }
+        }
+        selectedDateRef.current = selectedDate;
+      }
+      if (!hasUserNavigatedRef.current && selectedDate) {
         const date = selectedDate instanceof Date ? selectedDate : new Date(selectedDate);
         if (!isNaN(date.getTime())) {
-          setCurrentMonth(new Date(date.getFullYear(), date.getMonth(), 1));
+          const newMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+          setCurrentMonth((prev) => {
+            const prevKey = `${prev.getFullYear()}-${prev.getMonth()}`;
+            const newKey = `${newMonth.getFullYear()}-${newMonth.getMonth()}`;
+            if (prevKey !== newKey) {
+              return newMonth;
+            }
+            return prev;
+          });
         }
       }
     }, [selectedDate]);
@@ -41622,10 +41678,26 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
       }
     };
     const prevMonth = () => {
-      setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1));
+      hasUserNavigatedRef.current = true;
+      setCurrentMonth((prev) => {
+        const newMonth = new Date(prev.getFullYear(), prev.getMonth() - 1, 1);
+        console.log("[Calendar] Previous month:", {
+          from: `${prev.getFullYear()}-${prev.getMonth() + 1}`,
+          to: `${newMonth.getFullYear()}-${newMonth.getMonth() + 1}`
+        });
+        return newMonth;
+      });
     };
     const nextMonth = () => {
-      setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
+      hasUserNavigatedRef.current = true;
+      setCurrentMonth((prev) => {
+        const newMonth = new Date(prev.getFullYear(), prev.getMonth() + 1, 1);
+        console.log("[Calendar] Next month:", {
+          from: `${prev.getFullYear()}-${prev.getMonth() + 1}`,
+          to: `${newMonth.getFullYear()}-${newMonth.getMonth() + 1}`
+        });
+        return newMonth;
+      });
     };
     const daysInMonth = getDaysInMonth(currentMonth);
     const firstDay = getFirstDayOfMonth(currentMonth);
@@ -41643,7 +41715,12 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
           "button",
           {
-            onClick: prevMonth,
+            type: "button",
+            onClick: (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              prevMonth();
+            },
             className: "px-3 py-1 text-sm text-gray-gray700 dark:text-gray-gray300 hover:bg-gray-gray100 dark:hover:bg-gray-gray600 rounded",
             children: "\u2190"
           },
@@ -41651,7 +41728,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           false,
           {
             fileName: "frontend/components/CalendarPicker.js",
-            lineNumber: 70,
+            lineNumber: 119,
             columnNumber: 21
           },
           this
@@ -41662,13 +41739,18 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           currentMonth.getFullYear()
         ] }, void 0, true, {
           fileName: "frontend/components/CalendarPicker.js",
-          lineNumber: 76,
+          lineNumber: 130,
           columnNumber: 21
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
           "button",
           {
-            onClick: nextMonth,
+            type: "button",
+            onClick: (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              nextMonth();
+            },
             className: "px-3 py-1 text-sm text-gray-gray700 dark:text-gray-gray300 hover:bg-gray-gray100 dark:hover:bg-gray-gray600 rounded",
             children: "\u2192"
           },
@@ -41676,30 +41758,30 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           false,
           {
             fileName: "frontend/components/CalendarPicker.js",
-            lineNumber: 79,
+            lineNumber: 133,
             columnNumber: 21
           },
           this
         )
       ] }, void 0, true, {
         fileName: "frontend/components/CalendarPicker.js",
-        lineNumber: 69,
+        lineNumber: 118,
         columnNumber: 17
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "grid grid-cols-7 gap-1 mb-2", children: dayNames.map((day) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "text-center text-xs font-semibold text-gray-gray600 dark:text-gray-gray400 py-2", children: day }, day, false, {
         fileName: "frontend/components/CalendarPicker.js",
-        lineNumber: 89,
+        lineNumber: 148,
         columnNumber: 25
       }, this)) }, void 0, false, {
         fileName: "frontend/components/CalendarPicker.js",
-        lineNumber: 87,
+        lineNumber: 146,
         columnNumber: 17
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "grid grid-cols-7 gap-1", children: days.map((day, index) => {
         if (day === null) {
           return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "aspect-square" }, index, false, {
             fileName: "frontend/components/CalendarPicker.js",
-            lineNumber: 98,
+            lineNumber: 157,
             columnNumber: 36
           }, this);
         }
@@ -41718,14 +41800,14 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           false,
           {
             fileName: "frontend/components/CalendarPicker.js",
-            lineNumber: 105,
+            lineNumber: 164,
             columnNumber: 29
           },
           this
         );
       }) }, void 0, false, {
         fileName: "frontend/components/CalendarPicker.js",
-        lineNumber: 95,
+        lineNumber: 154,
         columnNumber: 17
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "mt-4 flex justify-end", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
@@ -41739,22 +41821,22 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         false,
         {
           fileName: "frontend/components/CalendarPicker.js",
-          lineNumber: 124,
+          lineNumber: 183,
           columnNumber: 21
         },
         this
       ) }, void 0, false, {
         fileName: "frontend/components/CalendarPicker.js",
-        lineNumber: 123,
+        lineNumber: 182,
         columnNumber: 17
       }, this)
     ] }, void 0, true, {
       fileName: "frontend/components/CalendarPicker.js",
-      lineNumber: 68,
+      lineNumber: 117,
       columnNumber: 13
     }, this) }, void 0, false, {
       fileName: "frontend/components/CalendarPicker.js",
-      lineNumber: 67,
+      lineNumber: 116,
       columnNumber: 9
     }, this);
   }
@@ -41808,6 +41890,9 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
       }).join(", ");
     }
     if (value && typeof value === "object") {
+      if (fieldType === FieldType.SINGLE_SELECT) {
+        return value.name || value.displayName || String(value);
+      }
       if (fieldType === FieldType.CREATED_BY || fieldType === FieldType.LAST_MODIFIED_BY || fieldType === FieldType.SINGLE_COLLABORATOR) {
         return value.name || value.displayName || String(value);
       }
@@ -41872,15 +41957,15 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
   });
 
   // frontend/components/EditableCell.js
-  function EditableCell({ record, field, onUpdate, monthRecords, monthStatusField, monthStartDateField, monthEndDateField }) {
+  function EditableCell({ record, field, onUpdate, monthRecords, monthStatusField, monthStartDateField, monthEndDateField, session, usersTable, usersRecords }) {
     if (!field || !record) {
       return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("span", { className: "text-gray-gray400 dark:text-gray-gray500", children: "Field not found" }, void 0, false, {
         fileName: "frontend/components/EditableCell.js",
-        lineNumber: 25,
+        lineNumber: 28,
         columnNumber: 17
       }, this) }, void 0, false, {
         fileName: "frontend/components/EditableCell.js",
-        lineNumber: 24,
+        lineNumber: 27,
         columnNumber: 13
       }, this);
     }
@@ -41888,16 +41973,20 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     if (!fieldStillExists) {
       return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("span", { className: "text-gray-gray400 dark:text-gray-gray500", children: "Field deleted" }, void 0, false, {
         fileName: "frontend/components/EditableCell.js",
-        lineNumber: 35,
+        lineNumber: 38,
         columnNumber: 17
       }, this) }, void 0, false, {
         fileName: "frontend/components/EditableCell.js",
-        lineNumber: 34,
+        lineNumber: 37,
         columnNumber: 13
       }, this);
     }
     const fieldName = field?.name || "";
     const fieldType = field?.config?.type;
+    const getCurrentField = () => {
+      if (!field || !record) return null;
+      return record.parentTable?.getFieldIfExists(field.id) || record.parentTable?.fields.find((f) => f.name === fieldName) || field;
+    };
     const isClosed = isRecordClosed(record, monthRecords, monthStatusField, monthStartDateField, monthEndDateField);
     const isProjectImportField = fieldName === "Project Import";
     const isNameField = fieldName === "Name";
@@ -41908,7 +41997,8 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     const isTimesheetNotesField = fieldName === "Timesheet Notes";
     const isTimeTaskTypeField = fieldName === "Time Task Type";
     const isDeleteField = fieldName === "Delete";
-    const shouldBeEditable = isProjectImportField || isNameField || isDateFieldEditable || isIndividualHoursField || isProjectFromTaskEditable || isWarningField || isTimesheetNotesField || isTimeTaskTypeField || isDeleteField;
+    const isTaskField = fieldName === "Task";
+    const shouldBeEditable = isProjectImportField || isDateFieldEditable || isIndividualHoursField || isProjectFromTaskEditable || isWarningField || isTimesheetNotesField || isTimeTaskTypeField || isDeleteField || isTaskField || isNameField;
     const canEdit = record?.parentTable?.hasPermissionToUpdateRecords?.([{ id: record.id, fields: { [field.id]: null } }]) ?? false;
     const isFormula = fieldType === FieldType.FORMULA;
     const isLookup = fieldType === FieldType.MULTIPLE_LOOKUP_VALUES || fieldType === FieldType.ROLLUP;
@@ -41924,10 +42014,26 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     const [savedSelectedIds, setSavedSelectedIds] = (0, import_react7.useState)([]);
     const [selectedRecordDisplayName, setSelectedRecordDisplayName] = (0, import_react7.useState)("");
     const [selectedMultipleSelectIds, setSelectedMultipleSelectIds] = (0, import_react7.useState)([]);
+    const [justSavedTaskId, setJustSavedTaskId] = (0, import_react7.useState)(null);
+    const lastProcessedCellValueRef = (0, import_react7.useRef)(null);
     const isEmailField = fieldName === "Email (from Name)";
     const isProjectFromTaskField = fieldName === "Project from Task" || fieldName === "Project from Task - Ext";
     const cellValue = field ? (isEmailField || isProjectFromTaskField) && isLookup ? record.getCellValueAsString(field) || "" : fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.MULTILINE_TEXT ? record.getCellValueAsString(field) || "" : record.getCellValue(field) ?? "" : "";
     const availableDates = getAvailableDates(monthRecords, monthStatusField, monthStartDateField, monthEndDateField);
+    const findUserNameByEmail = (email) => {
+      if (!usersTable || !email || !usersRecords) return null;
+      const emailField = usersTable.fields.find((f) => f.name === "Email");
+      const nameField = usersTable.fields.find((f) => f.name === "Name");
+      if (!emailField || !nameField) return null;
+      const userRecord = usersRecords.find((record2) => {
+        const recordEmail = record2.getCellValue(emailField);
+        return recordEmail && String(recordEmail).toLowerCase() === String(email).toLowerCase();
+      });
+      if (userRecord) {
+        return userRecord.getCellValue(nameField);
+      }
+      return null;
+    };
     (0, import_react7.useEffect)(() => {
       if (shouldBeEditable && !isFormula && !isLookup && !isClosed) {
         if (fieldType === FieldType.SINGLE_SELECT) {
@@ -41959,7 +42065,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             }
           }
         }
-        if (fieldType === FieldType.MULTIPLE_RECORD_LINKS && isEditing) {
+        if (fieldType === FieldType.MULTIPLE_RECORD_LINKS && isEditing && !isNameField && !isTaskField) {
           const currentValue = cellValue;
           const currentIds = Array.isArray(currentValue) ? currentValue.map((item) => item?.id || item) : [];
           const currentIdsStr = JSON.stringify(currentIds.sort());
@@ -41987,8 +42093,92 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             }
           });
         }
+        if (fieldType === FieldType.MULTIPLE_RECORD_LINKS && (isTaskField || isNameField) && isEditing) {
+          const currentValue = cellValue;
+          const currentValueStr = JSON.stringify(currentValue);
+          const currentIds = Array.isArray(currentValue) && currentValue.length > 0 ? [currentValue[0]?.id || currentValue[0]] : [];
+          if (lastProcessedCellValueRef.current !== currentValueStr) {
+            if (lastProcessedCellValueRef.current === null) {
+              if (currentIds.length > 0) {
+                setSavedSelectedIds(currentIds);
+                if (Array.isArray(currentValue) && currentValue.length > 0) {
+                  const firstRecord = currentValue[0];
+                  if (firstRecord?.displayName || firstRecord?.name) {
+                    setSelectedRecordDisplayName(firstRecord.displayName || firstRecord.name);
+                  }
+                }
+              }
+            } else {
+              setSavedSelectedIds((prevSavedIds) => {
+                const currentIdsStr = JSON.stringify(currentIds.sort());
+                const savedIdsStr = JSON.stringify(prevSavedIds.sort());
+                if (currentIdsStr !== savedIdsStr) {
+                  if (justSavedTaskId && justSavedTaskId === prevSavedIds[0]) {
+                    return prevSavedIds;
+                  } else if (currentIds.length === 0 && prevSavedIds.length > 0) {
+                    return prevSavedIds;
+                  } else if (currentIds.length > 0) {
+                    return currentIds;
+                  } else if (currentIds.length === 0 && prevSavedIds.length === 0) {
+                    return [];
+                  }
+                }
+                return prevSavedIds;
+              });
+              if (currentIds.length > 0 && Array.isArray(currentValue) && currentValue.length > 0) {
+                const firstRecord = currentValue[0];
+                if (firstRecord?.displayName || firstRecord?.name) {
+                  setSelectedRecordDisplayName(firstRecord.displayName || firstRecord.name);
+                }
+              } else if (currentIds.length === 0) {
+                setSelectedRecordDisplayName("");
+              }
+            }
+            lastProcessedCellValueRef.current = currentValueStr;
+          }
+          if (linkedRecords.length === 0) {
+            if (isNameField && usersTable && usersRecords && usersRecords.length > 0) {
+              const usersNameField = usersTable.fields.find((f) => f.name === "Name");
+              if (usersNameField) {
+                const nameRecords = usersRecords.map((record2) => {
+                  const nameValue = record2.getCellValue(usersNameField);
+                  return {
+                    id: record2.id,
+                    displayName: nameValue ? String(nameValue) : record2.name || record2.id,
+                    name: nameValue ? String(nameValue) : record2.name || record2.id
+                  };
+                });
+                setLinkedRecords(nameRecords);
+                setSavedSelectedIds((prevSavedIds) => {
+                  const idsToCheck = prevSavedIds.length > 0 ? prevSavedIds : currentIds;
+                  if (idsToCheck.length > 0) {
+                    const foundRecord = nameRecords.find((r) => r.id === idsToCheck[0]);
+                    if (foundRecord) {
+                      setSelectedRecordDisplayName(foundRecord.displayName);
+                    }
+                  }
+                  return prevSavedIds;
+                });
+              }
+            } else {
+              record.fetchForeignRecordsAsync(field, "").then((result) => {
+                setLinkedRecords(result.records);
+                setSavedSelectedIds((prevSavedIds) => {
+                  const idsToCheck = prevSavedIds.length > 0 ? prevSavedIds : currentIds;
+                  if (idsToCheck.length > 0) {
+                    const foundRecord = result.records.find((r) => r.id === idsToCheck[0]);
+                    if (foundRecord) {
+                      setSelectedRecordDisplayName(foundRecord.displayName);
+                    }
+                  }
+                  return prevSavedIds;
+                });
+              });
+            }
+          }
+        }
       }
-    }, [shouldBeEditable, isFormula, isLookup, cellValue, isEditing, fieldType, fieldName, field, record, searchTerm, selectedMultipleSelectIds]);
+    }, [shouldBeEditable, isFormula, isLookup, cellValue, isEditing, fieldType, fieldName, field, record, searchTerm, selectedMultipleSelectIds, isNameField, session, usersTable, usersRecords, canEdit, editValue, onUpdate]);
     const handleClick = () => {
       if (shouldBeEditable && !isFormula && !isLookup && !isClosed) {
         if (isDateFieldEditable && isDateField && monthRecords) {
@@ -42129,189 +42319,285 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
       }
     };
     if (isEditing) {
-      if (fieldType === FieldType.MULTIPLE_RECORD_LINKS) {
+      if (fieldType === FieldType.MULTIPLE_RECORD_LINKS && (isTaskField || isNameField)) {
         const currentValue = cellValue;
-        const selectedIds = savedSelectedIds.length > 0 ? savedSelectedIds : Array.isArray(currentValue) && currentValue.length > 0 ? [currentValue[0]?.id || currentValue[0]] : [];
-        const selectedId = selectedIds.length > 0 ? selectedIds[0] : "";
-        if (isNameField) {
-          if (linkedRecords.length === 0 || searchTerm !== "" && showLinkedRecordDropdown) {
-            record.fetchForeignRecordsAsync(field, searchTerm || "").then((result) => {
-              setLinkedRecords(result.records);
-              if (selectedId) {
-                const foundRecord = result.records.find((r) => r.id === selectedId);
-                if (foundRecord) {
-                  setSelectedRecordDisplayName(foundRecord.displayName);
+        let currentIdsFromValue = [];
+        if (Array.isArray(currentValue) && currentValue.length > 0) {
+          const firstRecord = currentValue[0];
+          if (firstRecord) {
+            const recordId = firstRecord.id || firstRecord;
+            if (recordId) {
+              currentIdsFromValue = [recordId];
+            }
+          }
+        }
+        const selectedIds = savedSelectedIds.length > 0 ? savedSelectedIds : currentIdsFromValue;
+        const selectedId = selectedIds.length > 0 ? String(selectedIds[0]) : "";
+        if (fieldName === "Task" || fieldName === "Name") {
+          if (linkedRecords.length === 0) {
+            if (isNameField && usersTable && usersRecords && usersRecords.length > 0) {
+              const usersNameField = usersTable.fields.find((f) => f.name === "Name");
+              if (usersNameField) {
+                const nameRecords = usersRecords.map((record2) => {
+                  const nameValue = record2.getCellValue(usersNameField);
+                  return {
+                    id: record2.id,
+                    displayName: nameValue ? String(nameValue) : record2.name || record2.id,
+                    name: nameValue ? String(nameValue) : record2.name || record2.id
+                  };
+                });
+                setLinkedRecords(nameRecords);
+                if (selectedId && !selectedRecordDisplayName) {
+                  const foundRecord = nameRecords.find((r) => r.id === selectedId);
+                  if (foundRecord) {
+                    setSelectedRecordDisplayName(foundRecord.displayName);
+                  }
                 }
               }
-            });
-          }
-          let displayValue = "";
-          if (selectedRecordDisplayName) {
-            displayValue = selectedRecordDisplayName;
-          } else if (selectedId) {
-            const selectedRecord = linkedRecords.find((r) => r.id === selectedId);
-            if (selectedRecord) {
-              displayValue = selectedRecord.displayName;
-              setSelectedRecordDisplayName(selectedRecord.displayName);
-            } else if (Array.isArray(currentValue) && currentValue.length > 0) {
-              const currentRecord = currentValue.find((item) => (item?.id || item) === selectedId);
-              if (currentRecord) {
-                displayValue = currentRecord.displayName || currentRecord.name || String(currentRecord);
-                setSelectedRecordDisplayName(displayValue);
-              } else {
-                displayValue = "Loading...";
-                record.fetchForeignRecordsAsync(field, "").then((result) => {
+            } else {
+              record.fetchForeignRecordsAsync(field, "").then((result) => {
+                setLinkedRecords(result.records);
+                if (selectedId && !selectedRecordDisplayName) {
                   const foundRecord = result.records.find((r) => r.id === selectedId);
                   if (foundRecord) {
                     setSelectedRecordDisplayName(foundRecord.displayName);
                   }
-                });
-              }
-            } else {
-              displayValue = "Loading...";
+                }
+              });
             }
           }
-          return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 relative min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "relative", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
-              "input",
-              {
-                type: "text",
-                value: showLinkedRecordDropdown ? searchTerm : displayValue,
-                disabled: isClosed,
-                readOnly: !showLinkedRecordDropdown,
-                onFocus: () => {
-                  if (!isClosed) {
-                    setShowLinkedRecordDropdown(true);
-                    setSearchTerm("");
-                    if (linkedRecords.length === 0) {
-                      record.fetchForeignRecordsAsync(field, "").then((result) => {
-                        setLinkedRecords(result.records);
+          const currentField = getCurrentField();
+          if (!currentField) return null;
+          let recordsToDisplay = [...linkedRecords];
+          if (selectedId && !recordsToDisplay.find((r) => r.id === selectedId)) {
+            if (Array.isArray(cellValue) && cellValue.length > 0) {
+              const selectedRecordFromValue = cellValue.find((r) => (r.id || r) === selectedId) || cellValue[0];
+              if (selectedRecordFromValue) {
+                recordsToDisplay.push({
+                  id: selectedRecordFromValue.id || selectedRecordFromValue,
+                  displayName: selectedRecordFromValue.displayName || selectedRecordFromValue.name || selectedRecordDisplayName || "Selected Task"
+                });
+              }
+            }
+          }
+          return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+            "select",
+            {
+              value: selectedId || "",
+              onChange: async (e) => {
+                const newSelectedId = e.target.value;
+                const currentField2 = getCurrentField();
+                if (!currentField2) {
+                  console.error(`${fieldName} field not found`);
+                  alert(`${fieldName} field not found. Please refresh the page.`);
+                  return;
+                }
+                if (newSelectedId) {
+                  const selectedRecord = linkedRecords.find((r) => r.id === newSelectedId);
+                  if (selectedRecord) {
+                    setSelectedRecordDisplayName(selectedRecord.displayName);
+                    setSavedSelectedIds([newSelectedId]);
+                    setJustSavedTaskId(newSelectedId);
+                    console.log("[Task onChange] Set savedSelectedIds to:", [newSelectedId], "selectedName:", selectedRecord.displayName);
+                    try {
+                      setIsSaving(true);
+                      console.log("Updating Task field:", {
+                        recordId: record.id,
+                        fieldId: currentField2.id,
+                        fieldName: currentField2.name,
+                        selectedId: newSelectedId,
+                        selectedName: selectedRecord.displayName
                       });
+                      await record.parentTable.updateRecordAsync(record, {
+                        [currentField2.id]: [{ id: newSelectedId }]
+                      });
+                      console.log("[Task onChange] Task field updated successfully, savedSelectedIds:", [newSelectedId]);
+                      setTimeout(() => {
+                        const updatedValue = record.getCellValue(field);
+                        const updatedIds = Array.isArray(updatedValue) && updatedValue.length > 0 ? [updatedValue[0]?.id || updatedValue[0]] : [];
+                        if (updatedIds.length > 0 && updatedIds[0] === newSelectedId) {
+                          console.log("[Task onChange] cellValue synced, clearing justSavedTaskId flag");
+                          setJustSavedTaskId(null);
+                        } else {
+                          console.log("[Task onChange] cellValue not synced yet, keeping justSavedTaskId flag");
+                          setTimeout(() => {
+                            setJustSavedTaskId(null);
+                          }, 2e3);
+                        }
+                      }, 2e3);
+                      if (onUpdate) onUpdate();
+                    } catch (error) {
+                      console.error("Error updating Task field:", error);
+                      setJustSavedTaskId(null);
+                      alert("Failed to update Task field: " + (error.message || "Unknown error occurred. Please refresh the page."));
+                    } finally {
+                      setIsSaving(false);
                     }
+                  } else {
+                    console.error("Selected Task record not found:", newSelectedId);
+                    alert("Selected task not found. Please try again.");
                   }
-                },
-                onBlur: (e) => {
-                  setTimeout(() => {
-                    setShowLinkedRecordDropdown(false);
-                  }, 200);
-                },
-                onChange: (e) => {
-                  if (showLinkedRecordDropdown) {
-                    const term = e.target.value;
-                    setSearchTerm(term);
-                    handleLinkedRecordSearch(term);
-                  }
-                },
-                placeholder: "Search or select...",
-                className: `w-full px-2 py-1 border rounded text-gray-gray900 dark:text-gray-gray100 bg-white dark:bg-gray-gray800 ${isClosed ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`,
-                onClick: (e) => {
-                  e.stopPropagation();
-                  if (!isClosed && !showLinkedRecordDropdown) {
-                    setShowLinkedRecordDropdown(true);
-                    setSearchTerm("");
+                } else {
+                  try {
+                    setIsSaving(true);
+                    setJustSavedTaskId(null);
+                    console.log("Clearing Task field:", {
+                      recordId: record.id,
+                      fieldId: currentField2.id,
+                      fieldName: currentField2.name
+                    });
+                    await record.parentTable.updateRecordAsync(record, {
+                      [currentField2.id]: []
+                    });
+                    console.log("Task field cleared successfully");
+                    setSelectedRecordDisplayName("");
+                    setSavedSelectedIds([]);
+                    if (onUpdate) onUpdate();
+                  } catch (error) {
+                    console.error("Error clearing Task field:", error);
+                    alert("Failed to clear Task field: " + (error.message || "Unknown error occurred. Please refresh the page."));
+                  } finally {
+                    setIsSaving(false);
                   }
                 }
               },
-              void 0,
-              false,
-              {
-                fileName: "frontend/components/EditableCell.js",
-                lineNumber: 436,
-                columnNumber: 29
-              },
-              this
-            ),
-            showLinkedRecordDropdown && /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "absolute z-10 w-full mt-1 bg-white dark:bg-gray-gray700 border rounded shadow-lg max-h-48 overflow-y-auto", children: linkedRecords.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "px-2 py-1 text-sm text-gray-gray500 dark:text-gray-gray400", children: "Loading..." }, void 0, false, {
+              disabled: isClosed || isSaving,
+              className: `w-full px-2 py-1 border rounded text-gray-gray900 dark:text-gray-gray100 bg-white dark:bg-gray-gray800 ${isClosed || isSaving ? "opacity-50 cursor-not-allowed" : ""}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: "", children: [
+                  "Select ",
+                  fieldName === "Name" ? "Name" : "Task"
+                ] }, void 0, true, {
+                  fileName: "frontend/components/EditableCell.js",
+                  lineNumber: 756,
+                  columnNumber: 29
+                }, this),
+                recordsToDisplay.map((record2) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: record2.id, children: record2.displayName || record2.name || record2.id }, record2.id, false, {
+                  fileName: "frontend/components/EditableCell.js",
+                  lineNumber: 758,
+                  columnNumber: 33
+                }, this))
+              ]
+            },
+            `task-select-${record.id}-${selectedId}`,
+            true,
+            {
               fileName: "frontend/components/EditableCell.js",
-              lineNumber: 478,
-              columnNumber: 41
-            }, this) : linkedRecords.map((linkedRecord) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
-              "div",
-              {
-                className: `px-2 py-1 text-sm cursor-pointer hover:bg-gray-gray100 dark:hover:bg-gray-gray600 ${linkedRecord.id === selectedId ? "bg-blue-blue bg-opacity-20" : ""}`,
-                onMouseDown: (e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  if (isClosed) return;
-                  const newSelectedId = linkedRecord.id;
-                  const newDisplayName = linkedRecord.displayName;
-                  setSavedSelectedIds([newSelectedId]);
-                  setSelectedRecordDisplayName(newDisplayName);
-                  const valueToSave = [{ id: newSelectedId }];
-                  setIsSaving(true);
-                  record.parentTable.updateRecordAsync(record, {
-                    [field.id]: valueToSave
-                  }).then(() => {
-                    setShowLinkedRecordDropdown(false);
-                    setSearchTerm("");
-                    if (onUpdate) onUpdate();
-                  }).catch((error) => {
-                    console.error("Error updating record:", error);
-                    const currentIds = Array.isArray(currentValue) && currentValue.length > 0 ? [currentValue[0]?.id || currentValue[0]] : [];
-                    setSavedSelectedIds(currentIds);
-                    setSelectedRecordDisplayName("");
-                    let errorMessage = "Failed to update record. ";
-                    if (error.message && error.message.includes("allow record editing")) {
-                      errorMessage += "Please enable record editing permissions for this Interface Extension in the Airtable settings.";
-                    } else {
-                      errorMessage += error.message || "Unknown error occurred.";
-                    }
-                    alert(errorMessage);
-                  }).finally(() => {
-                    setIsSaving(false);
-                  });
-                },
-                children: linkedRecord.displayName
-              },
-              linkedRecord.id,
-              false,
-              {
-                fileName: "frontend/components/EditableCell.js",
-                lineNumber: 481,
-                columnNumber: 45
-              },
-              this
-            )) }, void 0, false, {
-              fileName: "frontend/components/EditableCell.js",
-              lineNumber: 476,
-              columnNumber: 33
-            }, this)
-          ] }, void 0, true, {
+              lineNumber: 654,
+              columnNumber: 25
+            },
+            this
+          ) }, void 0, false, {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 435,
-            columnNumber: 25
-          }, this) }, void 0, false, {
-            fileName: "frontend/components/EditableCell.js",
-            lineNumber: 434,
+            lineNumber: 653,
             columnNumber: 21
           }, this);
         }
-        if (linkedRecords.length === 0) {
-          record.fetchForeignRecordsAsync(field, "").then((result) => {
-            setLinkedRecords(result.records);
-          });
+        let displayValue = "";
+        if (selectedRecordDisplayName) {
+          displayValue = selectedRecordDisplayName;
+        } else if (selectedId) {
+          const selectedRecord = linkedRecords.find((r) => r.id === selectedId);
+          if (selectedRecord) {
+            displayValue = selectedRecord.displayName;
+            setSelectedRecordDisplayName(selectedRecord.displayName);
+          } else if (Array.isArray(currentValue) && currentValue.length > 0) {
+            const currentRecord = currentValue.find((item) => (item?.id || item) === selectedId);
+            if (currentRecord) {
+              displayValue = currentRecord.displayName || currentRecord.name || String(currentRecord);
+              setSelectedRecordDisplayName(displayValue);
+            } else {
+              displayValue = "Loading...";
+              record.fetchForeignRecordsAsync(field, "").then((result) => {
+                const foundRecord = result.records.find((r) => r.id === selectedId);
+                if (foundRecord) {
+                  setSelectedRecordDisplayName(foundRecord.displayName);
+                }
+              });
+            }
+          } else {
+            displayValue = "Loading...";
+          }
         }
-        return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
-          "select",
-          {
-            value: selectedId,
-            disabled: isClosed,
-            onChange: async (e) => {
-              e.stopPropagation();
-              if (isClosed) return;
-              const newSelectedId = e.target.value;
-              if (!newSelectedId) {
-                setSavedSelectedIds([]);
-                try {
-                  setIsSaving(true);
-                  await record.parentTable.updateRecordAsync(record, {
-                    [field.id]: []
-                  });
+        return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("td", { className: "px-4 py-3 text-sm border-b border-gray-gray100 dark:border-gray-gray600 relative min-w-[180px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "relative", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+            "input",
+            {
+              type: "text",
+              value: showLinkedRecordDropdown ? searchTerm : displayValue,
+              disabled: isClosed,
+              readOnly: !showLinkedRecordDropdown,
+              onFocus: () => {
+                if (!isClosed) {
+                  setShowLinkedRecordDropdown(true);
+                  setSearchTerm("");
+                  if (linkedRecords.length === 0) {
+                    record.fetchForeignRecordsAsync(field, "").then((result) => {
+                      setLinkedRecords(result.records);
+                    });
+                  }
+                }
+              },
+              onBlur: (e) => {
+                setTimeout(() => {
+                  setShowLinkedRecordDropdown(false);
+                }, 200);
+              },
+              onChange: (e) => {
+                if (showLinkedRecordDropdown) {
+                  const term = e.target.value;
+                  setSearchTerm(term);
+                  handleLinkedRecordSearch(term);
+                }
+              },
+              placeholder: "Search or select...",
+              className: `w-full px-2 py-1 border rounded text-gray-gray900 dark:text-gray-gray100 bg-white dark:bg-gray-gray800 ${isClosed ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`,
+              onClick: (e) => {
+                e.stopPropagation();
+                if (!isClosed && !showLinkedRecordDropdown) {
+                  setShowLinkedRecordDropdown(true);
+                  setSearchTerm("");
+                }
+              }
+            },
+            void 0,
+            false,
+            {
+              fileName: "frontend/components/EditableCell.js",
+              lineNumber: 800,
+              columnNumber: 25
+            },
+            this
+          ),
+          showLinkedRecordDropdown && /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "absolute z-10 w-full mt-1 bg-white dark:bg-gray-gray700 border rounded shadow-lg max-h-48 overflow-y-auto", children: linkedRecords.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "px-2 py-1 text-sm text-gray-gray500 dark:text-gray-gray400", children: "Loading..." }, void 0, false, {
+            fileName: "frontend/components/EditableCell.js",
+            lineNumber: 842,
+            columnNumber: 37
+          }, this) : linkedRecords.map((linkedRecord) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+            "div",
+            {
+              className: `px-2 py-1 text-sm cursor-pointer hover:bg-gray-gray100 dark:hover:bg-gray-gray600 ${linkedRecord.id === selectedId ? "bg-blue-blue bg-opacity-20" : ""}`,
+              onMouseDown: (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (isClosed) return;
+                const newSelectedId = linkedRecord.id;
+                const newDisplayName = linkedRecord.displayName;
+                setSavedSelectedIds([newSelectedId]);
+                setSelectedRecordDisplayName(newDisplayName);
+                const valueToSave = [{ id: newSelectedId }];
+                setIsSaving(true);
+                record.parentTable.updateRecordAsync(record, {
+                  [field.id]: valueToSave
+                }).then(() => {
+                  setShowLinkedRecordDropdown(false);
+                  setSearchTerm("");
                   if (onUpdate) onUpdate();
-                } catch (error) {
+                }).catch((error) => {
                   console.error("Error updating record:", error);
                   const currentIds = Array.isArray(currentValue) && currentValue.length > 0 ? [currentValue[0]?.id || currentValue[0]] : [];
                   setSavedSelectedIds(currentIds);
+                  setSelectedRecordDisplayName("");
                   let errorMessage = "Failed to update record. ";
                   if (error.message && error.message.includes("allow record editing")) {
                     errorMessage += "Please enable record editing permissions for this Interface Extension in the Airtable settings.";
@@ -42319,67 +42605,32 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
                     errorMessage += error.message || "Unknown error occurred.";
                   }
                   alert(errorMessage);
-                } finally {
+                }).finally(() => {
                   setIsSaving(false);
-                }
-                return;
-              }
-              setSavedSelectedIds([newSelectedId]);
-              const valueToSave = [{ id: newSelectedId }];
-              try {
-                setIsSaving(true);
-                await record.parentTable.updateRecordAsync(record, {
-                  [field.id]: valueToSave
                 });
-                if (onUpdate) onUpdate();
-              } catch (error) {
-                console.error("Error updating record:", error);
-                const currentIds = Array.isArray(currentValue) && currentValue.length > 0 ? [currentValue[0]?.id || currentValue[0]] : [];
-                setSavedSelectedIds(currentIds);
-                let errorMessage = "Failed to update record. ";
-                if (error.message && error.message.includes("allow record editing")) {
-                  errorMessage += "Please enable record editing permissions for this Interface Extension in the Airtable settings.";
-                } else {
-                  errorMessage += error.message || "Unknown error occurred.";
-                }
-                alert(errorMessage);
-              } finally {
-                setIsSaving(false);
-              }
+              },
+              children: linkedRecord.displayName
             },
-            onBlur: (e) => {
-              e.stopPropagation();
+            linkedRecord.id,
+            false,
+            {
+              fileName: "frontend/components/EditableCell.js",
+              lineNumber: 845,
+              columnNumber: 41
             },
-            className: `w-full px-2 py-1 border rounded text-gray-gray900 dark:text-gray-gray100 bg-white dark:bg-gray-gray800 ${isClosed ? "opacity-50 cursor-not-allowed" : ""}`,
-            onClick: (e) => e.stopPropagation(),
-            children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: "", children: "-- Select --" }, void 0, false, {
-                fileName: "frontend/components/EditableCell.js",
-                lineNumber: 630,
-                columnNumber: 25
-              }, this),
-              linkedRecords.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: "", disabled: true, children: "Loading..." }, void 0, false, {
-                fileName: "frontend/components/EditableCell.js",
-                lineNumber: 632,
-                columnNumber: 29
-              }, this) : linkedRecords.map((linkedRecord) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: linkedRecord.id, children: linkedRecord.displayName }, linkedRecord.id, false, {
-                fileName: "frontend/components/EditableCell.js",
-                lineNumber: 635,
-                columnNumber: 33
-              }, this))
-            ]
-          },
-          void 0,
-          true,
-          {
+            this
+          )) }, void 0, false, {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 551,
-            columnNumber: 21
-          },
-          this
-        ) }, void 0, false, {
+            lineNumber: 840,
+            columnNumber: 29
+          }, this)
+        ] }, void 0, true, {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 550,
+          lineNumber: 799,
+          columnNumber: 21
+        }, this) }, void 0, false, {
+          fileName: "frontend/components/EditableCell.js",
+          lineNumber: 798,
           columnNumber: 17
         }, this);
       }
@@ -42395,17 +42646,24 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             disabled: isClosed,
             onChange: (e) => {
               const selectedOption = options.find((opt) => opt.id === e.target.value);
+              const currentField = getCurrentField();
+              if (!currentField) {
+                alert(`The field "${fieldName}" could not be found. Please refresh the page or reconfigure the field in the properties panel.`);
+                return;
+              }
               if (selectedOption) {
                 setEditValue(selectedOption.id);
                 const valueToSave = { id: selectedOption.id };
                 record.parentTable.updateRecordAsync(record, {
-                  [field.id]: valueToSave
+                  [currentField.id]: valueToSave
                 }).then(() => {
                   if (onUpdate) onUpdate();
                 }).catch((error) => {
                   console.error("Error updating record:", error);
                   let errorMessage = "Failed to update record. ";
-                  if (error.message && error.message.includes("allow record editing")) {
+                  if (error.message && error.message.includes("No field with ID")) {
+                    errorMessage += `The field "${fieldName}" no longer exists in the table. Please refresh the page or reconfigure the field in the properties panel.`;
+                  } else if (error.message && error.message.includes("allow record editing")) {
                     errorMessage += "Please enable record editing permissions for this Interface Extension in the Airtable settings.";
                   } else {
                     errorMessage += error.message || "Unknown error occurred.";
@@ -42415,11 +42673,18 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
               } else {
                 setEditValue("");
                 record.parentTable.updateRecordAsync(record, {
-                  [field.id]: null
+                  [currentField.id]: null
                 }).then(() => {
                   if (onUpdate) onUpdate();
                 }).catch((error) => {
                   console.error("Error updating record:", error);
+                  let errorMessage = "Failed to update record. ";
+                  if (error.message && error.message.includes("No field with ID")) {
+                    errorMessage += `The field "${fieldName}" no longer exists in the table. Please refresh the page or reconfigure the field in the properties panel.`;
+                  } else {
+                    errorMessage += error.message || "Unknown error occurred.";
+                  }
+                  alert(errorMessage);
                 });
               }
             },
@@ -42428,12 +42693,12 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: "", children: "-- Select --" }, void 0, false, {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 694,
+                lineNumber: 969,
                 columnNumber: 25
               }, this),
               options.map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: option.id, children: option.name }, option.id, false, {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 696,
+                lineNumber: 971,
                 columnNumber: 29
               }, this))
             ]
@@ -42442,13 +42707,13 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           true,
           {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 656,
+            lineNumber: 916,
             columnNumber: 21
           },
           this
         ) }, void 0, false, {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 655,
+          lineNumber: 915,
           columnNumber: 17
         }, this);
       }
@@ -42493,7 +42758,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
               size: Math.min(options.length + 1, 4),
               children: options.map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: option.id, children: option.name }, option.id, false, {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 759,
+                lineNumber: 1034,
                 columnNumber: 29
               }, this))
             },
@@ -42501,7 +42766,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             false,
             {
               fileName: "frontend/components/EditableCell.js",
-              lineNumber: 718,
+              lineNumber: 993,
               columnNumber: 21
             },
             this
@@ -42514,12 +42779,12 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             }).filter(Boolean).join(", ")
           ] }, void 0, true, {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 765,
+            lineNumber: 1040,
             columnNumber: 25
           }, this)
         ] }, void 0, true, {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 717,
+          lineNumber: 992,
           columnNumber: 17
         }, this);
       }
@@ -42535,11 +42800,11 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
                 availableDates,
                 onClose: () => setShowCalendar(false)
               },
-              void 0,
+              `calendar-${record.id}-${field.id}`,
               false,
               {
                 fileName: "frontend/components/EditableCell.js",
-                lineNumber: 782,
+                lineNumber: 1057,
                 columnNumber: 25
               },
               this
@@ -42565,18 +42830,18 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             false,
             {
               fileName: "frontend/components/EditableCell.js",
-              lineNumber: 791,
+              lineNumber: 1067,
               columnNumber: 25
             },
             this
           ) }, void 0, false, {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 790,
+            lineNumber: 1066,
             columnNumber: 21
           }, this)
         ] }, void 0, true, {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 780,
+          lineNumber: 1055,
           columnNumber: 17
         }, this);
       }
@@ -42608,7 +42873,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         false,
         {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 829,
+          lineNumber: 1105,
           columnNumber: 25
         },
         this
@@ -42628,17 +42893,17 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         false,
         {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 838,
+          lineNumber: 1114,
           columnNumber: 25
         },
         this
       ) }, void 0, false, {
         fileName: "frontend/components/EditableCell.js",
-        lineNumber: 827,
+        lineNumber: 1103,
         columnNumber: 17
       }, this) }, void 0, false, {
         fileName: "frontend/components/EditableCell.js",
-        lineNumber: 826,
+        lineNumber: 1102,
         columnNumber: 13
       }, this);
     }
@@ -42653,11 +42918,11 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
             availableDates,
             onClose: () => setShowCalendar(false)
           },
-          void 0,
+          `calendar-${record.id}-${field.id}`,
           false,
           {
             fileName: "frontend/components/EditableCell.js",
-            lineNumber: 859,
+            lineNumber: 1135,
             columnNumber: 17
           },
           this
@@ -42670,7 +42935,7 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
       ) : /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
         "td",
         {
-          className: `px-4 py-3 text-sm text-gray-gray900 dark:text-gray-gray100 border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px] ${isDateField && !isReadOnly ? "cursor-pointer hover:bg-gray-gray50 dark:hover:bg-gray-gray600" : ""}`,
+          className: `px-4 py-3 text-sm text-gray-gray900 dark:text-gray-gray100 border-b border-gray-gray100 dark:border-gray-gray600 min-w-[180px] ${isDateField && !isReadOnly ? "cursor-pointer hover:bg-gray-gray50 dark:hover:bg-gray-gray600" : isNameField ? "cursor-default" : ""}`,
           onClick: (e) => {
             e.stopPropagation();
             handleClick();
@@ -42682,14 +42947,14 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         false,
         {
           fileName: "frontend/components/EditableCell.js",
-          lineNumber: 872,
+          lineNumber: 1149,
           columnNumber: 17
         },
         this
       )
     ] }, void 0, true, {
       fileName: "frontend/components/EditableCell.js",
-      lineNumber: 857,
+      lineNumber: 1133,
       columnNumber: 9
     }, this);
   }
@@ -42707,24 +42972,1164 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     }
   });
 
+  // frontend/components/CreateRecordModal.js
+  function CreateRecordModal({
+    isOpen,
+    onClose,
+    timesheetTable,
+    fields,
+    onRecordCreated,
+    session,
+    usersTable,
+    usersRecords,
+    monthRecords,
+    monthStatusField,
+    monthStartDateField,
+    monthEndDateField,
+    taskRecords = []
+    // Pre-fetched Task records from parent component
+  }) {
+    const [formValues, setFormValues] = (0, import_react8.useState)({});
+    const [showCalendar, setShowCalendar] = (0, import_react8.useState)(false);
+    const [calendarField, setCalendarField] = (0, import_react8.useState)(null);
+    const [linkedRecords, setLinkedRecords] = (0, import_react8.useState)({});
+    const [searchTerms, setSearchTerms] = (0, import_react8.useState)({});
+    const [showDropdowns, setShowDropdowns] = (0, import_react8.useState)({});
+    const [isFetchingTaskRecords, setIsFetchingTaskRecords] = (0, import_react8.useState)(false);
+    const hasTriggeredTaskFetch = (0, import_react8.useRef)(false);
+    const findUserNameByEmail = (0, import_react8.useCallback)((email) => {
+      if (!usersTable || !email || !usersRecords) return null;
+      const emailField = usersTable.fields.find((f) => f.name === "Email");
+      const nameField = usersTable.fields.find((f) => f.name === "Name");
+      if (!emailField || !nameField) return null;
+      const userRecord = usersRecords.find((record) => {
+        const recordEmail = record.getCellValue(emailField);
+        return recordEmail && String(recordEmail).toLowerCase() === String(email).toLowerCase();
+      });
+      if (userRecord) {
+        return userRecord.getCellValue(nameField);
+      }
+      return null;
+    }, [usersTable, usersRecords]);
+    const handleLinkedRecordSearch = (0, import_react8.useCallback)(async (fieldKey, field, term) => {
+      if (fieldKey === "task" && taskRecords.length > 0 && !term) {
+        console.log("[Modal] Using pre-fetched Task records:", taskRecords.length);
+        setLinkedRecords((prev) => __spreadProps(__spreadValues({}, prev), {
+          [fieldKey]: taskRecords
+        }));
+        return;
+      }
+      if (fieldKey === "name" && usersTable && usersRecords && usersRecords.length > 0 && !term) {
+        console.log("[Modal] Using Users Table records for Name field:", usersRecords.length);
+        const usersNameField = usersTable.fields.find((f) => f.name === "Name");
+        if (usersNameField) {
+          const nameRecords = usersRecords.map((record) => {
+            const nameValue = record.getCellValue(usersNameField);
+            return {
+              id: record.id,
+              displayName: nameValue ? String(nameValue) : record.name || record.id,
+              name: nameValue ? String(nameValue) : record.name || record.id
+            };
+          });
+          setLinkedRecords((prev) => __spreadProps(__spreadValues({}, prev), {
+            [fieldKey]: nameRecords
+          }));
+          console.log("[Modal] Set Name records from Users Table:", nameRecords.map((r) => r.displayName));
+          return;
+        }
+      }
+      const existingRecords = linkedRecords[fieldKey];
+      if (existingRecords && existingRecords.length > 0 && !term) {
+        console.log("Records already loaded, skipping fetch");
+        return;
+      }
+      if (fieldKey === "task" && isFetchingTaskRecords) {
+        console.log("Task fetch already in progress, skipping");
+        return;
+      }
+      if (fieldKey === "task") {
+        setIsFetchingTaskRecords(true);
+      }
+      setSearchTerms((prev) => __spreadProps(__spreadValues({}, prev), { [fieldKey]: term }));
+      let tempRecordId = null;
+      try {
+        console.log("Fetching linked records...", { fieldKey, term });
+        await new Promise((resolve) => setTimeout(resolve, 100));
+        tempRecordId = await timesheetTable.createRecordAsync({});
+        console.log("Created temporary record:", tempRecordId);
+        const tempRecord = timesheetTable.getRecordByIdIfExists(tempRecordId);
+        if (tempRecord) {
+          console.log("[Modal] Fetching linked records for field:", {
+            fieldKey,
+            fieldName: field.name,
+            fieldId: field.id,
+            fieldType: field.config?.type,
+            linkedTableId: field.config?.options?.linkedTableId
+          });
+          const result = await tempRecord.fetchForeignRecordsAsync(field, term || "");
+          console.log("[Modal] Fetched linked records:", {
+            fieldKey,
+            count: result.records.length,
+            records: result.records.map((r) => ({ id: r.id, displayName: r.displayName, name: r.name }))
+          });
+          setLinkedRecords((prev) => {
+            const newRecords = result.records.map((r) => __spreadValues({
+              id: r.id,
+              displayName: r.displayName || r.name || r.id
+            }, r));
+            console.log("Setting linked records for", fieldKey, ":", newRecords.length, "records with names:", newRecords.map((r) => r.displayName));
+            return __spreadProps(__spreadValues({}, prev), {
+              [fieldKey]: newRecords
+            });
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching linked records:", error);
+        if (error.message && error.message.includes("15 mutations")) {
+          console.warn("Rate limit hit, skipping fetch");
+        }
+      } finally {
+        if (tempRecordId) {
+          try {
+            await new Promise((resolve) => setTimeout(resolve, 150));
+            await timesheetTable.deleteRecordAsync(tempRecordId);
+            console.log("Deleted temporary record:", tempRecordId);
+          } catch (deleteError) {
+            console.error("Failed to delete temporary record:", deleteError);
+            setTimeout(async () => {
+              try {
+                await timesheetTable.deleteRecordAsync(tempRecordId);
+                console.log("Deleted temporary record on retry:", tempRecordId);
+              } catch (retryError) {
+                console.error("Failed to delete temporary record on retry:", retryError);
+              }
+            }, 500);
+          }
+        }
+        if (fieldKey === "task") {
+          setIsFetchingTaskRecords(false);
+        }
+      }
+    }, [timesheetTable, linkedRecords, isFetchingTaskRecords, taskRecords]);
+    (0, import_react8.useEffect)(() => {
+      if (!isOpen) return;
+      let userName = null;
+      if (session?.currentUser?.email) {
+        const userEmail = session.currentUser.email;
+        console.log("[Modal] Logged-in user email:", userEmail);
+        userName = findUserNameByEmail(userEmail);
+        if (userName) {
+          console.log("[Modal] Found Name in Users Table:", userName);
+        } else {
+          console.warn("[Modal] Name not found in Users Table for email:", userEmail);
+          if (session.currentUser.name) {
+            userName = session.currentUser.name;
+            console.log("[Modal] Using fallback session.currentUser.name:", userName);
+          }
+        }
+      } else if (session?.currentUser?.name) {
+        userName = session.currentUser.name;
+        console.log("[Modal] No email available, using session.currentUser.name:", userName);
+      }
+      if (userName) {
+        const createdBy2Field = fields.find((f) => f.key === "createdBy2")?.field;
+        if (createdBy2Field) {
+          const createdBy2FieldType = createdBy2Field.config.type;
+          if (createdBy2FieldType === FieldType.SINGLE_SELECT) {
+            const createdBy2Options = createdBy2Field.config?.options?.choices || [];
+            let matchingCreatedBy2Option = createdBy2Options.find((opt) => opt.name === userName);
+            if (!matchingCreatedBy2Option) {
+              matchingCreatedBy2Option = createdBy2Options.find(
+                (opt) => opt.name && opt.name.toLowerCase() === userName.toLowerCase()
+              );
+            }
+            if (matchingCreatedBy2Option) {
+              setFormValues((prev) => __spreadProps(__spreadValues({}, prev), {
+                createdBy2: { id: matchingCreatedBy2Option.id }
+              }));
+              console.log("[Modal] Set Created By 2 field to:", matchingCreatedBy2Option.name);
+            } else {
+              console.warn("[Modal] Created By 2 field option not found for:", userName);
+            }
+          } else if (createdBy2FieldType === FieldType.SINGLE_LINE_TEXT || createdBy2FieldType === FieldType.MULTILINE_TEXT) {
+            setFormValues((prev) => __spreadProps(__spreadValues({}, prev), {
+              createdBy2: userName
+            }));
+            console.log("[Modal] Set Created By 2 field (text) to:", userName);
+          }
+        }
+      } else {
+        console.warn("[Modal] Could not determine user name. Session:", session?.currentUser);
+      }
+      if (taskRecords.length > 0) {
+        console.log("[Modal] Pre-populating Task records on modal open:", taskRecords.length);
+        setLinkedRecords((prev) => __spreadProps(__spreadValues({}, prev), {
+          task: taskRecords
+        }));
+      }
+    }, [isOpen]);
+    (0, import_react8.useEffect)(() => {
+      if (!isOpen) {
+        setFormValues({});
+        setShowCalendar(false);
+        setCalendarField(null);
+        setLinkedRecords({});
+        setSearchTerms({});
+        setShowDropdowns({});
+      }
+    }, [isOpen]);
+    if (!isOpen) return null;
+    const handleFieldChange = (fieldKey, value) => {
+      setFormValues((prev) => __spreadProps(__spreadValues({}, prev), {
+        [fieldKey]: value
+      }));
+    };
+    const handleDateSelect = (date, fieldKey) => {
+      handleFieldChange(fieldKey, date);
+      setShowCalendar(false);
+      setCalendarField(null);
+    };
+    const handleCreate = async () => {
+      if (!timesheetTable) {
+        alert("Timesheet table is not configured.");
+        return;
+      }
+      try {
+        const fieldsToSet2 = {};
+        fields.forEach(({ key, field }) => {
+          if (!field) return;
+          const value = formValues[key];
+          if (value === void 0 || value === null || value === "") return;
+          const fieldType = field.config.type;
+          const fieldName = field.name || "";
+          const isEmailFromNameField = fieldName === "Email (from Name)";
+          if (isEmailFromNameField) return;
+          if (fieldType === FieldType.SINGLE_SELECT || fieldType === FieldType.MULTIPLE_SELECTS) {
+            if (fieldType === FieldType.SINGLE_SELECT && value.id) {
+              fieldsToSet2[field.id] = { id: value.id };
+            } else if (fieldType === FieldType.MULTIPLE_SELECTS && Array.isArray(value)) {
+              fieldsToSet2[field.id] = value.map((v) => ({ id: v.id }));
+            }
+          } else if (fieldType === FieldType.MULTIPLE_RECORD_LINKS) {
+            if (Array.isArray(value)) {
+              fieldsToSet2[field.id] = value.map((v) => typeof v === "string" ? { id: v } : { id: v.id });
+            } else if (value && value.id) {
+              fieldsToSet2[field.id] = [{ id: value.id }];
+              console.log("Setting linked record field:", {
+                fieldId: field.id,
+                fieldName: field.name,
+                recordId: value.id,
+                recordName: value.displayName || value.name
+              });
+            }
+          } else if (fieldType === FieldType.DATE || fieldType === FieldType.DATE_TIME) {
+            if (value instanceof Date) {
+              fieldsToSet2[field.id] = value.toISOString().split("T")[0];
+            } else if (typeof value === "string") {
+              fieldsToSet2[field.id] = value;
+            }
+          } else if (fieldType === FieldType.NUMBER || fieldType === FieldType.CURRENCY || fieldType === FieldType.PERCENT) {
+            const numValue = parseFloat(value);
+            if (!isNaN(numValue)) {
+              fieldsToSet2[field.id] = numValue;
+            }
+          } else if (fieldType === FieldType.CHECKBOX) {
+            fieldsToSet2[field.id] = Boolean(value);
+          } else {
+            fieldsToSet2[field.id] = String(value);
+          }
+        });
+        let userName = null;
+        const userEmail = session?.currentUser?.email;
+        if (userEmail) {
+          userName = findUserNameByEmail(userEmail);
+        } else if (session?.currentUser?.name) {
+          userName = session.currentUser.name;
+        }
+        const createdBy2Field = fields.find((f) => f.key === "createdBy2" || f.field?.name === "Created By 2")?.field;
+        if (createdBy2Field && userName) {
+          const createdBy2FieldType = createdBy2Field.config.type;
+          if (createdBy2FieldType === FieldType.SINGLE_SELECT) {
+            const createdBy2Options = createdBy2Field.config?.options?.choices || [];
+            const matchingCreatedBy2Option = createdBy2Options.find(
+              (opt) => opt.name && opt.name.toLowerCase() === userName.toLowerCase()
+            );
+            if (matchingCreatedBy2Option) {
+              fieldsToSet2[createdBy2Field.id] = { id: matchingCreatedBy2Option.id };
+              console.log("[Modal] Created By 2 field set programmatically:", matchingCreatedBy2Option.name);
+            } else {
+              console.warn("[Modal] Created By 2 field option not found for:", userName);
+            }
+          } else if (createdBy2FieldType === FieldType.SINGLE_LINE_TEXT || createdBy2FieldType === FieldType.MULTILINE_TEXT) {
+            fieldsToSet2[createdBy2Field.id] = userName;
+            console.log("[Modal] Created By 2 field (text) set programmatically:", userName);
+          }
+        }
+        const userEmailField = fields.find((f) => f.key === "userEmail" || f.field?.name === "Email of the logged in user")?.field;
+        console.log("[Modal] Setting User Email field:", {
+          userEmailField: userEmailField ? { id: userEmailField.id, name: userEmailField.name, type: userEmailField.config?.type } : null,
+          hasSession: !!session,
+          hasCurrentUser: !!session?.currentUser,
+          userEmail: session?.currentUser?.email,
+          allFieldKeys: fields.map((f) => ({ key: f.key, fieldName: f.field?.name }))
+        });
+        if (userEmailField && session?.currentUser?.email) {
+          const loggedInUserEmail = session.currentUser.email;
+          fieldsToSet2[userEmailField.id] = loggedInUserEmail;
+          console.log("[Modal] User Email field set programmatically:", loggedInUserEmail);
+        } else {
+          console.warn("[Modal] Cannot set User Email field:", {
+            hasUserEmailField: !!userEmailField,
+            hasEmail: !!session?.currentUser?.email,
+            sessionInfo: session ? { hasCurrentUser: !!session.currentUser, email: session.currentUser?.email } : "no session"
+          });
+        }
+        console.log("[Modal] Creating record with fieldsToSet:", fieldsToSet2);
+        await timesheetTable.createRecordAsync(fieldsToSet2);
+        console.log("[Modal] Record created successfully");
+        onRecordCreated();
+        onClose();
+      } catch (error) {
+        console.error("[Modal] Error creating record:", error);
+        console.error("[Modal] fieldsToSet that failed:", fieldsToSet);
+        alert("Failed to create record: " + (error.message || "Unknown error occurred."));
+      }
+    };
+    const renderFieldInput = ({ key, label, field }) => {
+      if (!field) {
+        if (key === "userEmail") {
+          console.warn("[Modal] User Email field not configured in custom properties");
+        }
+        if (key === "name") {
+          console.warn("[Modal] Name field not configured in custom properties");
+        }
+        return null;
+      }
+      const fieldName = field.name || "";
+      const fieldType = field.config.type;
+      const value = formValues[key];
+      const isNameField = fieldName === "Name" || key === "name";
+      const isCreatedBy2Field = fieldName === "Created By 2";
+      const isEmailFromNameField = fieldName === "Email (from Name)";
+      const isUserEmailField = fieldName === "Email of the logged in user" || key === "userEmail";
+      if (key === "name" || isNameField) {
+        console.log("[Modal] Name field detected:", {
+          key,
+          fieldName,
+          fieldType,
+          isNameField,
+          hasField: !!field,
+          fieldConfig: field ? { type: fieldType, hasOptions: !!field.config?.options?.choices } : null
+        });
+      }
+      if (key === "userEmail" || isUserEmailField) {
+        console.log("[Modal] User Email field detected:", {
+          key,
+          fieldName,
+          fieldType,
+          isUserEmailField,
+          hasSession: !!session,
+          hasCurrentUser: !!session?.currentUser,
+          userEmail: session?.currentUser?.email,
+          sessionCurrentUser: session?.currentUser
+        });
+      }
+      const isProjectImportField = fieldName === "Project Import";
+      const isDateFieldEditable = fieldName === "Date";
+      const isIndividualHoursField = fieldName === "Individual Hours";
+      const isProjectFromTaskEditable = fieldName === "Project from Task";
+      const isWarningField = fieldName === "Warning";
+      const isTimesheetNotesField = fieldName === "Timesheet Notes";
+      const isTimeTaskTypeField = fieldName === "Time Task Type";
+      const isDeleteField = fieldName === "Delete";
+      const isTaskField = fieldName === "Task";
+      if (isDeleteField || isProjectImportField || isUserEmailField) return null;
+      const isEditable = isDateFieldEditable || isIndividualHoursField || isProjectFromTaskEditable || isWarningField || isTimesheetNotesField || isTimeTaskTypeField || isTaskField || isNameField || isCreatedBy2Field || isEmailFromNameField;
+      if (!isEditable) return null;
+      if (fieldType === FieldType.MULTIPLE_RECORD_LINKS && isNameField) {
+        const records = linkedRecords[key] || [];
+        const selectedRecord = value;
+        const selectedId = selectedRecord?.id || "";
+        return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("label", { className: "block text-sm font-medium text-gray-gray900 dark:text-gray-gray100 mb-1", children: label }, void 0, false, {
+            fileName: "frontend/components/CreateRecordModal.js",
+            lineNumber: 514,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+            "select",
+            {
+              value: selectedId,
+              onFocus: () => {
+                if (records.length === 0) {
+                  const nameField = fields.find((f) => f.key === "name")?.field;
+                  if (nameField) {
+                    console.log("[Modal] Fetching Name records on focus (lazy loading)...");
+                    handleLinkedRecordSearch("name", nameField, "").catch((error) => {
+                      console.error("[Modal] Error fetching Name records:", error);
+                    });
+                  }
+                }
+              },
+              onChange: (e) => {
+                const recordId = e.target.value;
+                console.log("[Modal] Name select onChange:", { recordId, recordsCount: records.length });
+                if (recordId) {
+                  const record = records.find((r) => r.id === recordId);
+                  console.log("[Modal] Found Name record:", {
+                    id: record?.id,
+                    name: record?.displayName || record?.name
+                  });
+                  if (record) {
+                    handleFieldChange(key, record);
+                    console.log("[Modal] Name selected and stored:", record.displayName || record.name);
+                  } else {
+                    console.error("[Modal] Name record not found for ID:", recordId);
+                  }
+                } else {
+                  handleFieldChange(key, null);
+                  console.log("[Modal] Name selection cleared");
+                }
+              },
+              className: "w-full px-2 py-1 border rounded text-gray-gray900 dark:text-gray-gray100 bg-white dark:bg-gray-gray800",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: "", children: [
+                  "Select ",
+                  label
+                ] }, void 0, true, {
+                  fileName: "frontend/components/CreateRecordModal.js",
+                  lineNumber: 556,
+                  columnNumber: 25
+                }, this),
+                records.map((record) => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: record.id, children: record.displayName || record.name }, record.id, false, {
+                  fileName: "frontend/components/CreateRecordModal.js",
+                  lineNumber: 558,
+                  columnNumber: 29
+                }, this))
+              ]
+            },
+            void 0,
+            true,
+            {
+              fileName: "frontend/components/CreateRecordModal.js",
+              lineNumber: 517,
+              columnNumber: 21
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "frontend/components/CreateRecordModal.js",
+          lineNumber: 513,
+          columnNumber: 17
+        }, this);
+      }
+      if (isEmailFromNameField) {
+        const emailOptions = [];
+        if (usersTable && usersRecords) {
+          const emailField = usersTable.fields.find((f) => f.name === "Email");
+          const nameField = usersTable.fields.find((f) => f.name === "Name");
+          if (emailField && nameField) {
+            usersRecords.forEach((record) => {
+              const email = record.getCellValue(emailField);
+              const name = record.getCellValue(nameField);
+              if (email) {
+                emailOptions.push({
+                  email: String(email),
+                  name: name ? String(name) : String(email),
+                  id: record.id
+                });
+              }
+            });
+          }
+        }
+        return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("label", { className: "block text-sm font-medium text-gray-gray900 dark:text-gray-gray100 mb-1", children: label }, void 0, false, {
+            fileName: "frontend/components/CreateRecordModal.js",
+            lineNumber: 591,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+            "select",
+            {
+              value: value || "",
+              onChange: (e) => {
+                const selectedEmail = e.target.value;
+                handleFieldChange(key, selectedEmail);
+                if (selectedEmail && usersTable && usersRecords) {
+                  const emailField = usersTable.fields.find((f) => f.name === "Email");
+                  const nameField = usersTable.fields.find((f) => f.name === "Name");
+                  if (emailField && nameField) {
+                    const userRecord = usersRecords.find((record) => {
+                      const recordEmail = record.getCellValue(emailField);
+                      return recordEmail && String(recordEmail).toLowerCase() === selectedEmail.toLowerCase();
+                    });
+                    if (userRecord) {
+                      const userName = userRecord.getCellValue(nameField);
+                      const nameFieldConfig = fields.find((f) => f.key === "name")?.field;
+                      if (nameFieldConfig && nameFieldConfig.config.type === FieldType.SINGLE_SELECT) {
+                        const nameOptions = nameFieldConfig.config?.options?.choices || [];
+                        const matchingNameOption = nameOptions.find(
+                          (opt) => opt.name && opt.name.toLowerCase() === String(userName).toLowerCase()
+                        );
+                        if (matchingNameOption) {
+                          setFormValues((prev) => __spreadProps(__spreadValues({}, prev), {
+                            name: { id: matchingNameOption.id }
+                          }));
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              className: "w-full px-3 py-2 border border-gray-gray300 dark:border-gray-gray600 rounded-md bg-white dark:bg-gray-gray800 text-gray-gray900 dark:text-gray-gray100",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: "", children: "Select Email" }, void 0, false, {
+                  fileName: "frontend/components/CreateRecordModal.js",
+                  lineNumber: 631,
+                  columnNumber: 25
+                }, this),
+                emailOptions.map((option, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: option.email, children: [
+                  option.email,
+                  " ",
+                  option.name !== option.email ? `(${option.name})` : ""
+                ] }, option.id || index, true, {
+                  fileName: "frontend/components/CreateRecordModal.js",
+                  lineNumber: 633,
+                  columnNumber: 29
+                }, this))
+              ]
+            },
+            void 0,
+            true,
+            {
+              fileName: "frontend/components/CreateRecordModal.js",
+              lineNumber: 594,
+              columnNumber: 21
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "frontend/components/CreateRecordModal.js",
+          lineNumber: 590,
+          columnNumber: 17
+        }, this);
+      }
+      if (isUserEmailField && (fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.EMAIL)) {
+        const loggedInEmail = session?.currentUser?.email || "";
+        console.log("[Modal] Rendering User Email field:", {
+          fieldName,
+          fieldType,
+          loggedInEmail,
+          hasSession: !!session,
+          hasCurrentUser: !!session?.currentUser
+        });
+        return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("label", { className: "block text-sm font-medium text-gray-gray900 dark:text-gray-gray100 mb-1", children: label }, void 0, false, {
+            fileName: "frontend/components/CreateRecordModal.js",
+            lineNumber: 654,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+            "input",
+            {
+              type: "email",
+              value: loggedInEmail,
+              disabled: true,
+              className: "w-full px-3 py-2 border border-gray-gray300 dark:border-gray-gray600 rounded-md bg-gray-gray100 dark:bg-gray-gray700 text-gray-gray500 dark:text-gray-gray400 cursor-not-allowed",
+              readOnly: true
+            },
+            void 0,
+            false,
+            {
+              fileName: "frontend/components/CreateRecordModal.js",
+              lineNumber: 657,
+              columnNumber: 21
+            },
+            this
+          ),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("p", { className: "mt-1 text-xs text-gray-gray500 dark:text-gray-gray400", children: "This field is automatically populated with the logged-in user's email" }, void 0, false, {
+            fileName: "frontend/components/CreateRecordModal.js",
+            lineNumber: 664,
+            columnNumber: 21
+          }, this)
+        ] }, void 0, true, {
+          fileName: "frontend/components/CreateRecordModal.js",
+          lineNumber: 653,
+          columnNumber: 17
+        }, this);
+      }
+      if (isCreatedBy2Field) {
+        if (fieldType === FieldType.SINGLE_SELECT) {
+          const options = field.config?.options?.choices || [];
+          const selectedOption = value?.id ? options.find((opt) => opt.id === value.id) : null;
+          return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-4", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("label", { className: "block text-sm font-medium text-gray-gray900 dark:text-gray-gray100 mb-1", children: label }, void 0, false, {
+              fileName: "frontend/components/CreateRecordModal.js",
+              lineNumber: 679,
+              columnNumber: 25
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+              "input",
+              {
+                type: "text",
+                value: selectedOption?.name || value || "",
+                readOnly: true,
+                disabled: true,
+                className: "w-full px-3 py-2 border border-gray-gray300 dark:border-gray-gray600 rounded-md bg-gray-gray100 dark:bg-gray-gray700 text-gray-gray500 dark:text-gray-gray400 cursor-not-allowed"
+              },
+              void 0,
+              false,
+              {
+                fileName: "frontend/components/CreateRecordModal.js",
+                lineNumber: 682,
+                columnNumber: 25
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "frontend/components/CreateRecordModal.js",
+            lineNumber: 678,
+            columnNumber: 21
+          }, this);
+        } else if (fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.MULTILINE_TEXT) {
+          return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-4", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("label", { className: "block text-sm font-medium text-gray-gray900 dark:text-gray-gray100 mb-1", children: label }, void 0, false, {
+              fileName: "frontend/components/CreateRecordModal.js",
+              lineNumber: 694,
+              columnNumber: 25
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+              "input",
+              {
+                type: "text",
+                value: value || "",
+                readOnly: true,
+                disabled: true,
+                className: "w-full px-3 py-2 border border-gray-gray300 dark:border-gray-gray600 rounded-md bg-gray-gray100 dark:bg-gray-gray700 text-gray-gray500 dark:text-gray-gray400 cursor-not-allowed"
+              },
+              void 0,
+              false,
+              {
+                fileName: "frontend/components/CreateRecordModal.js",
+                lineNumber: 697,
+                columnNumber: 25
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "frontend/components/CreateRecordModal.js",
+            lineNumber: 693,
+            columnNumber: 21
+          }, this);
+        }
+      }
+      if (isDateFieldEditable && (fieldType === FieldType.DATE || fieldType === FieldType.DATE_TIME)) {
+        const availableDates = getAvailableDates(monthRecords, monthStatusField, monthStartDateField, monthEndDateField);
+        const dateValue = value instanceof Date ? value : value ? new Date(value) : null;
+        return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("label", { className: "block text-sm font-medium text-gray-gray900 dark:text-gray-gray100 mb-1", children: label }, void 0, false, {
+            fileName: "frontend/components/CreateRecordModal.js",
+            lineNumber: 716,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+            "input",
+            {
+              type: "text",
+              value: dateValue ? dateValue.toLocaleDateString() : "",
+              readOnly: true,
+              onClick: () => {
+                setCalendarField(key);
+                setShowCalendar(true);
+              },
+              className: "w-full px-3 py-2 border border-gray-gray300 dark:border-gray-gray600 rounded-md bg-white dark:bg-gray-gray800 text-gray-gray900 dark:text-gray-gray100 cursor-pointer",
+              placeholder: "Click to select date"
+            },
+            void 0,
+            false,
+            {
+              fileName: "frontend/components/CreateRecordModal.js",
+              lineNumber: 719,
+              columnNumber: 21
+            },
+            this
+          ),
+          showCalendar && calendarField === key && (0, import_react_dom2.createPortal)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+              CalendarPicker,
+              {
+                selectedDate: dateValue,
+                onDateSelect: (date) => handleDateSelect(date, key),
+                availableDates,
+                onClose: () => {
+                  setShowCalendar(false);
+                  setCalendarField(null);
+                }
+              },
+              void 0,
+              false,
+              {
+                fileName: "frontend/components/CreateRecordModal.js",
+                lineNumber: 731,
+                columnNumber: 25
+              },
+              this
+            ),
+            document.body
+          )
+        ] }, void 0, true, {
+          fileName: "frontend/components/CreateRecordModal.js",
+          lineNumber: 715,
+          columnNumber: 17
+        }, this);
+      }
+      if (fieldType === FieldType.SINGLE_SELECT && (isTimeTaskTypeField || isDeleteField)) {
+        const options = field.config?.options?.choices || [];
+        const selectedOption = value?.id ? options.find((opt) => opt.id === value.id) : null;
+        return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("label", { className: "block text-sm font-medium text-gray-gray900 dark:text-gray-gray100 mb-1", children: label }, void 0, false, {
+            fileName: "frontend/components/CreateRecordModal.js",
+            lineNumber: 753,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+            "select",
+            {
+              value: selectedOption?.id || "",
+              onChange: (e) => {
+                const optionId = e.target.value;
+                const option = options.find((opt) => opt.id === optionId);
+                handleFieldChange(key, option ? { id: option.id } : null);
+              },
+              className: "w-full px-3 py-2 border border-gray-gray300 dark:border-gray-gray600 rounded-md bg-white dark:bg-gray-gray800 text-gray-gray900 dark:text-gray-gray100",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: "", children: [
+                  "Select ",
+                  label
+                ] }, void 0, true, {
+                  fileName: "frontend/components/CreateRecordModal.js",
+                  lineNumber: 765,
+                  columnNumber: 25
+                }, this),
+                options.map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: option.id, children: option.name }, option.id, false, {
+                  fileName: "frontend/components/CreateRecordModal.js",
+                  lineNumber: 767,
+                  columnNumber: 29
+                }, this))
+              ]
+            },
+            void 0,
+            true,
+            {
+              fileName: "frontend/components/CreateRecordModal.js",
+              lineNumber: 756,
+              columnNumber: 21
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "frontend/components/CreateRecordModal.js",
+          lineNumber: 752,
+          columnNumber: 17
+        }, this);
+      }
+      if (fieldType === FieldType.MULTIPLE_RECORD_LINKS && isTaskField) {
+        const records = linkedRecords[key] || [];
+        const selectedRecord = value;
+        const selectedId = selectedRecord?.id || "";
+        console.log("[Modal] Task field render:", {
+          key,
+          recordsCount: records.length,
+          selectedId,
+          selectedRecord,
+          isFetchingTaskRecords,
+          linkedRecords: linkedRecords[key],
+          recordsSample: records.slice(0, 3).map((r) => ({ id: r.id, name: r.displayName }))
+          // Show first 3 records for debugging
+        });
+        return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("label", { className: "block text-sm font-medium text-gray-gray900 dark:text-gray-gray100 mb-1", children: label }, void 0, false, {
+            fileName: "frontend/components/CreateRecordModal.js",
+            lineNumber: 796,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+            "select",
+            {
+              value: selectedId,
+              onFocus: () => {
+                if (records.length === 0 && !isFetchingTaskRecords) {
+                  if (taskRecords.length > 0) {
+                    console.log("[Modal] Using pre-fetched Task records on focus:", taskRecords.length);
+                    setLinkedRecords((prev) => __spreadProps(__spreadValues({}, prev), {
+                      task: taskRecords
+                    }));
+                  } else {
+                    const taskField = fields.find((f) => f.key === "task")?.field;
+                    if (taskField) {
+                      console.log("[Modal] Fetching Task records on focus (lazy loading)...");
+                      handleLinkedRecordSearch("task", taskField, "").catch((error) => {
+                        console.error("[Modal] Error fetching Task records:", error);
+                      });
+                    }
+                  }
+                }
+              },
+              onChange: (e) => {
+                const recordId = e.target.value;
+                console.log("[Modal] Task select onChange:", { recordId, recordsCount: records.length });
+                if (recordId) {
+                  const record = records.find((r) => r.id === recordId);
+                  console.log("[Modal] Found Task record:", {
+                    id: record?.id,
+                    name: record?.displayName || record?.name
+                  });
+                  if (record) {
+                    handleFieldChange(key, record);
+                    console.log("[Modal] Task selected and stored:", record.displayName || record.name);
+                  } else {
+                    console.error("[Modal] Task record not found for ID:", recordId);
+                  }
+                } else {
+                  handleFieldChange(key, null);
+                  console.log("[Modal] Task selection cleared");
+                }
+              },
+              disabled: isFetchingTaskRecords && records.length === 0,
+              className: `w-full px-2 py-1 border rounded text-gray-gray900 dark:text-gray-gray100 bg-white dark:bg-gray-gray800 ${isFetchingTaskRecords && records.length === 0 ? "opacity-50 cursor-not-allowed" : ""}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: "", children: "Select Task" }, void 0, false, {
+                  fileName: "frontend/components/CreateRecordModal.js",
+                  lineNumber: 850,
+                  columnNumber: 25
+                }, this),
+                records.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: "", disabled: true, children: isFetchingTaskRecords ? "Loading tasks..." : "No tasks available" }, void 0, false, {
+                  fileName: "frontend/components/CreateRecordModal.js",
+                  lineNumber: 852,
+                  columnNumber: 29
+                }, this) : records.map((record) => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: record.id, children: record.displayName || record.name || record.id }, record.id, false, {
+                  fileName: "frontend/components/CreateRecordModal.js",
+                  lineNumber: 855,
+                  columnNumber: 33
+                }, this))
+              ]
+            },
+            void 0,
+            true,
+            {
+              fileName: "frontend/components/CreateRecordModal.js",
+              lineNumber: 799,
+              columnNumber: 21
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "frontend/components/CreateRecordModal.js",
+          lineNumber: 795,
+          columnNumber: 17
+        }, this);
+      }
+      if ((fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.MULTILINE_TEXT) && (isProjectImportField || isWarningField || isTimesheetNotesField)) {
+        return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("label", { className: "block text-sm font-medium text-gray-gray900 dark:text-gray-gray100 mb-1", children: label }, void 0, false, {
+            fileName: "frontend/components/CreateRecordModal.js",
+            lineNumber: 870,
+            columnNumber: 21
+          }, this),
+          fieldType === FieldType.MULTILINE_TEXT ? /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+            "textarea",
+            {
+              value: value || "",
+              onChange: (e) => handleFieldChange(key, e.target.value),
+              className: "w-full px-3 py-2 border border-gray-gray300 dark:border-gray-gray600 rounded-md bg-white dark:bg-gray-gray800 text-gray-gray900 dark:text-gray-gray100",
+              rows: 3
+            },
+            void 0,
+            false,
+            {
+              fileName: "frontend/components/CreateRecordModal.js",
+              lineNumber: 874,
+              columnNumber: 25
+            },
+            this
+          ) : /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+            "input",
+            {
+              type: "text",
+              value: value || "",
+              onChange: (e) => handleFieldChange(key, e.target.value),
+              className: "w-full px-3 py-2 border border-gray-gray300 dark:border-gray-gray600 rounded-md bg-white dark:bg-gray-gray800 text-gray-gray900 dark:text-gray-gray100"
+            },
+            void 0,
+            false,
+            {
+              fileName: "frontend/components/CreateRecordModal.js",
+              lineNumber: 881,
+              columnNumber: 25
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "frontend/components/CreateRecordModal.js",
+          lineNumber: 869,
+          columnNumber: 17
+        }, this);
+      }
+      if (fieldType === FieldType.NUMBER && isIndividualHoursField) {
+        return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("label", { className: "block text-sm font-medium text-gray-gray900 dark:text-gray-gray100 mb-1", children: label }, void 0, false, {
+            fileName: "frontend/components/CreateRecordModal.js",
+            lineNumber: 896,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+            "input",
+            {
+              type: "number",
+              value: value || "",
+              onChange: (e) => handleFieldChange(key, e.target.value ? parseFloat(e.target.value) : null),
+              className: "w-full px-3 py-2 border border-gray-gray300 dark:border-gray-gray600 rounded-md bg-white dark:bg-gray-gray800 text-gray-gray900 dark:text-gray-gray100",
+              step: "0.01"
+            },
+            void 0,
+            false,
+            {
+              fileName: "frontend/components/CreateRecordModal.js",
+              lineNumber: 899,
+              columnNumber: 21
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "frontend/components/CreateRecordModal.js",
+          lineNumber: 895,
+          columnNumber: 17
+        }, this);
+      }
+      if (fieldType === FieldType.MULTIPLE_RECORD_LINKS && isProjectFromTaskEditable) {
+        const records = linkedRecords[key] || [];
+        const searchTerm = searchTerms[key] || "";
+        const showDropdown = showDropdowns[key] || false;
+        const selectedRecord = value;
+        return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("label", { className: "block text-sm font-medium text-gray-gray900 dark:text-gray-gray100 mb-1", children: label }, void 0, false, {
+            fileName: "frontend/components/CreateRecordModal.js",
+            lineNumber: 919,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "relative", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+              "input",
+              {
+                type: "text",
+                value: showDropdown ? searchTerm : selectedRecord?.displayName || "",
+                onChange: (e) => {
+                  const term = e.target.value;
+                  setSearchTerms((prev) => __spreadProps(__spreadValues({}, prev), { [key]: term }));
+                  setShowDropdowns((prev) => __spreadProps(__spreadValues({}, prev), { [key]: true }));
+                  handleLinkedRecordSearch(key, field, term);
+                },
+                onFocus: () => {
+                  setShowDropdowns((prev) => __spreadProps(__spreadValues({}, prev), { [key]: true }));
+                  if (records.length === 0) {
+                    handleLinkedRecordSearch(key, field, "");
+                  }
+                },
+                onBlur: () => {
+                  setTimeout(() => {
+                    setShowDropdowns((prev) => __spreadProps(__spreadValues({}, prev), { [key]: false }));
+                  }, 200);
+                },
+                className: "w-full px-3 py-2 border border-gray-gray300 dark:border-gray-gray600 rounded-md bg-white dark:bg-gray-gray800 text-gray-gray900 dark:text-gray-gray100",
+                placeholder: "Search and select..."
+              },
+              void 0,
+              false,
+              {
+                fileName: "frontend/components/CreateRecordModal.js",
+                lineNumber: 923,
+                columnNumber: 25
+              },
+              this
+            ),
+            showDropdown && records.length > 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "absolute z-10 w-full mt-1 bg-white dark:bg-gray-gray800 border border-gray-gray300 dark:border-gray-gray600 rounded-md shadow-lg max-h-60 overflow-auto", children: records.map((record) => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+              "div",
+              {
+                onClick: () => {
+                  handleFieldChange(key, record);
+                  setShowDropdowns((prev) => __spreadProps(__spreadValues({}, prev), { [key]: false }));
+                },
+                className: "px-3 py-2 hover:bg-gray-gray50 dark:hover:bg-gray-gray700 cursor-pointer",
+                children: record.displayName
+              },
+              record.id,
+              false,
+              {
+                fileName: "frontend/components/CreateRecordModal.js",
+                lineNumber: 949,
+                columnNumber: 37
+              },
+              this
+            )) }, void 0, false, {
+              fileName: "frontend/components/CreateRecordModal.js",
+              lineNumber: 947,
+              columnNumber: 29
+            }, this)
+          ] }, void 0, true, {
+            fileName: "frontend/components/CreateRecordModal.js",
+            lineNumber: 922,
+            columnNumber: 21
+          }, this)
+        ] }, void 0, true, {
+          fileName: "frontend/components/CreateRecordModal.js",
+          lineNumber: 918,
+          columnNumber: 17
+        }, this);
+      }
+      return null;
+    };
+    return (0, import_react_dom2.createPortal)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50", onClick: onClose, children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "bg-white dark:bg-gray-gray800 rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto", onClick: (e) => e.stopPropagation(), children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "p-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "flex justify-between items-center mb-6", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("h2", { className: "text-xl font-bold text-gray-gray900 dark:text-gray-gray100", children: "Create New Record" }, void 0, false, {
+            fileName: "frontend/components/CreateRecordModal.js",
+            lineNumber: 975,
+            columnNumber: 25
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+            "button",
+            {
+              onClick: onClose,
+              className: "text-gray-gray500 dark:text-gray-gray400 hover:text-gray-gray900 dark:hover:text-gray-gray100",
+              children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("svg", { className: "w-6 h-6", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M6 18L18 6M6 6l12 12" }, void 0, false, {
+                fileName: "frontend/components/CreateRecordModal.js",
+                lineNumber: 983,
+                columnNumber: 33
+              }, this) }, void 0, false, {
+                fileName: "frontend/components/CreateRecordModal.js",
+                lineNumber: 982,
+                columnNumber: 29
+              }, this)
+            },
+            void 0,
+            false,
+            {
+              fileName: "frontend/components/CreateRecordModal.js",
+              lineNumber: 978,
+              columnNumber: 25
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "frontend/components/CreateRecordModal.js",
+          lineNumber: 974,
+          columnNumber: 21
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "space-y-4", children: fields.map((fieldConfig) => renderFieldInput(fieldConfig)) }, void 0, false, {
+          fileName: "frontend/components/CreateRecordModal.js",
+          lineNumber: 988,
+          columnNumber: 21
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "flex justify-end gap-3 mt-6", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+            "button",
+            {
+              onClick: onClose,
+              className: "px-4 py-2 text-sm font-medium text-gray-gray700 dark:text-gray-gray300 bg-gray-gray200 dark:bg-gray-gray600 rounded-md hover:bg-gray-gray300 dark:hover:bg-gray-gray500",
+              children: "Cancel"
+            },
+            void 0,
+            false,
+            {
+              fileName: "frontend/components/CreateRecordModal.js",
+              lineNumber: 993,
+              columnNumber: 25
+            },
+            this
+          ),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+            "button",
+            {
+              onClick: handleCreate,
+              className: "px-4 py-2 text-sm font-medium text-white bg-blue-blue rounded-md hover:bg-blue-blue600",
+              children: "Create"
+            },
+            void 0,
+            false,
+            {
+              fileName: "frontend/components/CreateRecordModal.js",
+              lineNumber: 999,
+              columnNumber: 25
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "frontend/components/CreateRecordModal.js",
+          lineNumber: 992,
+          columnNumber: 21
+        }, this)
+      ] }, void 0, true, {
+        fileName: "frontend/components/CreateRecordModal.js",
+        lineNumber: 973,
+        columnNumber: 17
+      }, this) }, void 0, false, {
+        fileName: "frontend/components/CreateRecordModal.js",
+        lineNumber: 972,
+        columnNumber: 13
+      }, this) }, void 0, false, {
+        fileName: "frontend/components/CreateRecordModal.js",
+        lineNumber: 971,
+        columnNumber: 9
+      }, this),
+      document.body
+    );
+  }
+  var import_react8, import_react_dom2, import_jsx_dev_runtime3;
+  var init_CreateRecordModal = __esm({
+    "frontend/components/CreateRecordModal.js"() {
+      import_react8 = __toESM(require_react());
+      import_react_dom2 = __toESM(require_react_dom());
+      init_models();
+      init_CalendarPicker();
+      init_dateUtils();
+      import_jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime());
+    }
+  });
+
   // frontend/index.js
   var frontend_exports = {};
   function TimesheetApp() {
     const base = useBase2();
-    const getCustomPropertiesMemo = (0, import_react8.useCallback)((base2) => getCustomProperties(base2), []);
+    const session = useSession2();
+    (0, import_react9.useEffect)(() => {
+      if (session?.currentUser) {
+        console.log("Session info:", {
+          email: session.currentUser.email,
+          id: session.currentUser.id,
+          name: session.currentUser.name
+        });
+      } else {
+        console.warn("Session or currentUser not available");
+      }
+    }, [session]);
+    const getCustomPropertiesMemo = (0, import_react9.useCallback)((base2) => getCustomProperties(base2), []);
     const { customPropertyValueByKey, errorState } = useCustomProperties(getCustomPropertiesMemo);
     const timesheetTable = customPropertyValueByKey.timesheetTable;
     const usersTable = customPropertyValueByKey.usersTable;
     const monthTable = customPropertyValueByKey.monthTable;
     const records = useRecords(timesheetTable || null);
     const monthRecords = useRecords(monthTable || null);
-    const [updateTrigger, setUpdateTrigger] = (0, import_react8.useState)(0);
+    const usersRecords = useRecords(usersTable || null);
+    const [updateTrigger, setUpdateTrigger] = (0, import_react9.useState)(0);
+    const [showCreateModal, setShowCreateModal] = (0, import_react9.useState)(false);
+    const [taskRecords, setTaskRecords] = (0, import_react9.useState)([]);
     const projectImport = customPropertyValueByKey.projectImport;
     const emailFromName = customPropertyValueByKey.emailFromName;
     const task = customPropertyValueByKey.task;
     const createdBy2 = customPropertyValueByKey.createdBy2;
     const name = customPropertyValueByKey.name;
     const date = customPropertyValueByKey.date;
+    const yearWeek = customPropertyValueByKey.yearWeek;
     const individualHours = customPropertyValueByKey.individualHours;
     const weekday = customPropertyValueByKey.weekday;
     const projectFromTask = customPropertyValueByKey.projectFromTask;
@@ -42733,6 +44138,24 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     const warning = customPropertyValueByKey.warning;
     const timesheetNotes = customPropertyValueByKey.timesheetNotes;
     const timeTaskType = customPropertyValueByKey.timeTaskType;
+    const userEmail = customPropertyValueByKey.userEmail;
+    (0, import_react9.useEffect)(() => {
+      if (timesheetTable && task && records.length > 0) {
+        const firstRecord = records[0];
+        if (firstRecord) {
+          firstRecord.fetchForeignRecordsAsync(task, "").then((result) => {
+            setTaskRecords(result.records.map((r) => __spreadValues({
+              id: r.id,
+              displayName: r.displayName || r.name || r.id
+            }, r)));
+          }).catch((error) => {
+            console.error("Error fetching Task records:", error);
+          });
+        }
+      } else if (timesheetTable && task && records.length === 0) {
+        setTaskRecords([]);
+      }
+    }, [timesheetTable, task, records]);
     const monthStatusField = customPropertyValueByKey.monthStatus;
     const monthStartDateField = customPropertyValueByKey.monthStartDate;
     const monthEndDateField = customPropertyValueByKey.monthEndDate;
@@ -42743,7 +44166,21 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
     const handleRecordUpdate = () => {
       setUpdateTrigger((prev) => prev + 1);
     };
-    const handleAddTimeline = async () => {
+    const findUserNameByEmail = (email) => {
+      if (!usersTable || !email || !usersRecords) return null;
+      const emailField = usersTable.fields.find((f) => f.name === "Email");
+      const nameField2 = usersTable.fields.find((f) => f.name === "Name");
+      if (!emailField || !nameField2) return null;
+      const userRecord = usersRecords.find((record) => {
+        const recordEmail = record.getCellValue(emailField);
+        return recordEmail && String(recordEmail).toLowerCase() === String(email).toLowerCase();
+      });
+      if (userRecord) {
+        return userRecord.getCellValue(nameField2);
+      }
+      return null;
+    };
+    const handleAddTimeline = () => {
       if (!canCreateRecords) {
         alert("You do not have permission to create records. Please enable record creation permissions for this Interface Extension.");
         return;
@@ -42752,49 +44189,48 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
         alert("Timesheet table is not configured.");
         return;
       }
-      try {
-        await timesheetTable.createRecordAsync({});
-        handleRecordUpdate();
-      } catch (error) {
-        console.error("Error creating record:", error);
-        let errorMessage = "Failed to create record. ";
-        if (error.message && error.message.includes("allow record")) {
-          errorMessage += "Please enable record creation permissions for this Interface Extension in the Airtable settings.";
-        } else {
-          errorMessage += error.message || "Unknown error occurred.";
-        }
-        alert(errorMessage);
-      }
+      setShowCreateModal(true);
+    };
+    const handleRecordCreated = () => {
+      handleRecordUpdate();
     };
     if (errorState || !timesheetTable) {
-      return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "p-4 sm:p-8 min-h-screen bg-gray-gray50 dark:bg-gray-gray800", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "rounded-lg p-6 bg-white dark:bg-gray-gray700 shadow-sm", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("h2", { className: "text-lg font-semibold mb-2 text-gray-gray900 dark:text-gray-gray100", children: "Configuration Required" }, void 0, false, {
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "p-4 sm:p-8 min-h-screen bg-gray-gray50 dark:bg-gray-gray800", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "rounded-lg p-6 bg-white dark:bg-gray-gray700 shadow-sm", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h2", { className: "text-lg font-semibold mb-2 text-gray-gray900 dark:text-gray-gray100", children: "Configuration Required" }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 86,
+          lineNumber: 143,
           columnNumber: 21
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("p", { className: "text-sm text-gray-gray700 dark:text-gray-gray300", children: "Please configure the Timesheet table and fields in the properties panel." }, void 0, false, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-gray-gray700 dark:text-gray-gray300", children: "Please configure the Timesheet table and fields in the properties panel." }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 89,
+          lineNumber: 146,
           columnNumber: 21
         }, this)
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 85,
+        lineNumber: 142,
         columnNumber: 17
       }, this) }, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 84,
+        lineNumber: 141,
         columnNumber: 13
       }, this);
     }
-    const fields = [
+    let nameField = name;
+    if (!nameField && timesheetTable) {
+      nameField = timesheetTable.fields.find((f) => f.name === "Name" && f.config.type === FieldType.SINGLE_SELECT);
+    }
+    const allFields = [
       { key: "projectImport", label: "Project Import", field: projectImport },
       { key: "emailFromName", label: "Email (from Name)", field: emailFromName },
       { key: "task", label: "Task", field: task },
       { key: "createdBy2", label: "Created By 2", field: createdBy2 },
-      { key: "name", label: "Name", field: name },
+      { key: "name", label: "Name", field: nameField },
+      // Always include Name field
+      { key: "userEmail", label: "Email of the logged in user", field: userEmail },
+      // Include User Email field
       { key: "date", label: "Date", field: date },
+      { key: "yearWeek", label: "Year-Week", field: yearWeek },
       { key: "individualHours", label: "Individual Hours", field: individualHours },
       { key: "weekday", label: "Weekday", field: weekday },
       { key: "projectFromTask", label: "Project from Task", field: projectFromTask },
@@ -42804,29 +44240,52 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
       { key: "timesheetNotes", label: "Timesheet Notes", field: timesheetNotes },
       { key: "timeTaskType", label: "Time Task Type", field: timeTaskType }
     ];
-    return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "w-full h-full bg-gray-gray50 dark:bg-gray-gray800 p-4 sm:p-6 overflow-auto", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-4 flex items-center justify-between", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("h1", { className: "text-2xl font-bold text-gray-gray900 dark:text-gray-gray100", children: "Timesheet" }, void 0, false, {
+    const fields = [
+      { key: "date", label: "Date", field: date },
+      { key: "yearWeek", label: "Year-Week", field: yearWeek },
+      { key: "warning", label: "Warning", field: warning },
+      { key: "weekday", label: "Weekday", field: weekday },
+      { key: "individualHours", label: "Individual Hours", field: individualHours },
+      { key: "task", label: "Task", field: task },
+      { key: "projectFromTask", label: "Project from Task", field: projectFromTask },
+      { key: "timesheetNotes", label: "Timesheet Notes", field: timesheetNotes },
+      { key: "timeTaskType", label: "Time Task Type", field: timeTaskType },
+      { key: "delete", label: "Delete", field: deleteField },
+      { key: "name", label: "Name", field: nameField },
+      { key: "createdBy2", label: "Created By 2", field: createdBy2 },
+      { key: "userEmail", label: "Email of the logged in user", field: userEmail }
+    ];
+    return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "w-full h-full bg-gray-gray50 dark:bg-gray-gray800 p-4 sm:p-6 overflow-auto", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "mb-4 flex items-center justify-between", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h1", { className: "text-2xl font-bold text-gray-gray900 dark:text-gray-gray100", children: "Timesheet" }, void 0, false, {
             fileName: "frontend/index.js",
-            lineNumber: 118,
+            lineNumber: 203,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("p", { className: "text-sm text-gray-gray600 dark:text-gray-gray400 mt-1", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-gray-gray600 dark:text-gray-gray400 mt-1", children: [
             records.length,
             " record",
             records.length !== 1 ? "s" : ""
           ] }, void 0, true, {
             fileName: "frontend/index.js",
-            lineNumber: 121,
+            lineNumber: 206,
             columnNumber: 21
+          }, this),
+          session?.currentUser?.email && /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-xs text-gray-gray500 dark:text-gray-gray500 mt-1", children: [
+            "Logged in as: ",
+            session.currentUser.email
+          ] }, void 0, true, {
+            fileName: "frontend/index.js",
+            lineNumber: 210,
+            columnNumber: 25
           }, this)
         ] }, void 0, true, {
           fileName: "frontend/index.js",
-          lineNumber: 117,
+          lineNumber: 202,
           columnNumber: 17
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
           "button",
           {
             onClick: handleAddTimeline,
@@ -42838,30 +44297,30 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           false,
           {
             fileName: "frontend/index.js",
-            lineNumber: 125,
+            lineNumber: 215,
             columnNumber: 17
           },
           this
         )
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 116,
+        lineNumber: 201,
         columnNumber: 13
       }, this),
-      showEditWarning && /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-4 p-3 bg-yellow-yellow bg-opacity-20 border border-yellow-yellow rounded text-sm text-gray-gray900 dark:text-gray-gray100", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("strong", { children: "Note:" }, void 0, false, {
+      showEditWarning && /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "mb-4 p-3 bg-yellow-yellow bg-opacity-20 border border-yellow-yellow rounded text-sm text-gray-gray900 dark:text-gray-gray100", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("strong", { children: "Note:" }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 139,
+          lineNumber: 229,
           columnNumber: 21
         }, this),
         ' Record editing is not enabled for this Interface Extension. To enable editing, go to the Interface Extension settings and enable "Allow record editing" for the Timesheet table.'
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 138,
+        lineNumber: 228,
         columnNumber: 17
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "bg-white dark:bg-gray-gray700 rounded-lg shadow-sm overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("table", { className: "w-full border-collapse table-auto", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("thead", { className: "bg-gray-gray100 dark:bg-gray-gray600", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("tr", { children: fields.map(({ key, label, field }) => field && /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "bg-white dark:bg-gray-gray700 rounded-lg shadow-sm overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("table", { className: "w-full border-collapse table-auto", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("thead", { className: "bg-gray-gray100 dark:bg-gray-gray600", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("tr", { children: fields.map(({ key, label, field }) => field && /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
           "th",
           {
             className: "px-4 py-3 text-left text-xs font-semibold text-gray-gray700 dark:text-gray-gray300 uppercase tracking-wider border-b border-gray-gray200 dark:border-gray-gray500 min-w-[180px]",
@@ -42871,20 +44330,20 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           false,
           {
             fileName: "frontend/index.js",
-            lineNumber: 152,
+            lineNumber: 242,
             columnNumber: 41
           },
           this
         )) }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 149,
+          lineNumber: 239,
           columnNumber: 29
         }, this) }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 148,
+          lineNumber: 238,
           columnNumber: 25
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("tbody", { className: "divide-y divide-gray-gray200 dark:divide-gray-gray600", children: records.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("tr", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("tbody", { className: "divide-y divide-gray-gray200 dark:divide-gray-gray600", children: records.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("tr", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
           "td",
           {
             colSpan: fields.filter((f) => f.field).length,
@@ -42895,83 +44354,117 @@ performance.now();setTimeout(w,2300>q&&2E3<q?2300-q:500)})])},types:[]});z.ready
           false,
           {
             fileName: "frontend/index.js",
-            lineNumber: 165,
+            lineNumber: 255,
             columnNumber: 37
           },
           this
         ) }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 164,
+          lineNumber: 254,
           columnNumber: 33
-        }, this) : records.map((record) => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+        }, this) : records.map((record) => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
           "tr",
           {
             className: "hover:bg-gray-gray50 dark:hover:bg-gray-gray600 transition-colors",
-            children: fields.map(({ key, field }) => field && /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
-              EditableCell,
-              {
-                record,
-                field,
-                onUpdate: handleRecordUpdate,
-                monthRecords,
-                monthStatusField,
-                monthStartDateField,
-                monthEndDateField
-              },
-              key,
-              false,
-              {
-                fileName: "frontend/index.js",
-                lineNumber: 180,
-                columnNumber: 49
-              },
-              this
+            children: fields.map(({ key, field }) => (
+              // Always render Name field, even if not configured (EditableCell will handle null field)
+              (field || key === "name") && /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+                EditableCell,
+                {
+                  record,
+                  field,
+                  onUpdate: handleRecordUpdate,
+                  monthRecords,
+                  monthStatusField,
+                  monthStartDateField,
+                  monthEndDateField,
+                  session,
+                  usersTable,
+                  usersRecords
+                },
+                key,
+                false,
+                {
+                  fileName: "frontend/index.js",
+                  lineNumber: 271,
+                  columnNumber: 49
+                },
+                this
+              )
             ))
           },
           record.id,
           false,
           {
             fileName: "frontend/index.js",
-            lineNumber: 174,
+            lineNumber: 264,
             columnNumber: 37
           },
           this
         )) }, void 0, false, {
           fileName: "frontend/index.js",
-          lineNumber: 162,
+          lineNumber: 252,
           columnNumber: 25
         }, this)
       ] }, void 0, true, {
         fileName: "frontend/index.js",
-        lineNumber: 147,
+        lineNumber: 237,
         columnNumber: 21
       }, this) }, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 146,
+        lineNumber: 236,
         columnNumber: 17
       }, this) }, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 145,
+        lineNumber: 235,
         columnNumber: 13
-      }, this)
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+        CreateRecordModal,
+        {
+          isOpen: showCreateModal,
+          onClose: () => setShowCreateModal(false),
+          timesheetTable,
+          fields: allFields,
+          onRecordCreated: handleRecordCreated,
+          session,
+          usersTable,
+          usersRecords,
+          monthRecords,
+          monthStatusField,
+          monthStartDateField,
+          monthEndDateField,
+          taskRecords
+        },
+        void 0,
+        false,
+        {
+          fileName: "frontend/index.js",
+          lineNumber: 294,
+          columnNumber: 13
+        },
+        this
+      )
     ] }, void 0, true, {
       fileName: "frontend/index.js",
-      lineNumber: 115,
+      lineNumber: 200,
       columnNumber: 9
     }, this);
   }
-  var import_react8, import_jsx_dev_runtime3;
+  var import_react9, import_jsx_dev_runtime4;
   var init_frontend = __esm({
     "frontend/index.js"() {
       init_ui();
-      import_react8 = __toESM(require_react());
+      init_models();
+      import_react9 = __toESM(require_react());
       init_style();
       init_customProperties();
       init_EditableCell();
-      import_jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime());
-      initializeBlock({ interface: () => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(TimesheetApp, {}, void 0, false, {
+      init_CreateRecordModal();
+      import_jsx_dev_runtime4 = __toESM(require_jsx_dev_runtime());
+      initializeBlock({ interface: () => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(TimesheetApp, {}, void 0, false, {
         fileName: "frontend/index.js",
-        lineNumber: 203,
+        lineNumber: 313,
         columnNumber: 35
       }) });
     }

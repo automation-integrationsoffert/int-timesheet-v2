@@ -63,6 +63,29 @@ export function CreateRecordModal({
             return;
         }
         
+        // For Name field, use Users Table records directly (no temporary record needed)
+        if (fieldKey === 'name' && usersTable && usersRecords && usersRecords.length > 0 && !term) {
+            console.log('[Modal] Using Users Table records for Name field:', usersRecords.length);
+            // Get the Name field from Users Table
+            const usersNameField = usersTable.fields.find(f => f.name === 'Name');
+            if (usersNameField) {
+                const nameRecords = usersRecords.map(record => {
+                    const nameValue = record.getCellValue(usersNameField);
+                    return {
+                        id: record.id,
+                        displayName: nameValue ? String(nameValue) : record.name || record.id,
+                        name: nameValue ? String(nameValue) : record.name || record.id
+                    };
+                });
+                setLinkedRecords(prev => ({
+                    ...prev,
+                    [fieldKey]: nameRecords
+                }));
+                console.log('[Modal] Set Name records from Users Table:', nameRecords.map(r => r.displayName));
+                return;
+            }
+        }
+        
         // Check if records are already loaded for this field (unless searching)
         const existingRecords = linkedRecords[fieldKey];
         if (existingRecords && existingRecords.length > 0 && !term) {
@@ -97,10 +120,22 @@ export function CreateRecordModal({
             
             if (tempRecord) {
                 // Use empty string for term to get all available records (same as table)
-                // fetchForeignRecordsAsync fetches records from "Tasks for Timesheet" table
-                // and returns them with displayName set to the primary field (Name) from that table
+                // fetchForeignRecordsAsync fetches records from the linked table
+                // For Task field: fetches from "Tasks for Timesheet" table
+                // For Name field: fetches from "Users Table"
+                console.log('[Modal] Fetching linked records for field:', {
+                    fieldKey,
+                    fieldName: field.name,
+                    fieldId: field.id,
+                    fieldType: field.config?.type,
+                    linkedTableId: field.config?.options?.linkedTableId
+                });
                 const result = await tempRecord.fetchForeignRecordsAsync(field, term || '');
-                console.log('Fetched linked records:', result.records.length, result.records);
+                console.log('[Modal] Fetched linked records:', {
+                    fieldKey,
+                    count: result.records.length,
+                    records: result.records.map(r => ({id: r.id, displayName: r.displayName, name: r.name}))
+                });
                 
                 // Store records the same way as table - preserve full record structure
                 // displayName contains the Name field value from the linked table
@@ -184,29 +219,9 @@ export function CreateRecordModal({
             console.log('[Modal] No email available, using session.currentUser.name:', userName);
         }
         
+        // Note: Name field is now a linked record field (MULTIPLE_RECORD_LINKS) linking to Users Table
+        // Auto-population removed - user will select from dropdown
         if (userName) {
-            // Set Name field - use the name from Users Table
-            const nameField = fields.find(f => f.key === 'name')?.field;
-            if (nameField && nameField.config.type === FieldType.SINGLE_SELECT) {
-                const nameOptions = nameField.config?.options?.choices || [];
-                // Try exact match first
-                let matchingNameOption = nameOptions.find(opt => opt.name === userName);
-                // If no exact match, try case-insensitive match
-                if (!matchingNameOption) {
-                    matchingNameOption = nameOptions.find(opt => 
-                        opt.name && opt.name.toLowerCase() === userName.toLowerCase()
-                    );
-                }
-                if (matchingNameOption) {
-                    setFormValues(prev => ({
-                        ...prev,
-                        name: {id: matchingNameOption.id}
-                    }));
-                    console.log('[Modal] Set Name field to:', matchingNameOption.name);
-                } else {
-                    console.warn('[Modal] Name field option not found for:', userName, 'Available options:', nameOptions.map(opt => opt.name));
-                }
-            }
             
             // Set Created By 2 field - use the same name from Users Table
             const createdBy2Field = fields.find(f => f.key === 'createdBy2')?.field;
@@ -244,7 +259,16 @@ export function CreateRecordModal({
             console.warn('[Modal] Could not determine user name. Session:', session?.currentUser);
         }
         
-        // Don't fetch Task records automatically when modal opens
+        // Pre-populate Task records if available from parent component
+        if (taskRecords.length > 0) {
+            console.log('[Modal] Pre-populating Task records on modal open:', taskRecords.length);
+            setLinkedRecords(prev => ({
+                ...prev,
+                task: taskRecords
+            }));
+        }
+        
+        // Don't fetch Task records automatically when modal opens (unless pre-fetched)
         // Wait until user interacts with the Task field to avoid creating temporary records unnecessarily
         // Task records will be fetched when the user clicks on the Task dropdown
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -308,18 +332,18 @@ export function CreateRecordModal({
                         fieldsToSet[field.id] = value.map(v => ({id: v.id}));
                     }
                 } else if (fieldType === FieldType.MULTIPLE_RECORD_LINKS) {
-                    // For linked records (Task field), value should be array of objects with {id: recordId}
+                    // For linked records (Task and Name fields), value should be array of objects with {id: recordId}
                     // Same format as table: [{id: recordId}]
                     if (Array.isArray(value)) {
                         fieldsToSet[field.id] = value.map(v => typeof v === 'string' ? {id: v} : {id: v.id});
                     } else if (value && value.id) {
-                        // Task field stores a single record object, convert to array format
+                        // Task/Name field stores a single record object, convert to array format
                         fieldsToSet[field.id] = [{id: value.id}];
-                        console.log('Setting Task field:', {
+                        console.log('Setting linked record field:', {
                             fieldId: field.id,
                             fieldName: field.name,
-                            taskId: value.id,
-                            taskName: value.displayName || value.name
+                            recordId: value.id,
+                            recordName: value.displayName || value.name
                         });
                     }
                 } else if (fieldType === FieldType.DATE || fieldType === FieldType.DATE_TIME) {
@@ -344,40 +368,15 @@ export function CreateRecordModal({
                 }
             });
             
-            // Always set Name field programmatically from logged-in user's email
-            // This ensures the Name field is always set, even if not in form values
-            const nameField = fields.find(f => f.key === 'name' || f.field?.name === 'Name')?.field;
+            // Note: Name field is now a linked record field (MULTIPLE_RECORD_LINKS)
+            // It will be set from formValues if user selected a value, same as Task field
+            // Get userName for Created By 2 field
             let userName = null;
-            if (nameField && nameField.config.type === FieldType.SINGLE_SELECT) {
-                // Get logged-in user's email
-                const userEmail = session?.currentUser?.email;
-                if (userEmail) {
-                    // Get Name from Users Table based on email
-                    userName = findUserNameByEmail(userEmail);
-                    if (userName) {
-                        // Find matching option in Name field
-                        const nameOptions = nameField.config?.options?.choices || [];
-                        const matchingNameOption = nameOptions.find(opt => 
-                            opt.name && opt.name.toLowerCase() === userName.toLowerCase()
-                        );
-                        if (matchingNameOption) {
-                            // Set Name field programmatically
-                            fieldsToSet[nameField.id] = {id: matchingNameOption.id};
-                            console.log('[Modal] Name field set programmatically:', matchingNameOption.name);
-                        } else {
-                            console.warn('[Modal] Name field option not found for:', userName);
-                        }
-                    } else {
-                        console.warn('[Modal] User name not found in Users Table for email:', userEmail);
-                        // Fallback to session name
-                        if (session?.currentUser?.name) {
-                            userName = session.currentUser.name;
-                        }
-                    }
-                } else if (session?.currentUser?.name) {
-                    // Fallback to session name if no email
-                    userName = session.currentUser.name;
-                }
+            const userEmail = session?.currentUser?.email;
+            if (userEmail) {
+                userName = findUserNameByEmail(userEmail);
+            } else if (session?.currentUser?.name) {
+                userName = session.currentUser.name;
             }
             
             // Always set Created By 2 field programmatically with logged-in user's name
@@ -425,11 +424,14 @@ export function CreateRecordModal({
                 });
             }
             
+            console.log('[Modal] Creating record with fieldsToSet:', fieldsToSet);
             await timesheetTable.createRecordAsync(fieldsToSet);
+            console.log('[Modal] Record created successfully');
             onRecordCreated();
             onClose();
         } catch (error) {
-            console.error('Error creating record:', error);
+            console.error('[Modal] Error creating record:', error);
+            console.error('[Modal] fieldsToSet that failed:', fieldsToSet);
             alert('Failed to create record: ' + (error.message || 'Unknown error occurred.'));
         }
     };
@@ -440,16 +442,32 @@ export function CreateRecordModal({
             if (key === 'userEmail') {
                 console.warn('[Modal] User Email field not configured in custom properties');
             }
+            // For Name field, log warning if not configured
+            if (key === 'name') {
+                console.warn('[Modal] Name field not configured in custom properties');
+            }
             return null;
         }
         
         const fieldName = field.name || '';
         const fieldType = field.config.type;
         const value = formValues[key];
-        const isNameField = fieldName === 'Name';
+        const isNameField = fieldName === 'Name' || key === 'name';
         const isCreatedBy2Field = fieldName === 'Created By 2';
         const isEmailFromNameField = fieldName === 'Email (from Name)';
         const isUserEmailField = fieldName === 'Email of the logged in user' || key === 'userEmail';
+        
+        // Debug log for Name field
+        if (key === 'name' || isNameField) {
+            console.log('[Modal] Name field detected:', {
+                key,
+                fieldName,
+                fieldType,
+                isNameField,
+                hasField: !!field,
+                fieldConfig: field ? {type: fieldType, hasOptions: !!(field.config?.options?.choices)} : null
+            });
+        }
         
         // Debug log for User Email field
         if (key === 'userEmail' || isUserEmailField) {
@@ -474,21 +492,22 @@ export function CreateRecordModal({
         const isDeleteField = fieldName === 'Delete';
         const isTaskField = fieldName === 'Task';
         
-        // Don't show Delete and Project Import fields in modal
-        if (isDeleteField || isProjectImportField) return null;
+        // Don't show Delete, Project Import, and User Email fields in modal
+        if (isDeleteField || isProjectImportField || isUserEmailField) return null;
         
         // Only show editable fields
         const isEditable = isDateFieldEditable || isIndividualHoursField || 
                           isProjectFromTaskEditable || isWarningField || isTimesheetNotesField || 
-                          isTimeTaskTypeField || isTaskField || isNameField || isCreatedBy2Field || isEmailFromNameField || isUserEmailField;
+                          isTimeTaskTypeField || isTaskField || isNameField || isCreatedBy2Field || isEmailFromNameField;
         
         if (!isEditable) return null;
         
-        // Name field - editable select that becomes read-only after value is set
-        if (isNameField && fieldType === FieldType.SINGLE_SELECT) {
-            const options = field.config?.options?.choices || [];
-            const selectedOption = value?.id ? options.find(opt => opt.id === value.id) : null;
-            const hasValue = selectedOption !== null;
+        // Linked record field (Name) - simple select dropdown (same as Task field)
+        // Fetches records from "Users Table" and displays Names
+        if (fieldType === FieldType.MULTIPLE_RECORD_LINKS && isNameField) {
+            const records = linkedRecords[key] || [];
+            const selectedRecord = value;
+            const selectedId = selectedRecord?.id || '';
             
             return (
                 <div className="mb-4">
@@ -496,23 +515,48 @@ export function CreateRecordModal({
                         {label}
                     </label>
                     <select
-                        value={selectedOption?.id || ''}
-                        onChange={(e) => {
-                            const optionId = e.target.value;
-                            const option = options.find(opt => opt.id === optionId);
-                            handleFieldChange(key, option ? {id: option.id} : null);
+                        value={selectedId}
+                        onFocus={() => {
+                            // Fetch Name records when user clicks on the dropdown (lazy loading)
+                            if (records.length === 0) {
+                                const nameField = fields.find(f => f.key === 'name')?.field;
+                                if (nameField) {
+                                    console.log('[Modal] Fetching Name records on focus (lazy loading)...');
+                                    handleLinkedRecordSearch('name', nameField, '').catch(error => {
+                                        console.error('[Modal] Error fetching Name records:', error);
+                                    });
+                                }
+                            }
                         }}
-                        disabled={hasValue} // Disable after value is set (read-only)
-                        className={`w-full px-3 py-2 border border-gray-gray300 dark:border-gray-gray600 rounded-md ${
-                            hasValue 
-                                ? 'bg-gray-gray100 dark:bg-gray-gray700 text-gray-gray500 dark:text-gray-gray400 cursor-not-allowed' 
-                                : 'bg-white dark:bg-gray-gray800 text-gray-gray900 dark:text-gray-gray100'
-                        }`}
+                        onChange={(e) => {
+                            const recordId = e.target.value;
+                            console.log('[Modal] Name select onChange:', { recordId, recordsCount: records.length });
+                            if (recordId) {
+                                const record = records.find(r => r.id === recordId);
+                                console.log('[Modal] Found Name record:', {
+                                    id: record?.id,
+                                    name: record?.displayName || record?.name
+                                });
+                                if (record) {
+                                    // Store the full record object (same as Task field)
+                                    // This will be formatted as [{id: record.id}] when creating the record
+                                    handleFieldChange(key, record);
+                                    console.log('[Modal] Name selected and stored:', record.displayName || record.name);
+                                } else {
+                                    console.error('[Modal] Name record not found for ID:', recordId);
+                                }
+                            } else {
+                                // Clear selection
+                                handleFieldChange(key, null);
+                                console.log('[Modal] Name selection cleared');
+                            }
+                        }}
+                        className="w-full px-2 py-1 border rounded text-gray-gray900 dark:text-gray-gray100 bg-white dark:bg-gray-gray800"
                     >
                         <option value="">Select {label}</option>
-                        {options.map(option => (
-                            <option key={option.id} value={option.id}>
-                                {option.name}
+                        {records.map(record => (
+                            <option key={record.id} value={record.id}>
+                                {record.displayName || record.name}
                             </option>
                         ))}
                     </select>
@@ -758,12 +802,22 @@ export function CreateRecordModal({
                             // Fetch Task records when user clicks on the dropdown (lazy loading)
                             // This prevents creating a temporary record when modal opens
                             if (records.length === 0 && !isFetchingTaskRecords) {
-                                const taskField = fields.find(f => f.key === 'task')?.field;
-                                if (taskField) {
-                                    console.log('[Modal] Fetching Task records on focus (lazy loading)...');
-                                    handleLinkedRecordSearch('task', taskField, '').catch(error => {
-                                        console.error('[Modal] Error fetching Task records:', error);
-                                    });
+                                // First try to use pre-fetched taskRecords
+                                if (taskRecords.length > 0) {
+                                    console.log('[Modal] Using pre-fetched Task records on focus:', taskRecords.length);
+                                    setLinkedRecords(prev => ({
+                                        ...prev,
+                                        task: taskRecords
+                                    }));
+                                } else {
+                                    // If no pre-fetched records, fetch them
+                                    const taskField = fields.find(f => f.key === 'task')?.field;
+                                    if (taskField) {
+                                        console.log('[Modal] Fetching Task records on focus (lazy loading)...');
+                                        handleLinkedRecordSearch('task', taskField, '').catch(error => {
+                                            console.error('[Modal] Error fetching Task records:', error);
+                                        });
+                                    }
                                 }
                             }
                         }}

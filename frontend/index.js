@@ -165,6 +165,7 @@ function TimesheetApp() {
         {key: 'task', label: 'Task', field: task},
         {key: 'createdBy2', label: 'Created By 2', field: createdBy2},
         {key: 'name', label: 'Name', field: nameField}, // Always include Name field
+        {key: 'userEmail', label: 'Email of the logged in user', field: userEmail}, // Include User Email field
         {key: 'date', label: 'Date', field: date},
         {key: 'yearWeek', label: 'Year-Week', field: yearWeek},
         {key: 'individualHours', label: 'Individual Hours', field: individualHours},

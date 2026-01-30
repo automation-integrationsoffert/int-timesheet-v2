@@ -66,9 +66,8 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
     const isDeleteField = fieldName === 'Delete';
     
     // These fields should always be editable (unless read-only for other reasons)
-    // Note: Name field is NOT editable - it's auto-populated but read-only
     const isTaskField = fieldName === 'Task';
-    const shouldBeEditable = isProjectImportField || isDateFieldEditable || isIndividualHoursField || isProjectFromTaskEditable || isWarningField || isTimesheetNotesField || isTimeTaskTypeField || isDeleteField || isTaskField;
+    const shouldBeEditable = isProjectImportField || isDateFieldEditable || isIndividualHoursField || isProjectFromTaskEditable || isWarningField || isTimesheetNotesField || isTimeTaskTypeField || isDeleteField || isTaskField || isNameField;
     
     const canEdit = record?.parentTable?.hasPermissionToUpdateRecords?.([{id: record.id, fields: {[field.id]: null}}]) ?? false;
     const isFormula = fieldType === FieldType.FORMULA;
@@ -96,13 +95,10 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
     
     // For lookup fields (Email from Name, Project from Task), use getCellValueAsString to get value directly
     // For text fields (SINGLE_LINE_TEXT, MULTILINE_TEXT), also use getCellValueAsString for better compatibility
-    // For SINGLE_SELECT fields (like Name), use getCellValueAsString to get the option name directly
     const cellValue = field ? (
         (isEmailField || isProjectFromTaskField) && isLookup 
             ? (record.getCellValueAsString(field) || '')
             : (fieldType === FieldType.SINGLE_LINE_TEXT || fieldType === FieldType.MULTILINE_TEXT)
-            ? (record.getCellValueAsString(field) || '')
-            : (fieldType === FieldType.SINGLE_SELECT && isNameField)
             ? (record.getCellValueAsString(field) || '')
             : (record.getCellValue(field) ?? '')
     ) : '';
@@ -133,54 +129,8 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
         return null;
     };
 
-    // Auto-populate Name field if empty using logged-in user's email
-    useEffect(() => {
-        // Special handling for Name field: auto-populate if empty (even if not editable)
-        if (isNameField && fieldType === FieldType.SINGLE_SELECT && !isFormula && !isLookup && !isClosed) {
-            // For Name field, cellValue is a string (from getCellValueAsString), so check if it's empty
-            const currentValue = cellValue;
-            const isEmpty = !currentValue || currentValue === '';
-            
-            // Also check the actual cell value object to get the option ID if needed
-            const actualCellValue = record.getCellValue(field);
-            const currentOptionId = actualCellValue?.id || null;
-            
-            // Only auto-populate if field is empty and we have the necessary data
-            if ((isEmpty || !currentOptionId) && session?.currentUser?.email && usersTable && usersRecords) {
-                // Get logged-in user's email
-                const userEmail = session.currentUser.email;
-                
-                // Get Name from Users Table based on email
-                const userName = findUserNameByEmail(userEmail);
-                
-                if (userName) {
-                    // Find the option that matches the user name
-                    const currentField = getCurrentField();
-                    if (!currentField) return;
-                    
-                    const options = currentField?.config?.options?.choices || [];
-                    const matchingOption = options.find(opt => opt.name === userName);
-                    
-                    if (matchingOption) {
-                        // Auto-save the Name field
-                        if (canEdit) {
-                            record.parentTable.updateRecordAsync(record, {
-                                [currentField.id]: {id: matchingOption.id}
-                            }).then(() => {
-                                if (onUpdate) onUpdate();
-                            }).catch(error => {
-                                console.error('Error auto-setting Name field:', error);
-                            });
-                        }
-                    } else {
-                        console.warn('No matching option found for user name:', userName, 'Available options:', options.map(opt => opt.name));
-                    }
-                } else {
-                    console.warn('User name not found in Users Table for email:', userEmail);
-                }
-            }
-        }
-    }, [isNameField, fieldType, cellValue, session, usersTable, usersRecords, field, record, isFormula, isLookup, isClosed, canEdit, onUpdate, getCurrentField, findUserNameByEmail]);
+    // Note: Name field is now a linked record field (MULTIPLE_RECORD_LINKS) linking to Users Table
+    // Auto-population removed - Name field works exactly like Task field
     
     // Initialize editing state and value for editable fields - show as input from start
     useEffect(() => {
@@ -269,8 +219,8 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
                 });
             }
             
-            // Task field - sync savedSelectedIds with cellValue when it changes
-            if (fieldType === FieldType.MULTIPLE_RECORD_LINKS && isTaskField && isEditing) {
+            // Task and Name fields - sync savedSelectedIds with cellValue when it changes
+            if (fieldType === FieldType.MULTIPLE_RECORD_LINKS && (isTaskField || isNameField) && isEditing) {
                 const currentValue = cellValue;
                 const currentValueStr = JSON.stringify(currentValue);
                 
@@ -336,23 +286,51 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
                     lastProcessedCellValueRef.current = currentValueStr;
                 }
                 
-                // Fetch linked records from "Tasks for Timesheet" table only if not already loaded
-                // fetchForeignRecordsAsync returns records with displayName set to the primary field (Name) from the linked table
+                // Fetch linked records - for Name field use Users Table, for Task field use fetchForeignRecordsAsync
                 if (linkedRecords.length === 0) {
-                    record.fetchForeignRecordsAsync(field, '').then(result => {
-                        setLinkedRecords(result.records);
-                        // Update display name if we have a selected ID and don't have display name yet
-                        setSavedSelectedIds(prevSavedIds => {
-                            const idsToCheck = prevSavedIds.length > 0 ? prevSavedIds : currentIds;
-                            if (idsToCheck.length > 0) {
-                                const foundRecord = result.records.find(r => r.id === idsToCheck[0]);
-                                if (foundRecord) {
-                                    setSelectedRecordDisplayName(foundRecord.displayName);
+                    if (isNameField && usersTable && usersRecords && usersRecords.length > 0) {
+                        // For Name field, use Users Table records directly
+                        const usersNameField = usersTable.fields.find(f => f.name === 'Name');
+                        if (usersNameField) {
+                            const nameRecords = usersRecords.map(record => {
+                                const nameValue = record.getCellValue(usersNameField);
+                                return {
+                                    id: record.id,
+                                    displayName: nameValue ? String(nameValue) : record.name || record.id,
+                                    name: nameValue ? String(nameValue) : record.name || record.id
+                                };
+                            });
+                            setLinkedRecords(nameRecords);
+                            // Update display name if we have a selected ID
+                            setSavedSelectedIds(prevSavedIds => {
+                                const idsToCheck = prevSavedIds.length > 0 ? prevSavedIds : currentIds;
+                                if (idsToCheck.length > 0) {
+                                    const foundRecord = nameRecords.find(r => r.id === idsToCheck[0]);
+                                    if (foundRecord) {
+                                        setSelectedRecordDisplayName(foundRecord.displayName);
+                                    }
                                 }
-                            }
-                            return prevSavedIds;
+                                return prevSavedIds;
+                            });
+                        }
+                    } else {
+                        // For Task field, use fetchForeignRecordsAsync
+                        // fetchForeignRecordsAsync returns records with displayName set to the primary field (Name) from the linked table
+                        record.fetchForeignRecordsAsync(field, '').then(result => {
+                            setLinkedRecords(result.records);
+                            // Update display name if we have a selected ID and don't have display name yet
+                            setSavedSelectedIds(prevSavedIds => {
+                                const idsToCheck = prevSavedIds.length > 0 ? prevSavedIds : currentIds;
+                                if (idsToCheck.length > 0) {
+                                    const foundRecord = result.records.find(r => r.id === idsToCheck[0]);
+                                    if (foundRecord) {
+                                        setSelectedRecordDisplayName(foundRecord.displayName);
+                                    }
+                                }
+                                return prevSavedIds;
+                            });
                         });
-                    });
+                    }
                 }
             }
         }
@@ -553,8 +531,8 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
     };
 
     if (isEditing) {
-        // For linked record fields (MULTIPLE_RECORD_LINKS) - but not Name field (which is now SINGLE_SELECT)
-        if (fieldType === FieldType.MULTIPLE_RECORD_LINKS && !isNameField) {
+        // For linked record fields (MULTIPLE_RECORD_LINKS) - Task and Name fields
+        if (fieldType === FieldType.MULTIPLE_RECORD_LINKS && (isTaskField || isNameField)) {
             const currentValue = cellValue;
             // Extract current IDs from cellValue (for initial load)
             // cellValue for MULTIPLE_RECORD_LINKS is an array of record objects like [{id: 'rec123', name: 'Task Name'}, ...]
@@ -595,20 +573,44 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
             //     });
             // }
             
-            // Task field - simple select dropdown (not searchable)
-            if (fieldName === 'Task') {
+            // Task and Name fields - simple select dropdown (not searchable)
+            if (fieldName === 'Task' || fieldName === 'Name') {
                 // Fetch linked records if not already loaded (this is a fallback, main fetch happens in useEffect)
                 if (linkedRecords.length === 0) {
-                    record.fetchForeignRecordsAsync(field, '').then(result => {
-                        setLinkedRecords(result.records);
-                        // If we have a selectedId but no displayName yet, find it from the fetched records
-                        if (selectedId && !selectedRecordDisplayName) {
-                            const foundRecord = result.records.find(r => r.id === selectedId);
-                            if (foundRecord) {
-                                setSelectedRecordDisplayName(foundRecord.displayName);
+                    if (isNameField && usersTable && usersRecords && usersRecords.length > 0) {
+                        // For Name field, use Users Table records directly
+                        const usersNameField = usersTable.fields.find(f => f.name === 'Name');
+                        if (usersNameField) {
+                            const nameRecords = usersRecords.map(record => {
+                                const nameValue = record.getCellValue(usersNameField);
+                                return {
+                                    id: record.id,
+                                    displayName: nameValue ? String(nameValue) : record.name || record.id,
+                                    name: nameValue ? String(nameValue) : record.name || record.id
+                                };
+                            });
+                            setLinkedRecords(nameRecords);
+                            // If we have a selectedId but no displayName yet, find it from the fetched records
+                            if (selectedId && !selectedRecordDisplayName) {
+                                const foundRecord = nameRecords.find(r => r.id === selectedId);
+                                if (foundRecord) {
+                                    setSelectedRecordDisplayName(foundRecord.displayName);
+                                }
                             }
                         }
-                    });
+                    } else {
+                        // For Task field, use fetchForeignRecordsAsync
+                        record.fetchForeignRecordsAsync(field, '').then(result => {
+                            setLinkedRecords(result.records);
+                            // If we have a selectedId but no displayName yet, find it from the fetched records
+                            if (selectedId && !selectedRecordDisplayName) {
+                                const foundRecord = result.records.find(r => r.id === selectedId);
+                                if (foundRecord) {
+                                    setSelectedRecordDisplayName(foundRecord.displayName);
+                                }
+                            }
+                        });
+                    }
                 }
                 
                 const currentField = getCurrentField();
@@ -656,8 +658,8 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
                                 const newSelectedId = e.target.value;
                                 const currentField = getCurrentField(); // Get fresh field reference
                                 if (!currentField) {
-                                    console.error('Task field not found');
-                                    alert('Task field not found. Please refresh the page.');
+                                    console.error(`${fieldName} field not found`);
+                                    alert(`${fieldName} field not found. Please refresh the page.`);
                                     return;
                                 }
                                 
@@ -751,7 +753,7 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
                             disabled={isClosed || isSaving}
                             className={`w-full px-2 py-1 border rounded text-gray-gray900 dark:text-gray-gray100 bg-white dark:bg-gray-gray800 ${isClosed || isSaving ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
-                            <option value="">Select Task</option>
+                            <option value="">Select {fieldName === 'Name' ? 'Name' : 'Task'}</option>
                             {recordsToDisplay.map(record => (
                                 <option key={record.id} value={record.id}>
                                     {record.displayName || record.name || record.id}
@@ -900,8 +902,8 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
             );
         }
         
-        // For single select fields, show dropdown (except Name field which is read-only)
-        if (fieldType === FieldType.SINGLE_SELECT && !isNameField) {
+        // For single select fields, show dropdown
+        if (fieldType === FieldType.SINGLE_SELECT) {
             const options = field?.config?.options?.choices || [];
             const currentValue = cellValue;
             const currentOptionId = currentValue?.id || null;
@@ -1154,16 +1156,11 @@ export function EditableCell({record, field, onUpdate, monthRecords, monthStatus
                     }`}
                     onClick={(e) => {
                         e.stopPropagation();
-                        // Name field is read-only, don't allow editing
-                        if (!isNameField) {
-                            handleClick();
-                        }
+                        handleClick();
                     }}
                     title={
                         isDateField && !isReadOnly 
                             ? 'Click to select date' 
-                            : isNameField
-                            ? 'Name field is auto-populated and read-only'
                             : ''
                     }
                 >
